@@ -1,0 +1,14 @@
+{
+  "name": "api_calls",
+  "display_name": "API Calls",
+  "description": "Tracks the number of API calls made by each customer.",
+  "event_name": "api_request",
+  "meter_type": "counter",
+  "data_type": "INT",
+  "aggregation": "COUNT",
+  "unit_name": "API calls",
+  "is_incremental": true,
+  "reporting_method": "periodic",
+  "expected_labels": ["endpoint", "method", "status_code"],
+  "primary_labels": ["endpoint"]
+}

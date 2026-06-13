@@ -1,0 +1,22 @@
+{
+  "name": "acme-corp",
+  "display_name": "Acme Corporation",
+  "price_plan_name": "growth-plan",
+  "contact_info": {
+    "email": "billing@acme.com",
+    "phone": "+1-555-0100",
+    "legal_name": "Acme Corp Inc.",
+    "address_line_1": "123 Main Street",
+    "city": "San Francisco",
+    "state": "CA",
+    "country": "US",
+    "zipcode": "94105"
+  },
+  "autogenerate_payment_gateway_customer": true,
+  "measurement_mappings": [
+    {
+      "label": "tenant_id",
+      "value": "acme-corp"
+    }
+  ]
+}

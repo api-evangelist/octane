@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/octane/main/json-schema/octane-price-plan-schema.json",
+  "title": "PricePlan",
+  "description": "A pricing plan in Octane that defines billing terms, metered components, and features.",
+  "type": "object",
+  "required": ["name", "period", "metered_components"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name identifier for the price plan."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable display name."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the price plan."
+    },
+    "external_uuid": {
+      "type": "string",
+      "description": "External UUID reference."
+    },
+    "base_price": {
+      "type": "number",
+      "description": "Fixed base price for the plan period.",
+      "minimum": 0
+    },
+    "base_price_frequency": {
+      "type": "string",
+      "description": "How often the base price is charged."
+    },
+    "base_price_description": {
+      "type": "string",
+      "description": "Description of what the base price covers."
+    },
+    "period": {
+      "type": "string",
+      "enum": ["monthly", "quarterly", "annual"],
+      "description": "Billing period for this plan."
+    },
+    "minimum_charge": {
+      "type": "number",
+      "description": "Minimum charge amount for the period.",
+      "minimum": 0
+    },
+    "minimum_charge_frequency": {
+      "type": "string",
+      "description": "Frequency of minimum charge."
+    },
+    "metered_components": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/MeteredComponent" },
+      "description": "Usage-based metered pricing components."
+    },
+    "features": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Feature" },
+      "description": "Features included in this plan."
+    },
+    "add_ons": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/AddOn" },
+      "description": "Available add-ons for this plan."
+    },
+    "limits": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Limit" },
+      "description": "Usage limits for features."
+    },
+    "trial": {
+      "$ref": "#/definitions/Trial"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "definitions": {
+    "MeteredComponent": {
+      "type": "object",
+      "required": ["meter_name", "meter_display_name", "price_scheme"],
+      "properties": {
+        "meter_name": { "type": "string" },
+        "meter_display_name": { "type": "string" },
+        "display_name": { "type": "string" },
+        "external_uuid": { "type": "string" },
+        "price_scheme": { "$ref": "#/definitions/PriceScheme" },
+        "limit": { "type": "number" },
+        "minimum_charge": { "type": "number" },
+        "minimum_charge_frequency": { "type": "string" },
+        "watermark": { "type": "number" }
+      }
+    },
+    "PriceScheme": {
+      "type": "object",
+      "properties": {
+        "scheme_type": {
+          "type": "string",
+          "enum": ["FLAT", "TIERED", "VOLUME", "PACKAGE"]
+        },
+        "unit_name": { "type": "string" },
+        "time_unit_name": { "type": "string" },
+        "prices": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/PriceTier" }
+        }
+      }
+    },
+    "PriceTier": {
+      "type": "object",
+      "properties": {
+        "price": { "type": "number", "minimum": 0 },
+        "cap": { "type": "number", "nullable": true }
+      }
+    },
+    "Feature": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "display_name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "AddOn": {
+      "type": "object",
+      "required": ["feature", "price", "price_scheme_type", "single_use", "quantity_enabled"],
+      "properties": {
+        "feature": { "$ref": "#/definitions/Feature" },
+        "price": { "type": "number" },
+        "price_scheme_type": { "type": "string" },
+        "single_use": { "type": "boolean" },
+        "quantity_enabled": { "type": "boolean" },
+        "immediately_charge": { "type": "boolean" },
+        "limit": { "type": "number" },
+        "price_frequency": { "type": "string" },
+        "charge_frequency": { "type": "string" }
+      }
+    },
+    "Limit": {
+      "type": "object",
+      "required": ["feature", "limit"],
+      "properties": {
+        "feature": { "$ref": "#/definitions/Feature" },
+        "limit": { "type": "number" }
+      }
+    },
+    "Trial": {
+      "type": "object",
+      "properties": {
+        "time_length": { "type": "integer" },
+        "time_unit_name": { "type": "string" },
+        "credit": { "type": "number" }
+      }
+    }
+  }
+}

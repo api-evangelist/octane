@@ -1,0 +1,12 @@
+{
+  "meter_name": "api_calls",
+  "customer_name": "acme-corp",
+  "event_name": "api_request",
+  "value": 1,
+  "time": "2026-06-13T10:30:00Z",
+  "labels": {
+    "endpoint": "/v1/users",
+    "method": "GET",
+    "status_code": "200"
+  }
+}

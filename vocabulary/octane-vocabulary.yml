@@ -1,0 +1,216 @@
+vocabulary:
+  name: Octane API Vocabulary
+  description: Domain terms and concepts used in the Octane usage-based billing and monetization platform.
+  url: https://www.getoctane.io
+  terms:
+
+    - term: meter
+      label: Meter
+      description: >-
+        A configurable tracker that listens for named events and aggregates their
+        values using a defined aggregation method (SUM, COUNT, MAX, MIN, UNIQUE_COUNT).
+        Meters are the foundation of usage-based billing in Octane.
+      related:
+        - measurement
+        - event_name
+        - aggregation
+
+    - term: measurement
+      label: Measurement
+      description: >-
+        A single usage data point submitted to Octane for a specific customer and meter.
+        Measurements carry a numeric value, optional labels, and a timestamp.
+      related:
+        - meter
+        - customer
+
+    - term: customer
+      label: Customer
+      description: >-
+        An end-customer account in Octane identified by a unique name. Customers can be
+        subscribed to price plans, have credit balances, and generate invoices.
+      related:
+        - price_plan
+        - active_subscription
+        - invoice
+
+    - term: price_plan
+      label: Price Plan
+      description: >-
+        A billing plan definition that combines a flat base price with usage-based
+        metered components, features, add-ons, limits, and optional trial periods.
+        Customers are subscribed to price plans.
+      related:
+        - metered_component
+        - feature
+        - add_on
+        - trial
+
+    - term: metered_component
+      label: Metered Component
+      description: >-
+        A usage-based pricing element within a price plan that links a meter to a
+        price scheme. When customers use the associated meter, charges are calculated
+        according to the component's price scheme.
+      related:
+        - meter
+        - price_scheme
+        - price_plan
+
+    - term: price_scheme
+      label: Price Scheme
+      description: >-
+        Defines how usage is priced for a metered component. Supported schemes include
+        FLAT (single rate), TIERED (rates change per tier), VOLUME (rate based on total
+        volume), and PACKAGE (charges per bundle of units).
+      values:
+        - FLAT
+        - TIERED
+        - VOLUME
+        - PACKAGE
+
+    - term: active_subscription
+      label: Active Subscription
+      description: >-
+        The current subscription linking a customer to a price plan. Contains the
+        effective date, optional trial, overrides for discounts and features, and
+        the current billing cycle dates.
+      related:
+        - customer
+        - price_plan
+        - billing_cycle
+
+    - term: invoice
+      label: Invoice
+      description: >-
+        A billing document generated at the end of a billing period summarizing
+        a customer's usage charges, base price, taxes, discounts, and credits.
+      related:
+        - customer
+        - line_item
+
+    - term: credit_grant
+      label: Credit Grant
+      description: >-
+        A monetary credit allocated to a customer that reduces their outstanding
+        invoice balance. Credits can have expiration dates and are tracked in a
+        per-customer ledger.
+      related:
+        - customer
+        - credit_ledger
+
+    - term: coupon
+      label: Coupon
+      description: >-
+        A named discount that can be applied to customer subscriptions to reduce
+        pricing. Supports percent or fixed-amount discounts with frequency, duration,
+        and expiration controls.
+      related:
+        - discount
+        - active_subscription
+
+    - term: feature
+      label: Feature
+      description: >-
+        A named product capability that can be included in price plans and granted
+        as entitlements to customers. Features support access control and
+        quantity-based limits.
+      related:
+        - price_plan
+        - limit
+        - add_on
+
+    - term: add_on
+      label: Add-On
+      description: >-
+        An optional purchasable feature that customers can add to their subscription
+        outside of the base plan. Add-ons have their own pricing and can be single-use
+        or recurring.
+      related:
+        - feature
+        - price_plan
+
+    - term: webhook
+      label: Webhook
+      description: >-
+        An HTTP endpoint registered to receive real-time event notifications from
+        Octane, such as invoice generation, payment events, and subscription changes.
+        Webhooks support payload signature verification.
+
+    - term: billing_cycle
+      label: Billing Cycle
+      description: >-
+        The time period (monthly, quarterly, annual) over which usage is accumulated
+        and invoiced. Billing cycles can optionally align to calendar boundaries.
+      related:
+        - price_plan
+        - invoice
+
+    - term: aggregation
+      label: Aggregation
+      description: >-
+        The mathematical method used to combine multiple measurement values into a
+        single billable quantity for a meter within a billing period.
+      values:
+        - SUM
+        - COUNT
+        - MAX
+        - MIN
+        - UNIQUE_COUNT
+
+    - term: trial
+      label: Trial
+      description: >-
+        A free period at the start of a subscription during which normal billing
+        charges are waived or a credit is granted. Trials have a configurable
+        duration and optional credit amount.
+      related:
+        - active_subscription
+        - price_plan
+
+    - term: adhoc_charge
+      label: Adhoc Charge
+      description: >-
+        A one-time manual charge applied to a customer outside of the standard
+        usage-based and subscription billing cycle.
+      related:
+        - customer
+        - invoice
+
+    - term: reporting_method
+      label: Reporting Method
+      description: >-
+        Controls how measurement values are interpreted: "periodic" treats each
+        measurement as a delta increment, while "total" treats measurements as
+        the running cumulative total.
+      values:
+        - periodic
+        - total
+
+    - term: event_label_filter
+      label: Event Label Filter
+      description: >-
+        A logical filter expression applied to a meter that restricts which
+        incoming events are counted based on label key-value conditions.
+      related:
+        - meter
+
+    - term: measurement_mapping
+      label: Measurement Mapping
+      description: >-
+        A label substitution rule on a customer that maps incoming event label
+        values to customer-specific values, enabling multi-tenant measurement
+        tracking with a single event stream.
+      related:
+        - customer
+        - measurement
+
+    - term: credit_top_off_plan
+      label: Credit Top-Off Plan
+      description: >-
+        An automatic credit replenishment configuration that triggers when a
+        customer's credit balance falls below a defined threshold, automatically
+        adding a specified amount of credits.
+      related:
+        - credit_grant
+        - customer

@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/octane/main/json-schema/octane-measurement-schema.json",
+  "title": "Measurement",
+  "description": "A usage measurement submitted to Octane for tracking and billing purposes.",
+  "type": "object",
+  "required": ["value"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the measurement."
+    },
+    "meter_name": {
+      "type": "string",
+      "description": "Name of the meter this measurement belongs to."
+    },
+    "customer_name": {
+      "type": "string",
+      "description": "Name of the customer this measurement belongs to."
+    },
+    "event_name": {
+      "type": "string",
+      "description": "Name of the event that generated this measurement."
+    },
+    "value": {
+      "type": "number",
+      "description": "The measured numeric value."
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the measurement occurred."
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Key-value labels associated with the measurement for filtering and grouping."
+    },
+    "reset_total": {
+      "type": "boolean",
+      "description": "Whether to reset the running total for this customer/meter combination."
+    }
+  },
+  "additionalProperties": false
+}

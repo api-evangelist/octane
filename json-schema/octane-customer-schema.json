@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/octane/main/json-schema/octane-customer-schema.json",
+  "title": "Customer",
+  "description": "A customer account in Octane's usage-based billing platform.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name identifier for the customer."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable display name."
+    },
+    "contact_info": {
+      "$ref": "#/definitions/ContactInfo"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the customer was created."
+    },
+    "measurement_mappings": {
+      "type": "array",
+      "items": { "type": "object" },
+      "description": "Measurement label mappings for the customer."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "object" },
+      "description": "Tags associated with the customer."
+    }
+  },
+  "definitions": {
+    "ContactInfo": {
+      "type": "object",
+      "properties": {
+        "address_line_1": { "type": "string" },
+        "address_line_2": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "country": { "type": "string" },
+        "zipcode": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "logo_url": { "type": "string", "format": "uri" },
+        "email": { "type": "string", "format": "email" },
+        "secondary_emails": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "phone": { "type": "string" },
+        "legal_name": { "type": "string" },
+        "vat_id": { "type": "string" }
+      }
+    }
+  }
+}

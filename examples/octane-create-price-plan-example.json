@@ -1,0 +1,42 @@
+{
+  "name": "growth-plan",
+  "display_name": "Growth Plan",
+  "description": "Usage-based plan for growing SaaS companies with metered API and data components.",
+  "period": "monthly",
+  "base_price": 49.00,
+  "base_price_description": "Platform fee",
+  "metered_components": [
+    {
+      "meter_name": "api_calls",
+      "price_scheme": {
+        "scheme_type": "TIERED",
+        "unit_name": "API call",
+        "prices": [
+          { "price": 0.00, "cap": 10000 },
+          { "price": 0.001, "cap": 100000 },
+          { "price": 0.0005, "cap": null }
+        ]
+      }
+    },
+    {
+      "meter_name": "data_stored_gb",
+      "price_scheme": {
+        "scheme_type": "FLAT",
+        "unit_name": "GB",
+        "prices": [
+          { "price": 0.023, "cap": null }
+        ]
+      }
+    }
+  ],
+  "features": [
+    {
+      "name": "advanced_analytics",
+      "display_name": "Advanced Analytics"
+    }
+  ],
+  "trial": {
+    "time_length": 14,
+    "time_unit_name": "day"
+  }
+}

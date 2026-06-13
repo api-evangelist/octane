@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/octane/main/json-schema/octane-meter-schema.json",
+  "title": "Meter",
+  "description": "A usage meter that tracks events and aggregates data for billing purposes in Octane.",
+  "type": "object",
+  "required": ["name", "event_name", "meter_type", "data_type", "aggregation", "is_incremental", "reporting_method"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique identifier name for the meter."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable display name for the meter."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what this meter tracks."
+    },
+    "event_name": {
+      "type": "string",
+      "description": "The event name this meter listens to."
+    },
+    "meter_type": {
+      "type": "string",
+      "description": "Type of meter (e.g., counter, gauge)."
+    },
+    "data_type": {
+      "type": "string",
+      "enum": ["INT", "FLOAT", "STRING"],
+      "description": "Data type of the measurement value."
+    },
+    "aggregation": {
+      "type": "string",
+      "enum": ["SUM", "COUNT", "MAX", "MIN", "UNIQUE_COUNT"],
+      "description": "Aggregation method applied to measurements."
+    },
+    "unit_name": {
+      "type": "string",
+      "description": "Human-readable unit name (e.g., 'API calls', 'GB')."
+    },
+    "is_incremental": {
+      "type": "boolean",
+      "description": "Whether measurements are incremental or absolute."
+    },
+    "reporting_method": {
+      "type": "string",
+      "enum": ["periodic", "total"],
+      "description": "How usage is reported."
+    },
+    "expected_labels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Expected label keys on measurements."
+    },
+    "primary_labels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Primary label keys used for grouping."
+    },
+    "event_label_filter": {
+      "type": "object",
+      "description": "Filter expression for event labels."
+    }
+  },
+  "additionalProperties": false
+}
