@@ -1,0 +1,35 @@
+name: Octane Plans and Pricing
+description: Pricing information for the Octane usage-based billing platform. Octane
+  targets SaaS and infrastructure companies needing flexible metered billing. Pricing
+  details are available by contacting Octane directly; the platform raised a $2M seed
+  round (August 2021) and was later acquired by Stripe.
+url: https://www.getoctane.io/pricing
+created: '2026-06-13'
+modified: '2026-06-13'
+
+plans:
+  - name: Contact Sales
+    description: Octane's pricing is available on request. The platform is designed
+      for infrastructure and SaaS companies seeking pay-as-you-go metered billing.
+      Prospective customers should visit the pricing page or contact the Octane team
+      directly to discuss pricing for their usage volume and feature requirements.
+    url: https://www.getoctane.io/pricing
+    features:
+      - Unlimited meters (counter and other types)
+      - Price plans with metered components and flat-rate schemes
+      - Customer entitlement management and subscriptions
+      - Real-time usage measurements (up to 10,000 measurements/second)
+      - Batch measurement ingestion
+      - Add-ons, discounts, and trials
+      - Embeddable web components (octane-components)
+      - Salesforce integration
+      - SDKs: Node.js, Python, Go
+      - No-code plan creation interface
+      - Detailed usage and spending reports
+      - Customizable dashboards
+
+notes:
+  - Octane was acquired by Stripe; some features may now be available through Stripe
+    Billing or Stripe Metered Billing.
+  - Pricing for the standalone Octane platform is not publicly listed; contact
+    sales for current availability and pricing.

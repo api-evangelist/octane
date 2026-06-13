@@ -1,0 +1,45 @@
+name: Octane API Rate Limits
+description: Rate limit information for the Octane REST API. Octane's infrastructure
+  is designed to handle high-throughput usage measurement ingestion, with the platform
+  reported to support up to 10,000 measurements per second. Specific per-account
+  rate limit thresholds are not publicly documented and should be confirmed with the
+  Octane team.
+url: https://docs.getoctane.io
+created: '2026-06-13'
+modified: '2026-06-13'
+
+rateLimits:
+  - name: Measurement Ingestion Throughput
+    description: The Octane platform is architected to ingest real-time usage data
+      at very high throughput. The platform has been reported to handle up to 10,000
+      measurements per second across all customers.
+    type: platform-capacity
+    limit: 10000
+    unit: measurements/second
+    scope: platform-wide
+    notes: Per-account rate limits are not publicly documented. Contact Octane for
+      account-specific limits.
+
+  - name: Batch Measurements Endpoint
+    description: The POST /measurements/multi endpoint supports sending multiple
+      usage measurements in a single API call, reducing the number of individual
+      requests needed for high-volume usage tracking.
+    type: batch
+    endpoint: POST /measurements/multi
+    notes: Batch size limits are not publicly documented.
+
+authentication:
+  type: API Key (Bearer Token)
+  description: All API requests are authenticated using an API key obtained from
+    the Octane portal (cloud.getoctane.io). The key is passed as a Bearer token
+    in the Authorization header.
+  header: Authorization
+  scheme: Bearer
+  example: "Authorization: Bearer <OCTANE_API_KEY>"
+  keySource: https://cloud.getoctane.io
+
+notes:
+  - Specific rate limit headers and per-endpoint limits are not publicly documented
+    in the Octane API reference as of June 2026.
+  - The platform was designed for high-throughput ingestion; SLAs and dedicated
+    rate limits may be negotiated as part of enterprise agreements.

@@ -1,0 +1,107 @@
+name: Octane FinOps
+description: Financial operations profile for Octane, the usage-based pricing and
+  monetization platform. Covers cost management considerations, metering strategies,
+  billing transparency, and operational cost factors relevant to teams integrating
+  Octane into their SaaS or infrastructure billing stack.
+url: https://www.getoctane.io
+created: '2026-06-13'
+modified: '2026-06-13'
+
+overview:
+  vendor: Octane (getoctane.io)
+  category: Usage-Based Billing / Metered Billing Platform
+  acquiredBy: Stripe
+  fundingHistory:
+    - round: Seed
+      amount: $2,000,000
+      date: '2021-08-31'
+      postMoneyValuation: $10,000,000
+
+coreCapabilities:
+  - name: Meter Management
+    description: Define and manage meters (COUNTER type and others) to track any
+      measurable unit of customer usage — API calls, compute minutes, data GB,
+      active seats, etc.
+  - name: Price Plan Configuration
+    description: Create flexible price plans with metered components, flat-rate
+      schemes, tiered pricing, base rates, add-ons, discounts, and free trials.
+  - name: Customer Entitlements
+    description: Manage customer subscriptions to price plans and track their
+      entitlements and usage thresholds in real time.
+  - name: Real-Time Measurement Ingestion
+    description: Ingest usage measurements via REST API or SDKs (Node.js, Python,
+      Go) at up to 10,000 measurements per second for real-time billing accuracy.
+  - name: Usage Reporting
+    description: Generate detailed customer usage breakdowns and spending reports
+      with customizable dashboards.
+  - name: No-Code Plan Builder
+    description: Product teams can create and modify price plans without engineering
+      involvement, enabling faster pricing experimentation.
+  - name: Price Experimentation
+    description: Test different pricing models against actual usage data to optimize
+      revenue.
+
+finopsConsiderations:
+  costVisibility:
+    description: Octane provides detailed usage breakdowns and spending dashboards
+      enabling both the vendor and their customers to track consumption and spending
+      in real time.
+    customerFacing: true
+    vendorFacing: true
+
+  billingModels:
+    - type: Pay-As-You-Go (Metered)
+      description: Customers are billed based on measured usage each billing period.
+    - type: Flat-Rate with Metered Overage
+      description: Base rate combined with metered components for overage billing.
+    - type: Tiered Pricing
+      description: Volume or tier-based pricing on metered usage.
+    - type: Add-Ons
+      description: Optional add-on features billed separately or metered.
+
+  integrations:
+    - name: Salesforce
+      url: https://docs.getoctane.io/salesforce
+      description: Native Salesforce integration for syncing customer and billing data.
+    - name: Stripe
+      description: Octane was acquired by Stripe; direct integration with Stripe
+        Billing infrastructure is expected.
+
+  sdks:
+    - language: Node.js
+      url: https://github.com/getoctane/octane-node
+      package: npm install octane
+    - language: Python
+      url: https://github.com/getoctane/octane-python
+      package: pip install octane
+    - language: Go
+      url: https://github.com/getoctane/octane-go
+      package: go get github.com/getoctane/octane-go
+
+  embeddableComponents:
+    - name: octane-components
+      url: https://github.com/getoctane/octane-components
+      description: Embeddable web components for adding Octane billing UI (usage
+        dashboards, entitlement displays) directly into your product.
+
+operationalCostFactors:
+  - factor: Measurement Volume
+    description: Cost scales with the number of usage measurements ingested. Design
+      your metering strategy to batch measurements (POST /measurements/multi)
+      where possible to reduce API call overhead.
+  - factor: Meter Granularity
+    description: Finer-grained meters (e.g., per-request vs. per-hour) increase
+      ingestion volume and associated costs. Balance billing accuracy with
+      operational overhead.
+  - factor: Price Plan Complexity
+    description: Complex plans with many metered components, tiers, and add-ons
+      may require more engineering time but enable more precise revenue capture.
+  - factor: Salesforce Sync Frequency
+    description: If using the Salesforce integration, sync frequency affects both
+      API call volume and data latency for sales teams.
+
+notes:
+  - Octane was acquired by Stripe; evaluate whether Stripe Metered Billing now
+    offers equivalent functionality natively before deploying Octane independently.
+  - As of June 2026, docs.getoctane.io may be unavailable; consult Stripe
+    documentation for current usage-based billing capabilities.

@@ -1,0 +1,71 @@
+name: Octane
+description: Usage-based pricing and monetization platform with a REST API for managing
+  meters, pricing plans, customer entitlements, and real-time usage tracking for SaaS
+  products. Octane enables infrastructure and SaaS companies to implement flexible
+  pay-as-you-go billing similar to Snowflake and AWS, with support for counters, metered
+  components, flat-rate schemes, discounts, trials, and add-ons.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/octane/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Usage-Based Billing
+  - Metered Billing
+  - Pricing Plans
+  - SaaS Monetization
+  - FinTech
+  - Payments
+  - Usage Tracking
+  - Meters
+  - Entitlements
+aid: octane
+type: Index
+apis:
+  - name: Octane REST API
+    description: REST API for managing meters, customers, pricing plans, subscriptions,
+      measurements, and real-time usage data for usage-based billing workflows.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.getoctane.io
+    baseURL: https://api.getoctane.io
+    tags:
+      - Meters
+      - Measurements
+      - Customers
+      - Price Plans
+      - Subscriptions
+      - Usage Tracking
+    properties:
+      - type: Documentation
+        url: https://docs.getoctane.io
+      - type: OpenAPI
+        url: https://docs.getoctane.io/openapi
+    contact:
+      - FN: Octane Support
+        url: https://www.getoctane.io
+        email: ''
+    aid: octane:octane-rest-api
+common:
+  - type: Website
+    url: https://www.getoctane.io
+  - type: Documentation
+    url: https://docs.getoctane.io
+  - type: GitHubOrg
+    url: https://github.com/getoctane
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/getoctane
+  - type: X
+    url: https://twitter.com/getoctaneio
+  - type: Pricing
+    url: https://www.getoctane.io/pricing
+  - type: Blog
+    url: https://www.getoctane.io/blog
+  - type: Plans
+    url: plans/octane-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/octane-rate-limits.yml
+  - type: FinOps
+    url: finops/octane-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
