@@ -4,7 +4,7 @@ description: Usage-based pricing and monetization platform with a REST API for m
   products. Octane enables infrastructure and SaaS companies to implement flexible
   pay-as-you-go billing similar to Snowflake and AWS, with support for counters, metered
   components, flat-rate schemes, discounts, trials, and add-ons.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/octane/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -25,7 +25,7 @@ apis:
   - name: Octane REST API
     description: REST API for managing meters, customers, pricing plans, subscriptions,
       measurements, and real-time usage data for usage-based billing workflows.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.getoctane.io
     baseURL: https://api.getoctane.io
     tags:
