@@ -46,6 +46,10 @@ apis:
         email: ''
     aid: octane:octane-rest-api
 common:
+  - type: DomainSecurity
+    url: security/octane-domain-security.yml
+  - type: Authentication
+    url: authentication/octane-authentication.yml
   - type: Website
     url: https://www.getoctane.io
   - type: Documentation
