@@ -46,6 +46,8 @@ apis:
         email: ''
     aid: octane:octane-rest-api
 common:
+  - type: AgenticAccess
+    url: agentic-access/octane-agentic-access.yml
   - type: DomainSecurity
     url: security/octane-domain-security.yml
   - type: Authentication
