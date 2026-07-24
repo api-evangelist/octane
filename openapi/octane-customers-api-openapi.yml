@@ -1,0 +1,594 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Customers API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Customers
+  description: Manage customers and their subscriptions, billing, and settings
+paths:
+  /customers:
+    get:
+      summary: List Customers
+      description: Get all customers for a given vendor.
+      operationId: customersGet
+      tags:
+      - Customers
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      summary: Create Customer
+      description: Create a new customer.
+      operationId: customersPost
+      tags:
+      - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerArgs'
+      responses:
+        '200':
+          description: Created customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{customer_name}:
+    get:
+      summary: Get Customer
+      description: Get a customer by their unique name.
+      operationId: customersCustomerNameGet
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    delete:
+      summary: Delete Customer
+      description: Delete a customer by their unique name.
+      operationId: customersCustomerNameDelete
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Customer deleted
+  /customers/{customer_name}/billing_settings:
+    get:
+      summary: Get Customer Billing Settings
+      description: Get billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsGet
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    post:
+      summary: Create Customer Billing Settings
+      description: Create billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsPost
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBillingSettingsInputArgs'
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    put:
+      summary: Update Customer Billing Settings
+      description: Update billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsPut
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBillingSettingsInputArgs'
+      responses:
+        '200':
+          description: Updated billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    delete:
+      summary: Delete Customer Billing Settings
+      description: Delete billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsDelete
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Billing settings deleted
+  /customers/{customer_name}/adhoc_charges:
+    get:
+      summary: List Customer Adhoc Charges
+      description: Get all adhoc charges for a customer.
+      operationId: customersCustomerNameAdhocChargesGet
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of adhoc charges
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdhocCharge'
+    post:
+      summary: Create Customer Adhoc Charge
+      description: Create an adhoc charge for a customer.
+      operationId: customersCustomerNameAdhocChargesPost
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAdhocChargeArgs'
+      responses:
+        '200':
+          description: Created adhoc charge
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdhocCharge'
+  /customers/{customer_name}/adhoc_charges/{uuid}:
+    get:
+      summary: Get Customer Adhoc Charge
+      description: Get a specific adhoc charge for a customer.
+      operationId: customersCustomerNameAdhocChargesUuidGet
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Adhoc charge details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdhocCharge'
+    delete:
+      summary: Delete Customer Adhoc Charge
+      description: Delete an adhoc charge for a customer.
+      operationId: customersCustomerNameAdhocChargesUuidDelete
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Adhoc charge deleted
+  /customers/{customer_name}/discounts:
+    post:
+      summary: Create Customer Discount
+      description: Apply a discount to a customer.
+      operationId: customersCustomerNameDiscountsPost
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscountInputArgs'
+      responses:
+        '200':
+          description: Discount applied
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Delete Customer Discounts
+      description: Remove discounts from a customer.
+      operationId: customersCustomerNameDiscountsDelete
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Discounts removed
+  /customers/{customer_name}/mappings:
+    get:
+      summary: List Customer Measurement Mappings
+      description: Get measurement mappings for a customer.
+      operationId: customersCustomerNameMappingsGet
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Measurement mappings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerMeasurementMapping'
+    post:
+      summary: Create Customer Measurement Mapping
+      description: Create a measurement mapping for a customer.
+      operationId: customersCustomerNameMappingsPost
+      tags:
+      - Customers
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerMeasurementMappingInputArgs'
+      responses:
+        '200':
+          description: Created measurement mapping
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerMeasurementMapping'
+components:
+  schemas:
+    ContactInfo:
+      type: object
+      properties:
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+        secondary_emails:
+          type: array
+          items:
+            type: string
+        phone:
+          type: string
+        legal_name:
+          type: string
+        vat_id:
+          type: string
+    CustomerMeasurementMapping:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label key to map.
+        value:
+          type: string
+          description: Label value to map to.
+    CustomerBillingSettingsInputArgs:
+      type: object
+      properties:
+        payment_gateway_type:
+          type: string
+        invoice_grace_period_days:
+          type: integer
+        auto_charge:
+          type: boolean
+    AdhocCharge:
+      type: object
+      properties:
+        uuid:
+          type: string
+        customer_name:
+          type: string
+        amount:
+          type: number
+          description: Amount of the adhoc charge.
+        description:
+          type: string
+          description: Description of the charge.
+        created_at:
+          type: string
+          format: date-time
+    ContactInfoInputArgs:
+      type: object
+      properties:
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+        secondary_emails:
+          type: array
+          items:
+            type: string
+        phone:
+          type: string
+        legal_name:
+          type: string
+        vat_id:
+          type: string
+    Customer:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the customer.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        contact_info:
+          $ref: '#/components/schemas/ContactInfo'
+        created_at:
+          type: string
+          format: date-time
+          description: When the customer was created.
+        measurement_mappings:
+          type: array
+          items:
+            type: object
+          description: Measurement label mappings for the customer.
+        tags:
+          type: array
+          items:
+            type: object
+          description: Tags associated with the customer.
+    CustomerMeasurementMappingInputArgs:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+    CreateCustomerArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the customer.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        vendor_id:
+          type: string
+          description: External vendor identifier for the customer.
+        contact_info:
+          $ref: '#/components/schemas/ContactInfoInputArgs'
+        price_plan_name:
+          type: string
+          description: Name of the price plan to subscribe the customer to.
+        price_plan_tag:
+          type: string
+          description: Tag for the price plan.
+        measurement_mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerMeasurementMappingInputArgs'
+        customer_metadata:
+          type: array
+          items:
+            type: object
+        tags:
+          type: array
+          items:
+            type: string
+        autogenerate_payment_gateway_customer:
+          type: boolean
+          description: Automatically create a customer in the connected payment gateway.
+        autogenerate_accounting_customer:
+          type: boolean
+          description: Automatically create a customer in the connected accounting system.
+        created_at:
+          type: string
+          format: date-time
+    CreateAdhocChargeArgs:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Amount to charge.
+        description:
+          type: string
+          description: Description of the adhoc charge.
+    BillingSettings:
+      type: object
+      properties:
+        payment_gateway_type:
+          type: string
+          description: Type of payment gateway (e.g., stripe).
+        invoice_grace_period_days:
+          type: integer
+          description: Number of days grace period before invoice payment is due.
+        auto_charge:
+          type: boolean
+          description: Whether to automatically charge customers on invoice.
+        billing_period_anchor:
+          type: string
+          description: Anchor date for billing periods.
+    DiscountInputArgs:
+      type: object
+      properties:
+        discount_type:
+          type: string
+          enum:
+          - PERCENT
+          - AMOUNT
+          description: Type of discount.
+        amount:
+          type: number
+          description: Discount amount or percentage.
+        scope:
+          type: string
+          enum:
+          - SUBSCRIPTION
+          - COMPONENT
+          - ADD_ON
+          description: What the discount applies to.
+        billing_cycle_duration:
+          type: integer
+          description: How many billing cycles the discount lasts.
+        billing_cycle_start_offset:
+          type: integer
+          description: Offset from subscription start to begin applying discount.
+        metered_component_uuid:
+          type: string
+          description: UUID of the metered component to discount.
+        add_on_name:
+          type: string
+          description: Name of the add-on to discount.
+        labels:
+          type: object
+          description: Label filters for the discount.
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

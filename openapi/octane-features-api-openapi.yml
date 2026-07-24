@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Features API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Features
+  description: Manage product features
+paths:
+  /customers/{customer_name}/features/{feature_name}:
+    get:
+      summary: Get Customer Feature
+      description: Get a specific feature entitlement for a customer.
+      operationId: customersCustomerNameFeaturesFeatureNameGet
+      tags:
+      - Features
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: feature_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Customer feature entitlement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerFeature'
+  /features:
+    get:
+      summary: List Features
+      description: Get all product features for a vendor.
+      operationId: featuresGet
+      tags:
+      - Features
+      responses:
+        '200':
+          description: List of features
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feature'
+components:
+  schemas:
+    Feature:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name of the feature.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the feature.
+    CustomerFeature:
+      type: object
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        has_access:
+          type: boolean
+          description: Whether the customer has access to this feature.
+        limit:
+          type: number
+          description: Usage limit for this feature.
+        current_usage:
+          type: number
+          description: Current usage count for this feature.
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Coupons API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Coupons
+  description: Manage discount coupons
+paths:
+  /coupons:
+    get:
+      summary: List Coupons
+      description: Get all coupons for a vendor.
+      operationId: couponsGet
+      tags:
+      - Coupons
+      responses:
+        '200':
+          description: List of coupons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Coupon'
+    post:
+      summary: Create Coupon
+      description: Create a new discount coupon.
+      operationId: couponsPost
+      tags:
+      - Coupons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CouponInputArgs'
+      responses:
+        '200':
+          description: Created coupon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+  /coupons/{coupon_name}:
+    get:
+      summary: Get Coupon
+      description: Get a coupon by its unique name.
+      operationId: couponsCouponNameGet
+      tags:
+      - Coupons
+      parameters:
+      - name: coupon_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Coupon details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+    delete:
+      summary: Delete Coupon
+      description: Delete a coupon by its unique name.
+      operationId: couponsCouponNameDelete
+      tags:
+      - Coupons
+      parameters:
+      - name: coupon_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Coupon deleted
+  /coupons/apply_coupon:
+    post:
+      summary: Apply Coupon
+      description: Apply a coupon to a customer subscription.
+      operationId: couponsApplyCouponPost
+      tags:
+      - Coupons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplyCouponInputArgs'
+      responses:
+        '200':
+          description: Coupon applied
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Coupon:
+      type: object
+      required:
+      - name
+      - discount_amount
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the coupon.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        discount_type:
+          type: string
+          enum:
+          - PERCENT
+          - AMOUNT
+          description: Type of discount.
+        discount_amount:
+          type: number
+          description: Discount amount or percentage.
+        frequency:
+          type: string
+          description: How often the coupon can be applied.
+        duration_length:
+          type: integer
+          description: How long the coupon discount lasts.
+        duration_unit:
+          type: string
+          description: Time unit for duration.
+        expiration_time:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the coupon expires.
+        max_uses:
+          type: integer
+          description: Maximum number of times the coupon can be used.
+        code:
+          type: string
+          description: Coupon code for self-serve redemption.
+        excluded_customers:
+          type: array
+          items:
+            type: object
+        excluded_price_plans:
+          type: array
+          items:
+            type: object
+    ApplyCouponInputArgs:
+      type: object
+      properties:
+        coupon_name:
+          type: string
+          description: Name of the coupon to apply.
+        customer_name:
+          type: string
+          description: Name of the customer to apply the coupon to.
+    CouponInputArgs:
+      type: object
+      required:
+      - name
+      - frequency
+      - discount_type
+      - discount_amount
+      properties:
+        name:
+          type: string
+        display_name:
+          type: string
+        vendor_id:
+          type: string
+        frequency:
+          type: string
+          enum:
+          - ONCE
+          - RECURRING
+          - FOREVER
+        discount_type:
+          type: string
+          enum:
+          - PERCENT
+          - AMOUNT
+        discount_amount:
+          type: number
+        duration_length:
+          type: integer
+        duration_unit:
+          type: string
+        expiration_time:
+          type: string
+          format: date-time
+        max_uses:
+          type: integer
+        code:
+          type: string
+        excluded_customers:
+          type: array
+          items:
+            type: string
+        excluded_price_plans:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

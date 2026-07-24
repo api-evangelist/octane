@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Billing Settings API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Billing Settings
+  description: Manage vendor billing settings
+paths:
+  /billing_settings:
+    get:
+      summary: Get Billing Settings
+      description: Get billing settings for the vendor.
+      operationId: billingSettingsGet
+      tags:
+      - Billing Settings
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    post:
+      summary: Create Billing Settings
+      description: Create billing settings for the vendor.
+      operationId: billingSettingsPost
+      tags:
+      - Billing Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingSettings'
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    put:
+      summary: Update Billing Settings
+      description: Update billing settings for the vendor.
+      operationId: billingSettingsPut
+      tags:
+      - Billing Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingSettings'
+      responses:
+        '200':
+          description: Updated billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    delete:
+      summary: Delete Billing Settings
+      description: Delete billing settings for the vendor.
+      operationId: billingSettingsDelete
+      tags:
+      - Billing Settings
+      responses:
+        '204':
+          description: Billing settings deleted
+  /payment_gateway_credentials:
+    get:
+      summary: List Payment Gateway Credentials
+      description: Get all payment gateway credentials for a vendor.
+      operationId: paymentGatewayCredentialsGet
+      tags:
+      - Billing Settings
+      responses:
+        '200':
+          description: Payment gateway credentials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: Create Payment Gateway Credential
+      description: Add payment gateway credentials for a vendor.
+      operationId: paymentGatewayCredentialsPost
+      tags:
+      - Billing Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Created credential
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    BillingSettings:
+      type: object
+      properties:
+        payment_gateway_type:
+          type: string
+          description: Type of payment gateway (e.g., stripe).
+        invoice_grace_period_days:
+          type: integer
+          description: Number of days grace period before invoice payment is due.
+        auto_charge:
+          type: boolean
+          description: Whether to automatically charge customers on invoice.
+        billing_period_anchor:
+          type: string
+          description: Anchor date for billing periods.
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

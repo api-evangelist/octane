@@ -1,0 +1,528 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Price Plans API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Price Plans
+  description: Manage pricing plans with metered components and flat rates
+paths:
+  /price_plans:
+    get:
+      summary: List Price Plans
+      description: Get all price plans for a vendor.
+      operationId: pricePlansGet
+      tags:
+      - Price Plans
+      responses:
+        '200':
+          description: List of price plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PricePlan'
+    post:
+      summary: Create Price Plan
+      description: Create a new price plan.
+      operationId: pricePlansPost
+      tags:
+      - Price Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePricePlanArgs'
+      responses:
+        '200':
+          description: Created price plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+  /price_plans/paginate:
+    get:
+      summary: List Price Plans Paginated
+      description: Get price plans with pagination support.
+      operationId: pricePlansPaginateGet
+      tags:
+      - Price Plans
+      responses:
+        '200':
+          description: Paginated price plans
+          content:
+            application/json:
+              schema:
+                type: object
+  /price_plans/self_serve:
+    get:
+      summary: List Self-Serve Price Plans
+      description: Get price plans available for self-serve enrollment.
+      operationId: pricePlansSelfServeGet
+      tags:
+      - Price Plans
+      responses:
+        '200':
+          description: Self-serve price plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PricePlan'
+  /price_plans/{price_plan_name}:
+    get:
+      summary: Get Price Plan
+      description: Get a price plan by its unique name.
+      operationId: pricePlansPricePlanNameGet
+      tags:
+      - Price Plans
+      parameters:
+      - name: price_plan_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Price plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+    put:
+      summary: Update Price Plan
+      description: Update a price plan by its unique name.
+      operationId: pricePlansPricePlanNamePut
+      tags:
+      - Price Plans
+      parameters:
+      - name: price_plan_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePricePlanArgs'
+      responses:
+        '200':
+          description: Updated price plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+    delete:
+      summary: Delete Price Plan
+      description: Delete a price plan by its unique name.
+      operationId: pricePlansPricePlanNameDelete
+      tags:
+      - Price Plans
+      parameters:
+      - name: price_plan_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Price plan deleted
+  /price_plans/{price_plan_name}/archive:
+    post:
+      summary: Archive Price Plan
+      description: Archive a price plan by its unique name.
+      operationId: pricePlansPricePlanNameArchivePost
+      tags:
+      - Price Plans
+      parameters:
+      - name: price_plan_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Price plan archived
+  /price_plans/{price_plan_name}/{tag}:
+    get:
+      summary: Get Price Plan by Tag
+      description: Get a price plan by name and tag.
+      operationId: pricePlansPricePlanNameTagGet
+      tags:
+      - Price Plans
+      parameters:
+      - name: price_plan_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tag
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Price plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+  /price_plans/metered_components/{uuid}/update_limits:
+    post:
+      summary: Update Metered Component Limits
+      description: Update usage limits for a metered component on a price plan.
+      operationId: pricePlansMeteredComponentsUuidUpdateLimitsPost
+      tags:
+      - Price Plans
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Updated limits
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    PriceSchemeInputArgs:
+      type: object
+      properties:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
+          type: string
+          enum:
+          - FLAT
+          - TIERED
+          - VOLUME
+          - PACKAGE
+        unit_name:
+          type: string
+        time_unit_name:
+          type: string
+    Trial:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial (e.g., "day", "month").
+        credit:
+          type: number
+          description: Trial credit amount.
+    TrialInputArgs:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial.
+        credit:
+          type: number
+          description: Trial credit amount.
+    CreatePricePlanArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name for the price plan.
+        display_name:
+          type: string
+        description:
+          type: string
+        vendor_id:
+          type: string
+        period:
+          type: string
+          enum:
+          - monthly
+          - quarterly
+          - annual
+        base_price:
+          type: number
+        base_price_frequency:
+          type: string
+        base_price_description:
+          type: string
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        metered_components:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeteredComponentInputArgs'
+        features:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        limits:
+          type: array
+          items:
+            type: object
+        trial:
+          $ref: '#/components/schemas/TrialInputArgs'
+        tags:
+          type: array
+          items:
+            type: string
+    PriceTier:
+      type: object
+      description: A price tier within a tiered pricing scheme.
+      properties:
+        price:
+          type: number
+          description: Price per unit at this tier.
+        cap:
+          type: number
+          description: Upper bound of usage for this tier (null = unlimited).
+    Limit:
+      type: object
+      required:
+      - feature
+      - limit
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        limit:
+          type: number
+          description: Numeric limit for the feature.
+    MeteredComponentInputArgs:
+      type: object
+      properties:
+        meter_name:
+          type: string
+        meter_id:
+          type: string
+        id:
+          type: string
+        display_name:
+          type: string
+        price_scheme:
+          $ref: '#/components/schemas/PriceSchemeInputArgs'
+        limit:
+          type: number
+        label_limits:
+          type: array
+          items:
+            type: object
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        watermark:
+          type: number
+    PricePlan:
+      type: object
+      required:
+      - name
+      - period
+      - metered_components
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the price plan.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the price plan.
+        external_uuid:
+          type: string
+          description: External UUID reference.
+        base_price:
+          type: number
+          description: Fixed base price for the plan period.
+        base_price_frequency:
+          type: string
+          description: How often the base price is charged.
+        base_price_description:
+          type: string
+          description: Description of what the base price covers.
+        period:
+          type: string
+          enum:
+          - monthly
+          - quarterly
+          - annual
+          description: Billing period for this plan.
+        minimum_charge:
+          type: number
+          description: Minimum charge amount for the period.
+        minimum_charge_frequency:
+          type: string
+          description: Frequency of minimum charge.
+        metered_components:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeteredComponent'
+          description: Usage-based metered pricing components.
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+          description: Features included in this plan.
+        add_ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddOn'
+          description: Available add-ons for this plan.
+        limits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Limit'
+          description: Usage limits for features.
+        tags:
+          type: array
+          items:
+            type: object
+          description: Version tags for this plan.
+        trial:
+          $ref: '#/components/schemas/Trial'
+        created_at:
+          type: string
+          format: date-time
+    MeteredComponent:
+      type: object
+      required:
+      - meter_name
+      - meter_display_name
+      - price_scheme
+      - label_limits
+      properties:
+        meter_name:
+          type: string
+          description: Name of the meter this component is based on.
+        meter_display_name:
+          type: string
+          description: Display name of the meter.
+        display_name:
+          type: string
+          description: Display name for this component on invoices.
+        external_uuid:
+          type: string
+          description: External UUID reference.
+        price_scheme:
+          $ref: '#/components/schemas/PriceScheme'
+        limit:
+          type: number
+          description: Usage limit for this component.
+        label_limits:
+          type: array
+          items:
+            type: object
+          description: Per-label usage limits.
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        watermark:
+          type: number
+          description: High-watermark for pricing.
+    Feature:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name of the feature.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the feature.
+    PriceScheme:
+      type: object
+      description: Pricing scheme configuration for a metered component.
+      properties:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
+          type: string
+          enum:
+          - FLAT
+          - TIERED
+          - VOLUME
+          - PACKAGE
+        unit_name:
+          type: string
+        time_unit_name:
+          type: string
+    AddOn:
+      type: object
+      required:
+      - feature
+      - price
+      - price_scheme_type
+      - single_use
+      - quantity_enabled
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        price:
+          type: number
+          description: Price of the add-on.
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        price_scheme_type:
+          type: string
+          description: Pricing scheme type for the add-on.
+        single_use:
+          type: boolean
+          description: Whether the add-on can only be purchased once.
+        quantity_enabled:
+          type: boolean
+          description: Whether quantity selection is enabled.
+        immediately_charge:
+          type: boolean
+          description: Whether to charge immediately on purchase.
+        limit:
+          type: number
+          description: Maximum quantity allowed.
+        price_frequency:
+          type: string
+          description: How often the add-on price recurs.
+        charge_frequency:
+          type: string
+          description: How often to charge for the add-on.
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

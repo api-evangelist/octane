@@ -1,0 +1,250 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Invoices API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Invoices
+  description: Access and manage customer invoices
+paths:
+  /customers/{customer_name}/invoices:
+    get:
+      summary: List Customer Invoices
+      description: Get all invoices for a customer with optional filtering.
+      operationId: customersCustomerNameInvoicesGet
+      tags:
+      - Invoices
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: start_time
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: sort_column
+        in: query
+        schema:
+          type: string
+      - name: sort_direction
+        in: query
+        schema:
+          type: string
+      - name: forward_sort_offset
+        in: query
+        schema:
+          type: string
+      - name: forward_secondary_sort_offset
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+  /invoices:
+    get:
+      summary: List Invoices
+      description: Get all invoices for a vendor.
+      operationId: invoicesGet
+      tags:
+      - Invoices
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+  /invoices/{invoice_uuid}:
+    get:
+      summary: Get Invoice
+      description: Get an invoice by its UUID.
+      operationId: invoicesInvoiceUuidGet
+      tags:
+      - Invoices
+      parameters:
+      - name: invoice_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+    delete:
+      summary: Delete Invoice
+      description: Delete an invoice by its UUID.
+      operationId: invoicesInvoiceUuidDelete
+      tags:
+      - Invoices
+      parameters:
+      - name: invoice_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Invoice deleted
+  /invoices/{invoice_uuid}/retries:
+    post:
+      summary: Retry Invoice Payment
+      description: Retry payment collection for a failed invoice.
+      operationId: invoicesInvoiceUuidRetriesPost
+      tags:
+      - Invoices
+      parameters:
+      - name: invoice_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Retry initiated
+          content:
+            application/json:
+              schema:
+                type: object
+  /invoices/{invoice_uuid}/status:
+    post:
+      summary: Update Invoice Status
+      description: Update the status of an invoice.
+      operationId: invoicesInvoiceUuidStatusPost
+      tags:
+      - Invoices
+      parameters:
+      - name: invoice_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Updated invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+  /invoices/{invoice_uuid_token}/pdf:
+    get:
+      summary: Get Invoice PDF
+      description: Get the PDF version of an invoice.
+      operationId: invoicesInvoiceUuidTokenPdfGet
+      tags:
+      - Invoices
+      parameters:
+      - name: invoice_uuid_token
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Invoice PDF
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+components:
+  schemas:
+    Invoice:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the invoice.
+        customer_name:
+          type: string
+          description: Name of the customer this invoice belongs to.
+        status:
+          type: string
+          description: Current status of the invoice.
+        issue_date:
+          type: string
+          format: date-time
+          description: When the invoice was issued.
+        due_date:
+          type: string
+          format: date-time
+          description: Payment due date.
+        sub_total:
+          type: number
+          description: Subtotal before taxes.
+        tax_amount:
+          type: number
+          description: Tax amount.
+        discount_credit:
+          type: number
+          description: Discount or credit applied.
+        is_approved:
+          type: boolean
+          description: Whether the invoice has been approved.
+        pdf_url:
+          type: string
+          format: uri
+          description: URL to the invoice PDF.
+        external_invoice_id:
+          type: string
+          description: External invoice ID in the payment gateway.
+        external_payment_id:
+          type: string
+          description: External payment ID.
+        payment_error:
+          type: string
+          description: Error message if payment failed.
+        payment_retry_attempt:
+          type: integer
+        invoice_retry_attempt:
+          type: integer
+        latest_payment_attempt_at:
+          type: string
+          format: date-time
+        min_item_start_time:
+          type: string
+          format: date-time
+        status_error:
+          type: string
+        invoicing_error:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

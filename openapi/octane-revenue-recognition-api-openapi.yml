@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Revenue Recognition API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Revenue Recognition
+  description: Revenue recognition reporting
+paths:
+  /customers/{customer_name}/accrued_revenue:
+    get:
+      summary: Get Customer Accrued Revenue
+      description: Get accrued revenue for a customer.
+      operationId: customersCustomerNameAccruedRevenueGet
+      tags:
+      - Revenue Recognition
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Accrued revenue data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccruedRevenue'
+  /recognized_revenue:
+    post:
+      summary: Generate Revenue Recognition Report
+      description: Generate a revenue recognition report for a given period.
+      operationId: recognizedRevenuePost
+      tags:
+      - Revenue Recognition
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Revenue recognition report
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    AccruedRevenue:
+      type: object
+      properties:
+        customer_name:
+          type: string
+        total:
+          type: number
+          description: Total accrued revenue amount.
+        line_items:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

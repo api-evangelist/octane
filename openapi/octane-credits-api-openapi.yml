@@ -1,0 +1,297 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Credits API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Credits
+  description: Manage customer credit grants and ledgers
+paths:
+  /customers/{customer_name}/credit_balance:
+    get:
+      summary: Get Customer Credit Balance
+      description: Get the current credit balance for a customer.
+      operationId: customersCustomerNameCreditBalanceGet
+      tags:
+      - Credits
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Credit balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerCreditBalance'
+  /customers/{customer_name}/credit_top_off_plan:
+    get:
+      summary: Get Customer Credit Top-Off Plan
+      description: Get the credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanGet
+      tags:
+      - Credits
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Credit top-off plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditTopOffPlan'
+    post:
+      summary: Create Customer Credit Top-Off Plan
+      description: Create a credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanPost
+      tags:
+      - Credits
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCreditTopOffPlanInputArgs'
+      responses:
+        '200':
+          description: Created credit top-off plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditTopOffPlan'
+    put:
+      summary: Update Customer Credit Top-Off Plan
+      description: Update the credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanPut
+      tags:
+      - Credits
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCreditTopOffPlanInputArgs'
+      responses:
+        '200':
+          description: Updated credit top-off plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditTopOffPlan'
+    delete:
+      summary: Delete Customer Credit Top-Off Plan
+      description: Delete the credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanDelete
+      tags:
+      - Credits
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Credit top-off plan deleted
+  /credits/grant:
+    get:
+      summary: List Credit Grants
+      description: Get all credit grants for a vendor.
+      operationId: creditsGrantGet
+      tags:
+      - Credits
+      responses:
+        '200':
+          description: List of credit grants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: Create Credit Grant
+      description: Create a new credit grant.
+      operationId: creditsGrantPost
+      tags:
+      - Credits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCreditGrantArgs'
+      responses:
+        '200':
+          description: Created credit grant
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/grant/{grant_uuid}/grant:
+    post:
+      summary: Issue Credit Grant
+      description: Issue a credit grant to a customer.
+      operationId: creditsGrantGrantUuidGrantPost
+      tags:
+      - Credits
+      parameters:
+      - name: grant_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Grant issued
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/grant/{grant_uuid}/void:
+    post:
+      summary: Void Credit Grant
+      description: Void a credit grant.
+      operationId: creditsGrantGrantUuidVoidPost
+      tags:
+      - Credits
+      parameters:
+      - name: grant_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Grant voided
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/ledger/{customer_name}:
+    get:
+      summary: Get Customer Credit Ledger
+      description: Get the credit ledger for a customer.
+      operationId: creditsLedgerCustomerNameGet
+      tags:
+      - Credits
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Credit ledger
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/ledger/{customer_name}/{as_of_str}:
+    get:
+      summary: Get Customer Credit Ledger As Of Date
+      description: Get the credit ledger for a customer as of a specific date.
+      operationId: creditsLedgerCustomerNameAsOfStrGet
+      tags:
+      - Credits
+      parameters:
+      - name: customer_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: as_of_str
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Credit ledger as of date
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    CustomerCreditBalance:
+      type: object
+      properties:
+        available_balance:
+          type: number
+          description: Current available credit balance.
+        customer_name:
+          type: string
+    CreditTopOffPlan:
+      type: object
+      properties:
+        customer_name:
+          type: string
+        threshold:
+          type: number
+          description: Credit balance threshold that triggers a top-off.
+        top_off_amount:
+          type: number
+          description: Amount of credits to add when threshold is reached.
+        enabled:
+          type: boolean
+    CreateCreditGrantArgs:
+      type: object
+      properties:
+        customer_name:
+          type: string
+          description: Name of the customer to grant credits to.
+        amount:
+          type: number
+          description: Amount of credits to grant.
+        expiration_time:
+          type: string
+          format: date-time
+          description: When the credits expire.
+        description:
+          type: string
+          description: Description for the credit grant.
+    CreateCreditTopOffPlanInputArgs:
+      type: object
+      properties:
+        threshold:
+          type: number
+          description: Credit balance threshold that triggers a top-off.
+        top_off_amount:
+          type: number
+          description: Amount of credits to add when threshold is reached.
+        enabled:
+          type: boolean
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.

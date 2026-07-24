@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Octane REST Admin Avalara API
+  description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+- url: https://api.getoctane.io
+  description: Octane Production API
+security:
+- BearerApiKeyAuth: []
+tags:
+- name: Avalara
+  description: Avalara tax integration
+paths:
+  /integration/tax/avalara/settings:
+    get:
+      summary: Get Avalara Settings
+      description: Get Avalara tax integration settings.
+      operationId: integrationTaxAvalaraSettingsGet
+      tags:
+      - Avalara
+      responses:
+        '200':
+          description: Avalara settings
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Create Avalara Settings
+      description: Create Avalara tax integration settings.
+      operationId: integrationTaxAvalaraSettingsPost
+      tags:
+      - Avalara
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Avalara settings
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Update Avalara Settings
+      description: Update Avalara tax integration settings.
+      operationId: integrationTaxAvalaraSettingsPut
+      tags:
+      - Avalara
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated Avalara settings
+          content:
+            application/json:
+              schema:
+                type: object
+  /integration/tax/avalara/credentials/valid:
+    post:
+      summary: Validate Avalara Credentials
+      description: Validate Avalara API credentials.
+      operationId: integrationTaxAvalaraCredentialsValidPost
+      tags:
+      - Avalara
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                type: object
+  /integration/tax/avalara/company:
+    get:
+      summary: Get Avalara Company
+      description: Get the Avalara company information.
+      operationId: integrationTaxAvalaraCompanyGet
+      tags:
+      - Avalara
+      responses:
+        '200':
+          description: Avalara company
+          content:
+            application/json:
+              schema:
+                type: object
+  /integration/tax/avalara/tax_code:
+    get:
+      summary: Get Avalara Tax Codes
+      description: Get available Avalara tax codes.
+      operationId: integrationTaxAvalaraTaxCodeGet
+      tags:
+      - Avalara
+      responses:
+        '200':
+          description: Tax codes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /integration/tax/avalara/entity_use_code:
+    get:
+      summary: Get Avalara Entity Use Codes
+      description: Get available Avalara entity use codes.
+      operationId: integrationTaxAvalaraEntityUseCodeGet
+      tags:
+      - Avalara
+      responses:
+        '200':
+          description: Entity use codes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+components:
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.
