@@ -4,7 +4,20 @@ description: Usage-based pricing and monetization platform with a REST API for m
   products. Octane enables infrastructure and SaaS companies to implement flexible
   pay-as-you-go billing similar to Snowflake and AWS, with support for counters, metered
   components, flat-rate schemes, discounts, trials, and add-ons.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/octane.png
 url: https://raw.githubusercontent.com/api-evangelist/octane/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -22,29 +35,210 @@ tags:
 aid: octane
 type: Index
 apis:
-  - name: Octane REST API
-    description: REST API for managing meters, customers, pricing plans, subscriptions,
-      measurements, and real-time usage data for usage-based billing workflows.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.getoctane.io
-    baseURL: https://api.getoctane.io
-    tags:
-      - Meters
-      - Measurements
-      - Customers
-      - Price Plans
-      - Subscriptions
-      - Usage Tracking
-    properties:
-      - type: Documentation
-        url: https://docs.getoctane.io
-      - type: OpenAPI
-        url: https://docs.getoctane.io/openapi
-    contact:
-      - FN: Octane Support
-        url: https://www.getoctane.io
-        email: ''
-    aid: octane:octane-rest-api
+- aid: octane:octane-admin-api
+  name: Octane Admin API
+  description: Administrative operations
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-admin-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-avalara-api
+  name: Octane Avalara API
+  description: Avalara tax integration
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Avalara
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-avalara-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-billing-settings-api
+  name: Octane Billing Settings API
+  description: Manage vendor billing settings
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Billing Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-billing-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-coupons-api
+  name: Octane Coupons API
+  description: Manage discount coupons
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Coupons
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-coupons-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-credits-api
+  name: Octane Credits API
+  description: Manage customer credit grants and ledgers
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Credits
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-credits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-customer-portal-api
+  name: Octane Customer Portal API
+  description: End-customer portal operations
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Customer Portal
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-customer-portal-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-customers-api
+  name: Octane Customers API
+  description: Manage customers and their subscriptions, billing, and settings
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-customers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-features-api
+  name: Octane Features API
+  description: Manage product features
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Features
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-features-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-invoices-api
+  name: Octane Invoices API
+  description: Access and manage customer invoices
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-live-measurements-api
+  name: Octane Live Measurements API
+  description: Real-time usage measurement retrieval
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Live Measurements
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-live-measurements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-measurements-api
+  name: Octane Measurements API
+  description: Submit usage measurements for customers
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Measurements
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-measurements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-meters-api
+  name: Octane Meters API
+  description: Manage usage meters that track events and aggregate data
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Meters
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-meters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-price-plans-api
+  name: Octane Price Plans API
+  description: Manage pricing plans with metered components and flat rates
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Price Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-price-plans-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-refunds-api
+  name: Octane Refunds API
+  description: Process customer refunds
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-revenue-recognition-api
+  name: Octane Revenue Recognition API
+  description: Revenue recognition reporting
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Revenue Recognition
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-revenue-recognition-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-subscriptions-api
+  name: Octane Subscriptions API
+  description: Manage customer subscriptions to price plans
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
+- aid: octane:octane-webhooks-api
+  name: Octane Webhooks API
+  description: Manage webhook endpoints
+  humanURL: https://docs.getoctane.io
+  baseURL: https://api.getoctane.io
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/octane-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getoctane.io
 common:
   - type: AgenticAccess
     url: agentic-access/octane-agentic-access.yml
