@@ -1,0 +1,3033 @@
+openapi: 3.0.3
+info:
+  title: Octane REST API
+  description: >-
+    REST API for managing meters, customers, pricing plans, subscriptions,
+    measurements, and real-time usage data for usage-based billing workflows.
+    Octane enables infrastructure and SaaS companies to implement flexible
+    pay-as-you-go billing similar to Snowflake and AWS.
+  version: 1.0.0
+  contact:
+    name: Octane Support
+    url: https://www.getoctane.io
+servers:
+  - url: https://api.getoctane.io
+    description: Octane Production API
+security:
+  - BearerApiKeyAuth: []
+tags:
+  - name: Meters
+    description: Manage usage meters that track events and aggregate data
+  - name: Measurements
+    description: Submit usage measurements for customers
+  - name: Live Measurements
+    description: Real-time usage measurement retrieval
+  - name: Customers
+    description: Manage customers and their subscriptions, billing, and settings
+  - name: Price Plans
+    description: Manage pricing plans with metered components and flat rates
+  - name: Subscriptions
+    description: Manage customer subscriptions to price plans
+  - name: Invoices
+    description: Access and manage customer invoices
+  - name: Coupons
+    description: Manage discount coupons
+  - name: Credits
+    description: Manage customer credit grants and ledgers
+  - name: Webhooks
+    description: Manage webhook endpoints
+  - name: Features
+    description: Manage product features
+  - name: Billing Settings
+    description: Manage vendor billing settings
+  - name: Customer Portal
+    description: End-customer portal operations
+  - name: Admin
+    description: Administrative operations
+  - name: Avalara
+    description: Avalara tax integration
+  - name: Revenue Recognition
+    description: Revenue recognition reporting
+  - name: Refunds
+    description: Process customer refunds
+paths:
+  /meters:
+    get:
+      summary: Get Meters
+      description: Get all meters for a given vendor.
+      operationId: metersGet
+      tags:
+        - Meters
+      responses:
+        '200':
+          description: List of meters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meter'
+    post:
+      summary: Create Meter
+      description: Create a new usage meter.
+      operationId: metersPost
+      tags:
+        - Meters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMeterArgs'
+      responses:
+        '200':
+          description: Created meter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+  /meters/{meter_name}:
+    get:
+      summary: Get Meter
+      description: Get a meter by its unique name.
+      operationId: metersMeterNameGet
+      tags:
+        - Meters
+      parameters:
+        - name: meter_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Meter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+    put:
+      summary: Update Meter
+      description: Update a meter by its unique name.
+      operationId: metersMeterNamePut
+      tags:
+        - Meters
+      parameters:
+        - name: meter_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMeterArgs'
+      responses:
+        '200':
+          description: Updated meter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+    delete:
+      summary: Delete Meter
+      description: Delete a meter by its unique name.
+      operationId: metersMeterNameDelete
+      tags:
+        - Meters
+      parameters:
+        - name: meter_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Meter deleted
+  /meters/{meter_name}/archive:
+    post:
+      summary: Archive Meter
+      description: Archive a meter by its unique name.
+      operationId: metersMeterNameArchivePost
+      tags:
+        - Meters
+      parameters:
+        - name: meter_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Meter archived
+  /measurements:
+    post:
+      summary: Send Measurement
+      description: Submit a single usage measurement for a customer.
+      operationId: measurementsPost
+      tags:
+        - Measurements
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Measurement'
+      responses:
+        '200':
+          description: Created measurement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Measurement'
+  /measurements/multi:
+    post:
+      summary: Send Batched Measurements
+      description: Submit multiple usage measurements in a single request.
+      operationId: measurementsMultiPost
+      tags:
+        - Measurements
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Measurement'
+      responses:
+        '200':
+          description: Created measurements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Measurement'
+  /live_measurements:
+    get:
+      summary: Get Live Measurements
+      description: Retrieve real-time usage measurements.
+      operationId: liveMeasurementsGet
+      tags:
+        - Live Measurements
+      responses:
+        '200':
+          description: Live measurement data
+          content:
+            application/json:
+              schema:
+                type: object
+  /customers:
+    get:
+      summary: List Customers
+      description: Get all customers for a given vendor.
+      operationId: customersGet
+      tags:
+        - Customers
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      summary: Create Customer
+      description: Create a new customer.
+      operationId: customersPost
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerArgs'
+      responses:
+        '200':
+          description: Created customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{customer_name}:
+    get:
+      summary: Get Customer
+      description: Get a customer by their unique name.
+      operationId: customersCustomerNameGet
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    delete:
+      summary: Delete Customer
+      description: Delete a customer by their unique name.
+      operationId: customersCustomerNameDelete
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Customer deleted
+  /customers/{customer_name}/active_subscription:
+    get:
+      summary: Get Customer Active Subscription
+      description: Get the active subscription for a customer.
+      operationId: customersCustomerNameActiveSubscriptionGet
+      tags:
+        - Subscriptions
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Active subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveSubscription'
+    post:
+      summary: Create Customer Subscription
+      description: Subscribe a customer to a price plan.
+      operationId: customersCustomerNameActiveSubscriptionPost
+      tags:
+        - Subscriptions
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionArgs'
+      responses:
+        '200':
+          description: Active subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveSubscription'
+  /customers/{customer_name}/billing_settings:
+    get:
+      summary: Get Customer Billing Settings
+      description: Get billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsGet
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    post:
+      summary: Create Customer Billing Settings
+      description: Create billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsPost
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBillingSettingsInputArgs'
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    put:
+      summary: Update Customer Billing Settings
+      description: Update billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsPut
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBillingSettingsInputArgs'
+      responses:
+        '200':
+          description: Updated billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    delete:
+      summary: Delete Customer Billing Settings
+      description: Delete billing settings for a customer.
+      operationId: customersCustomerNameBillingSettingsDelete
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Billing settings deleted
+  /customers/{customer_name}/invoices:
+    get:
+      summary: List Customer Invoices
+      description: Get all invoices for a customer with optional filtering.
+      operationId: customersCustomerNameInvoicesGet
+      tags:
+        - Invoices
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: start_time
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: sort_column
+          in: query
+          schema:
+            type: string
+        - name: sort_direction
+          in: query
+          schema:
+            type: string
+        - name: forward_sort_offset
+          in: query
+          schema:
+            type: string
+        - name: forward_secondary_sort_offset
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+  /customers/{customer_name}/credit_balance:
+    get:
+      summary: Get Customer Credit Balance
+      description: Get the current credit balance for a customer.
+      operationId: customersCustomerNameCreditBalanceGet
+      tags:
+        - Credits
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Credit balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerCreditBalance'
+  /customers/{customer_name}/credit_top_off_plan:
+    get:
+      summary: Get Customer Credit Top-Off Plan
+      description: Get the credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanGet
+      tags:
+        - Credits
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Credit top-off plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditTopOffPlan'
+    post:
+      summary: Create Customer Credit Top-Off Plan
+      description: Create a credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanPost
+      tags:
+        - Credits
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCreditTopOffPlanInputArgs'
+      responses:
+        '200':
+          description: Created credit top-off plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditTopOffPlan'
+    put:
+      summary: Update Customer Credit Top-Off Plan
+      description: Update the credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanPut
+      tags:
+        - Credits
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCreditTopOffPlanInputArgs'
+      responses:
+        '200':
+          description: Updated credit top-off plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditTopOffPlan'
+    delete:
+      summary: Delete Customer Credit Top-Off Plan
+      description: Delete the credit top-off plan for a customer.
+      operationId: customersCustomerNameCreditTopOffPlanDelete
+      tags:
+        - Credits
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Credit top-off plan deleted
+  /customers/{customer_name}/adhoc_charges:
+    get:
+      summary: List Customer Adhoc Charges
+      description: Get all adhoc charges for a customer.
+      operationId: customersCustomerNameAdhocChargesGet
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of adhoc charges
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdhocCharge'
+    post:
+      summary: Create Customer Adhoc Charge
+      description: Create an adhoc charge for a customer.
+      operationId: customersCustomerNameAdhocChargesPost
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAdhocChargeArgs'
+      responses:
+        '200':
+          description: Created adhoc charge
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdhocCharge'
+  /customers/{customer_name}/adhoc_charges/{uuid}:
+    get:
+      summary: Get Customer Adhoc Charge
+      description: Get a specific adhoc charge for a customer.
+      operationId: customersCustomerNameAdhocChargesUuidGet
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Adhoc charge details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdhocCharge'
+    delete:
+      summary: Delete Customer Adhoc Charge
+      description: Delete an adhoc charge for a customer.
+      operationId: customersCustomerNameAdhocChargesUuidDelete
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Adhoc charge deleted
+  /customers/{customer_name}/discounts:
+    post:
+      summary: Create Customer Discount
+      description: Apply a discount to a customer.
+      operationId: customersCustomerNameDiscountsPost
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscountInputArgs'
+      responses:
+        '200':
+          description: Discount applied
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Delete Customer Discounts
+      description: Remove discounts from a customer.
+      operationId: customersCustomerNameDiscountsDelete
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Discounts removed
+  /customers/{customer_name}/features/{feature_name}:
+    get:
+      summary: Get Customer Feature
+      description: Get a specific feature entitlement for a customer.
+      operationId: customersCustomerNameFeaturesFeatureNameGet
+      tags:
+        - Features
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: feature_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer feature entitlement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerFeature'
+  /customers/{customer_name}/mappings:
+    get:
+      summary: List Customer Measurement Mappings
+      description: Get measurement mappings for a customer.
+      operationId: customersCustomerNameMappingsGet
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Measurement mappings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerMeasurementMapping'
+    post:
+      summary: Create Customer Measurement Mapping
+      description: Create a measurement mapping for a customer.
+      operationId: customersCustomerNameMappingsPost
+      tags:
+        - Customers
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerMeasurementMappingInputArgs'
+      responses:
+        '200':
+          description: Created measurement mapping
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerMeasurementMapping'
+  /customers/{customer_name}/accrued_revenue:
+    get:
+      summary: Get Customer Accrued Revenue
+      description: Get accrued revenue for a customer.
+      operationId: customersCustomerNameAccruedRevenueGet
+      tags:
+        - Revenue Recognition
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Accrued revenue data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccruedRevenue'
+  /price_plans:
+    get:
+      summary: List Price Plans
+      description: Get all price plans for a vendor.
+      operationId: pricePlansGet
+      tags:
+        - Price Plans
+      responses:
+        '200':
+          description: List of price plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PricePlan'
+    post:
+      summary: Create Price Plan
+      description: Create a new price plan.
+      operationId: pricePlansPost
+      tags:
+        - Price Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePricePlanArgs'
+      responses:
+        '200':
+          description: Created price plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+  /price_plans/paginate:
+    get:
+      summary: List Price Plans Paginated
+      description: Get price plans with pagination support.
+      operationId: pricePlansPaginateGet
+      tags:
+        - Price Plans
+      responses:
+        '200':
+          description: Paginated price plans
+          content:
+            application/json:
+              schema:
+                type: object
+  /price_plans/self_serve:
+    get:
+      summary: List Self-Serve Price Plans
+      description: Get price plans available for self-serve enrollment.
+      operationId: pricePlansSelfServeGet
+      tags:
+        - Price Plans
+      responses:
+        '200':
+          description: Self-serve price plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PricePlan'
+  /price_plans/{price_plan_name}:
+    get:
+      summary: Get Price Plan
+      description: Get a price plan by its unique name.
+      operationId: pricePlansPricePlanNameGet
+      tags:
+        - Price Plans
+      parameters:
+        - name: price_plan_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Price plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+    put:
+      summary: Update Price Plan
+      description: Update a price plan by its unique name.
+      operationId: pricePlansPricePlanNamePut
+      tags:
+        - Price Plans
+      parameters:
+        - name: price_plan_name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePricePlanArgs'
+      responses:
+        '200':
+          description: Updated price plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+    delete:
+      summary: Delete Price Plan
+      description: Delete a price plan by its unique name.
+      operationId: pricePlansPricePlanNameDelete
+      tags:
+        - Price Plans
+      parameters:
+        - name: price_plan_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Price plan deleted
+  /price_plans/{price_plan_name}/archive:
+    post:
+      summary: Archive Price Plan
+      description: Archive a price plan by its unique name.
+      operationId: pricePlansPricePlanNameArchivePost
+      tags:
+        - Price Plans
+      parameters:
+        - name: price_plan_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Price plan archived
+  /price_plans/{price_plan_name}/{tag}:
+    get:
+      summary: Get Price Plan by Tag
+      description: Get a price plan by name and tag.
+      operationId: pricePlansPricePlanNameTagGet
+      tags:
+        - Price Plans
+      parameters:
+        - name: price_plan_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: tag
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Price plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePlan'
+  /price_plans/metered_components/{uuid}/update_limits:
+    post:
+      summary: Update Metered Component Limits
+      description: Update usage limits for a metered component on a price plan.
+      operationId: pricePlansMeteredComponentsUuidUpdateLimitsPost
+      tags:
+        - Price Plans
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Updated limits
+          content:
+            application/json:
+              schema:
+                type: object
+  /invoices:
+    get:
+      summary: List Invoices
+      description: Get all invoices for a vendor.
+      operationId: invoicesGet
+      tags:
+        - Invoices
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+  /invoices/{invoice_uuid}:
+    get:
+      summary: Get Invoice
+      description: Get an invoice by its UUID.
+      operationId: invoicesInvoiceUuidGet
+      tags:
+        - Invoices
+      parameters:
+        - name: invoice_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+    delete:
+      summary: Delete Invoice
+      description: Delete an invoice by its UUID.
+      operationId: invoicesInvoiceUuidDelete
+      tags:
+        - Invoices
+      parameters:
+        - name: invoice_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Invoice deleted
+  /invoices/{invoice_uuid}/retries:
+    post:
+      summary: Retry Invoice Payment
+      description: Retry payment collection for a failed invoice.
+      operationId: invoicesInvoiceUuidRetriesPost
+      tags:
+        - Invoices
+      parameters:
+        - name: invoice_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Retry initiated
+          content:
+            application/json:
+              schema:
+                type: object
+  /invoices/{invoice_uuid}/status:
+    post:
+      summary: Update Invoice Status
+      description: Update the status of an invoice.
+      operationId: invoicesInvoiceUuidStatusPost
+      tags:
+        - Invoices
+      parameters:
+        - name: invoice_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Updated invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+  /invoices/{invoice_uuid_token}/pdf:
+    get:
+      summary: Get Invoice PDF
+      description: Get the PDF version of an invoice.
+      operationId: invoicesInvoiceUuidTokenPdfGet
+      tags:
+        - Invoices
+      parameters:
+        - name: invoice_uuid_token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Invoice PDF
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+  /coupons:
+    get:
+      summary: List Coupons
+      description: Get all coupons for a vendor.
+      operationId: couponsGet
+      tags:
+        - Coupons
+      responses:
+        '200':
+          description: List of coupons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Coupon'
+    post:
+      summary: Create Coupon
+      description: Create a new discount coupon.
+      operationId: couponsPost
+      tags:
+        - Coupons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CouponInputArgs'
+      responses:
+        '200':
+          description: Created coupon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+  /coupons/{coupon_name}:
+    get:
+      summary: Get Coupon
+      description: Get a coupon by its unique name.
+      operationId: couponsCouponNameGet
+      tags:
+        - Coupons
+      parameters:
+        - name: coupon_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Coupon details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+    delete:
+      summary: Delete Coupon
+      description: Delete a coupon by its unique name.
+      operationId: couponsCouponNameDelete
+      tags:
+        - Coupons
+      parameters:
+        - name: coupon_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Coupon deleted
+  /coupons/apply_coupon:
+    post:
+      summary: Apply Coupon
+      description: Apply a coupon to a customer subscription.
+      operationId: couponsApplyCouponPost
+      tags:
+        - Coupons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplyCouponInputArgs'
+      responses:
+        '200':
+          description: Coupon applied
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/grant:
+    get:
+      summary: List Credit Grants
+      description: Get all credit grants for a vendor.
+      operationId: creditsGrantGet
+      tags:
+        - Credits
+      responses:
+        '200':
+          description: List of credit grants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: Create Credit Grant
+      description: Create a new credit grant.
+      operationId: creditsGrantPost
+      tags:
+        - Credits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCreditGrantArgs'
+      responses:
+        '200':
+          description: Created credit grant
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/grant/{grant_uuid}/grant:
+    post:
+      summary: Issue Credit Grant
+      description: Issue a credit grant to a customer.
+      operationId: creditsGrantGrantUuidGrantPost
+      tags:
+        - Credits
+      parameters:
+        - name: grant_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Grant issued
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/grant/{grant_uuid}/void:
+    post:
+      summary: Void Credit Grant
+      description: Void a credit grant.
+      operationId: creditsGrantGrantUuidVoidPost
+      tags:
+        - Credits
+      parameters:
+        - name: grant_uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Grant voided
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/ledger/{customer_name}:
+    get:
+      summary: Get Customer Credit Ledger
+      description: Get the credit ledger for a customer.
+      operationId: creditsLedgerCustomerNameGet
+      tags:
+        - Credits
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Credit ledger
+          content:
+            application/json:
+              schema:
+                type: object
+  /credits/ledger/{customer_name}/{as_of_str}:
+    get:
+      summary: Get Customer Credit Ledger As Of Date
+      description: Get the credit ledger for a customer as of a specific date.
+      operationId: creditsLedgerCustomerNameAsOfStrGet
+      tags:
+        - Credits
+      parameters:
+        - name: customer_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: as_of_str
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Credit ledger as of date
+          content:
+            application/json:
+              schema:
+                type: object
+  /webhooks:
+    get:
+      summary: List Webhooks
+      description: Get all webhook endpoints for a vendor.
+      operationId: webhooksGet
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          description: List of webhooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      summary: Create Webhook
+      description: Create a new webhook endpoint.
+      operationId: webhooksPost
+      tags:
+        - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookArgs'
+      responses:
+        '200':
+          description: Created webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /webhooks/{uuid}:
+    get:
+      summary: Get Webhook
+      description: Get a webhook endpoint by its UUID.
+      operationId: webhooksUuidGet
+      tags:
+        - Webhooks
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Webhook details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+    delete:
+      summary: Delete Webhook
+      description: Delete a webhook endpoint by its UUID.
+      operationId: webhooksUuidDelete
+      tags:
+        - Webhooks
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Webhook deleted
+  /features:
+    get:
+      summary: List Features
+      description: Get all product features for a vendor.
+      operationId: featuresGet
+      tags:
+        - Features
+      responses:
+        '200':
+          description: List of features
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feature'
+  /billing_settings:
+    get:
+      summary: Get Billing Settings
+      description: Get billing settings for the vendor.
+      operationId: billingSettingsGet
+      tags:
+        - Billing Settings
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    post:
+      summary: Create Billing Settings
+      description: Create billing settings for the vendor.
+      operationId: billingSettingsPost
+      tags:
+        - Billing Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingSettings'
+      responses:
+        '200':
+          description: Billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    put:
+      summary: Update Billing Settings
+      description: Update billing settings for the vendor.
+      operationId: billingSettingsPut
+      tags:
+        - Billing Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingSettings'
+      responses:
+        '200':
+          description: Updated billing settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSettings'
+    delete:
+      summary: Delete Billing Settings
+      description: Delete billing settings for the vendor.
+      operationId: billingSettingsDelete
+      tags:
+        - Billing Settings
+      responses:
+        '204':
+          description: Billing settings deleted
+  /payment_gateway_credentials:
+    get:
+      summary: List Payment Gateway Credentials
+      description: Get all payment gateway credentials for a vendor.
+      operationId: paymentGatewayCredentialsGet
+      tags:
+        - Billing Settings
+      responses:
+        '200':
+          description: Payment gateway credentials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: Create Payment Gateway Credential
+      description: Add payment gateway credentials for a vendor.
+      operationId: paymentGatewayCredentialsPost
+      tags:
+        - Billing Settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Created credential
+          content:
+            application/json:
+              schema:
+                type: object
+  /customer_portal_settings:
+    get:
+      summary: Get Customer Portal Settings
+      description: Get the customer portal configuration.
+      operationId: customerPortalSettingsGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Customer portal settings
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Create Customer Portal Settings
+      description: Create customer portal configuration.
+      operationId: customerPortalSettingsPost
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Customer portal settings
+          content:
+            application/json:
+              schema:
+                type: object
+  /ecp/active_subscription:
+    get:
+      summary: Get ECP Active Subscription
+      description: Get the active subscription from the end-customer portal.
+      operationId: ecpActiveSubscriptionGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Active subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveSubscription'
+    post:
+      summary: Update ECP Active Subscription
+      description: Update subscription from the end-customer portal.
+      operationId: ecpActiveSubscriptionPost
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionArgs'
+      responses:
+        '200':
+          description: Updated subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveSubscription'
+  /ecp/active_subscription/add_ons:
+    post:
+      summary: Add Add-Ons to ECP Subscription
+      description: Add add-ons to the active subscription from the end-customer portal.
+      operationId: ecpActiveSubscriptionAddOnsPost
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated subscription
+          content:
+            application/json:
+              schema:
+                type: object
+  /ecp/contact_info:
+    get:
+      summary: Get ECP Contact Info
+      description: Get contact information from the end-customer portal.
+      operationId: ecpContactInfoGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Contact info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactInfo'
+    put:
+      summary: Update ECP Contact Info
+      description: Update contact information from the end-customer portal.
+      operationId: ecpContactInfoPut
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInfoInputArgs'
+      responses:
+        '200':
+          description: Updated contact info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactInfo'
+  /ecp/credit/available_balance:
+    get:
+      summary: Get ECP Credit Balance
+      description: Get available credit balance from the end-customer portal.
+      operationId: ecpCreditAvailableBalanceGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Available credit balance
+          content:
+            application/json:
+              schema:
+                type: object
+  /ecp/credit_grants:
+    get:
+      summary: Get ECP Credit Grants
+      description: Get credit grants from the end-customer portal.
+      operationId: ecpCreditGrantsGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Credit grants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /ecp/credit/ledger:
+    get:
+      summary: Get ECP Credit Ledger
+      description: Get credit ledger from the end-customer portal.
+      operationId: ecpCreditLedgerGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Credit ledger
+          content:
+            application/json:
+              schema:
+                type: object
+  /ecp/credit/purchase:
+    post:
+      summary: Purchase Credits (ECP)
+      description: Purchase additional credits from the end-customer portal.
+      operationId: ecpCreditPurchasePost
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Purchase result
+          content:
+            application/json:
+              schema:
+                type: object
+  /ecp/credit_top_off_plan:
+    get:
+      summary: Get ECP Credit Top-Off Plan
+      description: Get credit top-off plan from the end-customer portal.
+      operationId: ecpCreditTopOffPlanGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Credit top-off plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditTopOffPlan'
+  /self_serve_settings:
+    get:
+      summary: Get Self-Serve Settings
+      description: Get self-serve enrollment settings for a vendor.
+      operationId: selfServeSettingsGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Self-serve settings
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Create Self-Serve Settings
+      description: Create self-serve enrollment settings.
+      operationId: selfServeSettingsPost
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Self-serve settings
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Update Self-Serve Settings
+      description: Update self-serve enrollment settings.
+      operationId: selfServeSettingsPut
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated self-serve settings
+          content:
+            application/json:
+              schema:
+                type: object
+  /self_serve_settings/customization:
+    get:
+      summary: Get Self-Serve Customization
+      description: Get customization settings for self-serve portal.
+      operationId: selfServeSettingsCustomizationGet
+      tags:
+        - Customer Portal
+      responses:
+        '200':
+          description: Customization settings
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Create Self-Serve Customization
+      description: Create customization settings for self-serve portal.
+      operationId: selfServeSettingsCustomizationPost
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Customization settings
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Update Self-Serve Customization
+      description: Update customization settings for self-serve portal.
+      operationId: selfServeSettingsCustomizationPut
+      tags:
+        - Customer Portal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated customization settings
+          content:
+            application/json:
+              schema:
+                type: object
+  /admin/api_key/roll:
+    post:
+      summary: Roll API Key
+      description: Generate a new API key, invalidating the existing one.
+      operationId: adminApiKeyRollPost
+      tags:
+        - Admin
+      responses:
+        '200':
+          description: New API key
+          content:
+            application/json:
+              schema:
+                type: object
+  /refund:
+    post:
+      summary: Create Refund
+      description: Issue a refund to a customer.
+      operationId: refundPost
+      tags:
+        - Refunds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRefundArgs'
+      responses:
+        '200':
+          description: Refund created
+          content:
+            application/json:
+              schema:
+                type: object
+  /recognized_revenue:
+    post:
+      summary: Generate Revenue Recognition Report
+      description: Generate a revenue recognition report for a given period.
+      operationId: recognizedRevenuePost
+      tags:
+        - Revenue Recognition
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Revenue recognition report
+          content:
+            application/json:
+              schema:
+                type: object
+  /integration/tax/avalara/settings:
+    get:
+      summary: Get Avalara Settings
+      description: Get Avalara tax integration settings.
+      operationId: integrationTaxAvalaraSettingsGet
+      tags:
+        - Avalara
+      responses:
+        '200':
+          description: Avalara settings
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Create Avalara Settings
+      description: Create Avalara tax integration settings.
+      operationId: integrationTaxAvalaraSettingsPost
+      tags:
+        - Avalara
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Avalara settings
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Update Avalara Settings
+      description: Update Avalara tax integration settings.
+      operationId: integrationTaxAvalaraSettingsPut
+      tags:
+        - Avalara
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated Avalara settings
+          content:
+            application/json:
+              schema:
+                type: object
+  /integration/tax/avalara/credentials/valid:
+    post:
+      summary: Validate Avalara Credentials
+      description: Validate Avalara API credentials.
+      operationId: integrationTaxAvalaraCredentialsValidPost
+      tags:
+        - Avalara
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                type: object
+  /integration/tax/avalara/company:
+    get:
+      summary: Get Avalara Company
+      description: Get the Avalara company information.
+      operationId: integrationTaxAvalaraCompanyGet
+      tags:
+        - Avalara
+      responses:
+        '200':
+          description: Avalara company
+          content:
+            application/json:
+              schema:
+                type: object
+  /integration/tax/avalara/tax_code:
+    get:
+      summary: Get Avalara Tax Codes
+      description: Get available Avalara tax codes.
+      operationId: integrationTaxAvalaraTaxCodeGet
+      tags:
+        - Avalara
+      responses:
+        '200':
+          description: Tax codes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /integration/tax/avalara/entity_use_code:
+    get:
+      summary: Get Avalara Entity Use Codes
+      description: Get available Avalara entity use codes.
+      operationId: integrationTaxAvalaraEntityUseCodeGet
+      tags:
+        - Avalara
+      responses:
+        '200':
+          description: Entity use codes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+components:
+  securitySchemes:
+    BearerApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header.
+  schemas:
+    Meter:
+      type: object
+      required:
+        - name
+        - event_name
+        - meter_type
+        - data_type
+        - aggregation
+        - is_incremental
+        - reporting_method
+      properties:
+        name:
+          type: string
+          description: Unique identifier name for the meter.
+        display_name:
+          type: string
+          description: Human-readable display name for the meter.
+        description:
+          type: string
+          description: Description of what this meter tracks.
+        event_name:
+          type: string
+          description: The event name this meter listens to.
+        meter_type:
+          type: string
+          description: Type of meter (e.g., counter, gauge).
+        data_type:
+          type: string
+          enum: [INT, FLOAT, STRING]
+          description: Data type of the measurement value.
+        aggregation:
+          type: string
+          enum: [SUM, COUNT, MAX, MIN, UNIQUE_COUNT]
+          description: Aggregation method applied to measurements.
+        unit_name:
+          type: string
+          description: Human-readable unit name (e.g., "API calls", "GB").
+        is_incremental:
+          type: boolean
+          description: Whether measurements are incremental or absolute.
+        reporting_method:
+          type: string
+          enum: [periodic, total]
+          description: How usage is reported.
+        expected_labels:
+          type: array
+          items:
+            type: string
+          description: Expected label keys on measurements.
+        primary_labels:
+          type: array
+          items:
+            type: string
+          description: Primary label keys used for grouping.
+        event_label_filter:
+          type: object
+          description: Filter expression for event labels.
+    CreateMeterArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name for the meter.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the meter.
+        event_name:
+          type: string
+          description: Event name this meter tracks.
+        meter_type:
+          type: string
+          description: Type of meter.
+        data_type:
+          type: string
+          enum: [INT, FLOAT, STRING]
+        aggregation:
+          type: string
+          enum: [SUM, COUNT, MAX, MIN, UNIQUE_COUNT]
+        unit_name:
+          type: string
+        is_incremental:
+          type: boolean
+        reporting_method:
+          type: string
+          enum: [periodic, total]
+        expected_labels:
+          type: array
+          items:
+            type: string
+        primary_labels:
+          type: array
+          items:
+            type: string
+        event_label_filter:
+          type: object
+    UpdateMeterArgs:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Updated description for the meter.
+        display_name:
+          type: string
+          description: Updated display name for the meter.
+    Measurement:
+      type: object
+      required:
+        - value
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the measurement.
+        meter_name:
+          type: string
+          description: Name of the meter this measurement belongs to.
+        customer_name:
+          type: string
+          description: Name of the customer this measurement belongs to.
+        event_name:
+          type: string
+          description: Name of the event that generated this measurement.
+        value:
+          type: number
+          description: The measured value.
+        time:
+          type: string
+          format: date-time
+          description: Timestamp of when the measurement occurred.
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value labels associated with the measurement.
+        reset_total:
+          type: boolean
+          description: Whether to reset the running total.
+    Customer:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the customer.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        contact_info:
+          $ref: '#/components/schemas/ContactInfo'
+        created_at:
+          type: string
+          format: date-time
+          description: When the customer was created.
+        measurement_mappings:
+          type: array
+          items:
+            type: object
+          description: Measurement label mappings for the customer.
+        tags:
+          type: array
+          items:
+            type: object
+          description: Tags associated with the customer.
+    CreateCustomerArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the customer.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        vendor_id:
+          type: string
+          description: External vendor identifier for the customer.
+        contact_info:
+          $ref: '#/components/schemas/ContactInfoInputArgs'
+        price_plan_name:
+          type: string
+          description: Name of the price plan to subscribe the customer to.
+        price_plan_tag:
+          type: string
+          description: Tag for the price plan.
+        measurement_mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerMeasurementMappingInputArgs'
+        customer_metadata:
+          type: array
+          items:
+            type: object
+        tags:
+          type: array
+          items:
+            type: string
+        autogenerate_payment_gateway_customer:
+          type: boolean
+          description: Automatically create a customer in the connected payment gateway.
+        autogenerate_accounting_customer:
+          type: boolean
+          description: Automatically create a customer in the connected accounting system.
+        created_at:
+          type: string
+          format: date-time
+    ContactInfo:
+      type: object
+      properties:
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+        secondary_emails:
+          type: array
+          items:
+            type: string
+        phone:
+          type: string
+        legal_name:
+          type: string
+        vat_id:
+          type: string
+    ContactInfoInputArgs:
+      type: object
+      properties:
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+        secondary_emails:
+          type: array
+          items:
+            type: string
+        phone:
+          type: string
+        legal_name:
+          type: string
+        vat_id:
+          type: string
+    ActiveSubscription:
+      type: object
+      required:
+        - uuid
+        - customer_name
+        - price_plan_name
+        - price_plan_uuid
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the subscription.
+        customer_name:
+          type: string
+          description: Name of the subscribed customer.
+        price_plan_name:
+          type: string
+          description: Name of the price plan.
+        price_plan_uuid:
+          type: string
+          description: UUID of the price plan.
+        price_plan:
+          $ref: '#/components/schemas/PricePlan'
+        effective_at:
+          type: string
+          format: date-time
+          description: When the subscription became effective.
+        expired_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the subscription expires.
+        align_to_calendar:
+          type: boolean
+          description: Whether the billing cycle aligns to the calendar.
+        base_price_override:
+          type: number
+          description: Override for the plan's base price.
+        current_billing_cycle:
+          $ref: '#/components/schemas/BillingCycleDate'
+        total_fixed_price:
+          type: number
+        discounted_fixed_price:
+          type: number
+        discounts:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        features_override:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        limits_override:
+          type: array
+          items:
+            $ref: '#/components/schemas/Limit'
+        trial_override:
+          $ref: '#/components/schemas/Trial'
+        credit_plan:
+          type: object
+    CreateSubscriptionArgs:
+      type: object
+      properties:
+        price_plan_name:
+          type: string
+          description: Name of the price plan to subscribe to.
+        price_plan_uuid:
+          type: string
+          description: UUID of the price plan to subscribe to.
+        price_plan_tag:
+          type: string
+          description: Tag of the price plan version to use.
+        effective_at:
+          type: string
+          format: date-time
+          description: When the subscription should take effect.
+        align_to_calendar:
+          type: boolean
+          description: Align billing cycle to calendar period.
+        coupon_override_name:
+          type: string
+          description: Coupon to apply to the subscription.
+        discount_override:
+          $ref: '#/components/schemas/DiscountInputArgs'
+        discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountInputArgs'
+        features_override:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        limits_override:
+          type: array
+          items:
+            type: object
+        trial_override:
+          $ref: '#/components/schemas/TrialInputArgs'
+        credit_plan:
+          type: object
+    PricePlan:
+      type: object
+      required:
+        - name
+        - period
+        - metered_components
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the price plan.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the price plan.
+        external_uuid:
+          type: string
+          description: External UUID reference.
+        base_price:
+          type: number
+          description: Fixed base price for the plan period.
+        base_price_frequency:
+          type: string
+          description: How often the base price is charged.
+        base_price_description:
+          type: string
+          description: Description of what the base price covers.
+        period:
+          type: string
+          enum: [monthly, quarterly, annual]
+          description: Billing period for this plan.
+        minimum_charge:
+          type: number
+          description: Minimum charge amount for the period.
+        minimum_charge_frequency:
+          type: string
+          description: Frequency of minimum charge.
+        metered_components:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeteredComponent'
+          description: Usage-based metered pricing components.
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+          description: Features included in this plan.
+        add_ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddOn'
+          description: Available add-ons for this plan.
+        limits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Limit'
+          description: Usage limits for features.
+        tags:
+          type: array
+          items:
+            type: object
+          description: Version tags for this plan.
+        trial:
+          $ref: '#/components/schemas/Trial'
+        created_at:
+          type: string
+          format: date-time
+    CreatePricePlanArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name for the price plan.
+        display_name:
+          type: string
+        description:
+          type: string
+        vendor_id:
+          type: string
+        period:
+          type: string
+          enum: [monthly, quarterly, annual]
+        base_price:
+          type: number
+        base_price_frequency:
+          type: string
+        base_price_description:
+          type: string
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        metered_components:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeteredComponentInputArgs'
+        features:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        limits:
+          type: array
+          items:
+            type: object
+        trial:
+          $ref: '#/components/schemas/TrialInputArgs'
+        tags:
+          type: array
+          items:
+            type: string
+    MeteredComponent:
+      type: object
+      required:
+        - meter_name
+        - meter_display_name
+        - price_scheme
+        - label_limits
+      properties:
+        meter_name:
+          type: string
+          description: Name of the meter this component is based on.
+        meter_display_name:
+          type: string
+          description: Display name of the meter.
+        display_name:
+          type: string
+          description: Display name for this component on invoices.
+        external_uuid:
+          type: string
+          description: External UUID reference.
+        price_scheme:
+          $ref: '#/components/schemas/PriceScheme'
+        limit:
+          type: number
+          description: Usage limit for this component.
+        label_limits:
+          type: array
+          items:
+            type: object
+          description: Per-label usage limits.
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        watermark:
+          type: number
+          description: High-watermark for pricing.
+    MeteredComponentInputArgs:
+      type: object
+      properties:
+        meter_name:
+          type: string
+        meter_id:
+          type: string
+        id:
+          type: string
+        display_name:
+          type: string
+        price_scheme:
+          $ref: '#/components/schemas/PriceSchemeInputArgs'
+        limit:
+          type: number
+        label_limits:
+          type: array
+          items:
+            type: object
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        watermark:
+          type: number
+    PriceScheme:
+      type: object
+      description: Pricing scheme configuration for a metered component.
+      properties:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
+          type: string
+          enum: [FLAT, TIERED, VOLUME, PACKAGE]
+        unit_name:
+          type: string
+        time_unit_name:
+          type: string
+    PriceSchemeInputArgs:
+      type: object
+      properties:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
+          type: string
+          enum: [FLAT, TIERED, VOLUME, PACKAGE]
+        unit_name:
+          type: string
+        time_unit_name:
+          type: string
+    PriceTier:
+      type: object
+      description: A price tier within a tiered pricing scheme.
+      properties:
+        price:
+          type: number
+          description: Price per unit at this tier.
+        cap:
+          type: number
+          description: Upper bound of usage for this tier (null = unlimited).
+    Feature:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Unique name of the feature.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the feature.
+    AddOn:
+      type: object
+      required:
+        - feature
+        - price
+        - price_scheme_type
+        - single_use
+        - quantity_enabled
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        price:
+          type: number
+          description: Price of the add-on.
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        price_scheme_type:
+          type: string
+          description: Pricing scheme type for the add-on.
+        single_use:
+          type: boolean
+          description: Whether the add-on can only be purchased once.
+        quantity_enabled:
+          type: boolean
+          description: Whether quantity selection is enabled.
+        immediately_charge:
+          type: boolean
+          description: Whether to charge immediately on purchase.
+        limit:
+          type: number
+          description: Maximum quantity allowed.
+        price_frequency:
+          type: string
+          description: How often the add-on price recurs.
+        charge_frequency:
+          type: string
+          description: How often to charge for the add-on.
+    Limit:
+      type: object
+      required:
+        - feature
+        - limit
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        limit:
+          type: number
+          description: Numeric limit for the feature.
+    Trial:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial (e.g., "day", "month").
+        credit:
+          type: number
+          description: Trial credit amount.
+    TrialInputArgs:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial.
+        credit:
+          type: number
+          description: Trial credit amount.
+    DiscountInputArgs:
+      type: object
+      properties:
+        discount_type:
+          type: string
+          enum: [PERCENT, AMOUNT]
+          description: Type of discount.
+        amount:
+          type: number
+          description: Discount amount or percentage.
+        scope:
+          type: string
+          enum: [SUBSCRIPTION, COMPONENT, ADD_ON]
+          description: What the discount applies to.
+        billing_cycle_duration:
+          type: integer
+          description: How many billing cycles the discount lasts.
+        billing_cycle_start_offset:
+          type: integer
+          description: Offset from subscription start to begin applying discount.
+        metered_component_uuid:
+          type: string
+          description: UUID of the metered component to discount.
+        add_on_name:
+          type: string
+          description: Name of the add-on to discount.
+        labels:
+          type: object
+          description: Label filters for the discount.
+    BillingSettings:
+      type: object
+      properties:
+        payment_gateway_type:
+          type: string
+          description: Type of payment gateway (e.g., stripe).
+        invoice_grace_period_days:
+          type: integer
+          description: Number of days grace period before invoice payment is due.
+        auto_charge:
+          type: boolean
+          description: Whether to automatically charge customers on invoice.
+        billing_period_anchor:
+          type: string
+          description: Anchor date for billing periods.
+    CustomerBillingSettingsInputArgs:
+      type: object
+      properties:
+        payment_gateway_type:
+          type: string
+        invoice_grace_period_days:
+          type: integer
+        auto_charge:
+          type: boolean
+    BillingCycleDate:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+          description: Start of the current billing cycle.
+        end:
+          type: string
+          format: date-time
+          description: End of the current billing cycle.
+    Invoice:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the invoice.
+        customer_name:
+          type: string
+          description: Name of the customer this invoice belongs to.
+        status:
+          type: string
+          description: Current status of the invoice.
+        issue_date:
+          type: string
+          format: date-time
+          description: When the invoice was issued.
+        due_date:
+          type: string
+          format: date-time
+          description: Payment due date.
+        sub_total:
+          type: number
+          description: Subtotal before taxes.
+        tax_amount:
+          type: number
+          description: Tax amount.
+        discount_credit:
+          type: number
+          description: Discount or credit applied.
+        is_approved:
+          type: boolean
+          description: Whether the invoice has been approved.
+        pdf_url:
+          type: string
+          format: uri
+          description: URL to the invoice PDF.
+        external_invoice_id:
+          type: string
+          description: External invoice ID in the payment gateway.
+        external_payment_id:
+          type: string
+          description: External payment ID.
+        payment_error:
+          type: string
+          description: Error message if payment failed.
+        payment_retry_attempt:
+          type: integer
+        invoice_retry_attempt:
+          type: integer
+        latest_payment_attempt_at:
+          type: string
+          format: date-time
+        min_item_start_time:
+          type: string
+          format: date-time
+        status_error:
+          type: string
+        invoicing_error:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+    Coupon:
+      type: object
+      required:
+        - name
+        - discount_amount
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the coupon.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        discount_type:
+          type: string
+          enum: [PERCENT, AMOUNT]
+          description: Type of discount.
+        discount_amount:
+          type: number
+          description: Discount amount or percentage.
+        frequency:
+          type: string
+          description: How often the coupon can be applied.
+        duration_length:
+          type: integer
+          description: How long the coupon discount lasts.
+        duration_unit:
+          type: string
+          description: Time unit for duration.
+        expiration_time:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the coupon expires.
+        max_uses:
+          type: integer
+          description: Maximum number of times the coupon can be used.
+        code:
+          type: string
+          description: Coupon code for self-serve redemption.
+        excluded_customers:
+          type: array
+          items:
+            type: object
+        excluded_price_plans:
+          type: array
+          items:
+            type: object
+    CouponInputArgs:
+      type: object
+      required:
+        - name
+        - frequency
+        - discount_type
+        - discount_amount
+      properties:
+        name:
+          type: string
+        display_name:
+          type: string
+        vendor_id:
+          type: string
+        frequency:
+          type: string
+          enum: [ONCE, RECURRING, FOREVER]
+        discount_type:
+          type: string
+          enum: [PERCENT, AMOUNT]
+        discount_amount:
+          type: number
+        duration_length:
+          type: integer
+        duration_unit:
+          type: string
+        expiration_time:
+          type: string
+          format: date-time
+        max_uses:
+          type: integer
+        code:
+          type: string
+        excluded_customers:
+          type: array
+          items:
+            type: string
+        excluded_price_plans:
+          type: array
+          items:
+            type: string
+    ApplyCouponInputArgs:
+      type: object
+      properties:
+        coupon_name:
+          type: string
+          description: Name of the coupon to apply.
+        customer_name:
+          type: string
+          description: Name of the customer to apply the coupon to.
+    CreateCreditGrantArgs:
+      type: object
+      properties:
+        customer_name:
+          type: string
+          description: Name of the customer to grant credits to.
+        amount:
+          type: number
+          description: Amount of credits to grant.
+        expiration_time:
+          type: string
+          format: date-time
+          description: When the credits expire.
+        description:
+          type: string
+          description: Description for the credit grant.
+    CustomerCreditBalance:
+      type: object
+      properties:
+        available_balance:
+          type: number
+          description: Current available credit balance.
+        customer_name:
+          type: string
+    CreditTopOffPlan:
+      type: object
+      properties:
+        customer_name:
+          type: string
+        threshold:
+          type: number
+          description: Credit balance threshold that triggers a top-off.
+        top_off_amount:
+          type: number
+          description: Amount of credits to add when threshold is reached.
+        enabled:
+          type: boolean
+    CreateCreditTopOffPlanInputArgs:
+      type: object
+      properties:
+        threshold:
+          type: number
+          description: Credit balance threshold that triggers a top-off.
+        top_off_amount:
+          type: number
+          description: Amount of credits to add when threshold is reached.
+        enabled:
+          type: boolean
+    AdhocCharge:
+      type: object
+      properties:
+        uuid:
+          type: string
+        customer_name:
+          type: string
+        amount:
+          type: number
+          description: Amount of the adhoc charge.
+        description:
+          type: string
+          description: Description of the charge.
+        created_at:
+          type: string
+          format: date-time
+    CreateAdhocChargeArgs:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Amount to charge.
+        description:
+          type: string
+          description: Description of the adhoc charge.
+    Webhook:
+      type: object
+      required:
+        - url
+        - enable_signature
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the webhook.
+        url:
+          type: string
+          format: uri
+          description: URL to send webhook payloads to.
+        enable_signature:
+          type: boolean
+          description: Whether to include a signature for payload verification.
+    CreateWebhookArgs:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          description: URL to send webhook payloads to.
+        enable_signature:
+          type: boolean
+          description: Whether to sign webhook payloads.
+    CustomerMeasurementMapping:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label key to map.
+        value:
+          type: string
+          description: Label value to map to.
+    CustomerMeasurementMappingInputArgs:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+    CustomerFeature:
+      type: object
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        has_access:
+          type: boolean
+          description: Whether the customer has access to this feature.
+        limit:
+          type: number
+          description: Usage limit for this feature.
+        current_usage:
+          type: number
+          description: Current usage count for this feature.
+    AccruedRevenue:
+      type: object
+      properties:
+        customer_name:
+          type: string
+        total:
+          type: number
+          description: Total accrued revenue amount.
+        line_items:
+          type: array
+          items:
+            type: object
+    CreateRefundArgs:
+      type: object
+      properties:
+        customer_name:
+          type: string
+          description: Name of the customer to refund.
+        amount:
+          type: number
+          description: Amount to refund.
+        invoice_uuid:
+          type: string
+          description: UUID of the invoice to refund against.
+        reason:
+          type: string
+          description: Reason for the refund.
