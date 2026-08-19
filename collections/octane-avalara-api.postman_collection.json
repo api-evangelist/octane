@@ -1,0 +1,673 @@
+{
+  "item": [
+    {
+      "id": "a59e4b5f-7e2f-4443-adae-ee15fadb5416",
+      "name": "Avalara",
+      "description": {
+        "content": "Avalara tax integration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4afd994d-2b72-45f7-97ca-3921de58fa53",
+          "name": "Get Avalara Settings",
+          "request": {
+            "name": "Get Avalara Settings",
+            "description": {
+              "content": "Get Avalara tax integration settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integration",
+                "tax",
+                "avalara",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07c37726-8b9d-457b-8841-00329a383863",
+              "name": "Avalara settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integration",
+                    "tax",
+                    "avalara",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae3efef6-114f-46f3-a7a0-a9726138f174",
+          "name": "Create Avalara Settings",
+          "request": {
+            "name": "Create Avalara Settings",
+            "description": {
+              "content": "Create Avalara tax integration settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integration",
+                "tax",
+                "avalara",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b60f393-5d9d-4d53-b82e-76d3cf41cb57",
+              "name": "Avalara settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integration",
+                    "tax",
+                    "avalara",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "759b623c-980a-4ee3-8618-f924ed50c713",
+          "name": "Update Avalara Settings",
+          "request": {
+            "name": "Update Avalara Settings",
+            "description": {
+              "content": "Update Avalara tax integration settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integration",
+                "tax",
+                "avalara",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ddcdf959-60a6-4755-99d1-4b68798739fc",
+              "name": "Updated Avalara settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integration",
+                    "tax",
+                    "avalara",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27e9321f-bf3b-4847-8426-32364be14653",
+          "name": "Validate Avalara Credentials",
+          "request": {
+            "name": "Validate Avalara Credentials",
+            "description": {
+              "content": "Validate Avalara API credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integration",
+                "tax",
+                "avalara",
+                "credentials",
+                "valid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbf0451c-eeaa-42a2-a5e4-17d4191e77d4",
+              "name": "Validation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integration",
+                    "tax",
+                    "avalara",
+                    "credentials",
+                    "valid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29f12adc-dd35-4910-9e41-f8ffd52e755b",
+          "name": "Get Avalara Company",
+          "request": {
+            "name": "Get Avalara Company",
+            "description": {
+              "content": "Get the Avalara company information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integration",
+                "tax",
+                "avalara",
+                "company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f7e52fe-ea06-4dd6-825d-9e1f5be938a3",
+              "name": "Avalara company",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integration",
+                    "tax",
+                    "avalara",
+                    "company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16f0e843-e4a1-4f2c-8553-d4522da3828a",
+          "name": "Get Avalara Tax Codes",
+          "request": {
+            "name": "Get Avalara Tax Codes",
+            "description": {
+              "content": "Get available Avalara tax codes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integration",
+                "tax",
+                "avalara",
+                "tax_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29aa95c8-c2e1-4e44-aee3-28169fd5a75e",
+              "name": "Tax codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integration",
+                    "tax",
+                    "avalara",
+                    "tax_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6547093-445c-4c25-9f7b-31968fcbd837",
+          "name": "Get Avalara Entity Use Codes",
+          "request": {
+            "name": "Get Avalara Entity Use Codes",
+            "description": {
+              "content": "Get available Avalara entity use codes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integration",
+                "tax",
+                "avalara",
+                "entity_use_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfa3b4f7-d73b-44da-a7f6-60ea35822139",
+              "name": "Entity use codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integration",
+                    "tax",
+                    "avalara",
+                    "entity_use_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c7f4963d-5621-420c-b06e-fc99594b32fa",
+    "name": "Octane REST Admin Avalara API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

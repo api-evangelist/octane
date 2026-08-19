@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Billing Settings API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/billing_settings"
+          },
+          "docs": "Get billing settings for the vendor."
+        },
+        {
+          "info": {
+            "name": "Create Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/billing_settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create billing settings for the vendor."
+        },
+        {
+          "info": {
+            "name": "Update Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/billing_settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update billing settings for the vendor."
+        },
+        {
+          "info": {
+            "name": "Delete Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/billing_settings"
+          },
+          "docs": "Delete billing settings for the vendor."
+        },
+        {
+          "info": {
+            "name": "List Payment Gateway Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/payment_gateway_credentials"
+          },
+          "docs": "Get all payment gateway credentials for a vendor."
+        },
+        {
+          "info": {
+            "name": "Create Payment Gateway Credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/payment_gateway_credentials",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add payment gateway credentials for a vendor."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

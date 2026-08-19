@@ -1,0 +1,258 @@
+{
+  "item": [
+    {
+      "id": "e04a2aef-a3a2-4b1e-8f45-d23fb215aa3e",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Manage customer subscriptions to price plans",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15d03e06-2bee-4ec6-bd24-e1bbb2ee748e",
+          "name": "Get Customer Active Subscription",
+          "request": {
+            "name": "Get Customer Active Subscription",
+            "description": {
+              "content": "Get the active subscription for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "active_subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40152ab4-d154-4848-b8cd-b3d70fa1c368",
+              "name": "Active subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "active_subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"price_plan_name\": \"string\",\n  \"price_plan_uuid\": \"string\",\n  \"price_plan\": {\n    \"name\": \"string\",\n    \"period\": \"annual\",\n    \"metered_components\": [\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"FLAT\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 6314.6065592160885,\n        \"minimum_charge\": 2918.8459302243295,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 9437.996608437266\n      },\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"VOLUME\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 8638.60624688772,\n        \"minimum_charge\": 1477.6335867350788,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 8026.314916715507\n      }\n    ],\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"external_uuid\": \"string\",\n    \"base_price\": 2549.6659968791737,\n    \"base_price_frequency\": \"string\",\n    \"base_price_description\": \"string\",\n    \"minimum_charge\": 5483.468694777295,\n    \"minimum_charge_frequency\": \"string\",\n    \"features\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"add_ons\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 4526.435383305994,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": true,\n        \"quantity_enabled\": false,\n        \"prices\": [\n          {\n            \"price\": 8761.86508100882,\n            \"cap\": 8091.026918795774\n          },\n          {\n            \"price\": 7092.578999448532,\n            \"cap\": 5525.0587208139905\n          }\n        ],\n        \"immediately_charge\": true,\n        \"limit\": 3599.1639562301616,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 2077.648226494615,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": true,\n        \"quantity_enabled\": true,\n        \"prices\": [\n          {\n            \"price\": 2114.1868887466385,\n            \"cap\": 3359.709274766128\n          },\n          {\n            \"price\": 957.9719265185327,\n            \"cap\": 624.2055966796722\n          }\n        ],\n        \"immediately_charge\": false,\n        \"limit\": 3731.9608143394644,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      }\n    ],\n    \"limits\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 8370.124278607642\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 79.22454940889611\n      }\n    ],\n    \"trial\": {\n      \"time_length\": 5953,\n      \"time_unit_name\": \"string\",\n      \"credit\": 1712.7832685764988\n    },\n    \"created_at\": \"1990-11-11T19:17:23.261Z\"\n  },\n  \"effective_at\": \"1979-09-03T15:27:53.584Z\",\n  \"expired_at\": \"1952-11-22T15:08:23.420Z\",\n  \"align_to_calendar\": false,\n  \"base_price_override\": 2911.780443347428,\n  \"current_billing_cycle\": {\n    \"start\": \"2005-08-30T10:29:57.132Z\",\n    \"end\": \"1966-06-18T11:47:10.987Z\"\n  },\n  \"total_fixed_price\": 8584.52011396791,\n  \"discounted_fixed_price\": 8700.955145727534,\n  \"features_override\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"limits_override\": [\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 4828.462410776915\n    },\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 974.7368021743085\n    }\n  ],\n  \"trial_override\": {\n    \"time_length\": 4166,\n    \"time_unit_name\": \"string\",\n    \"credit\": 9028.762029584595\n  },\n  \"credit_plan\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a4fbb23-bfc6-4a6e-bc05-ca2617538d66",
+          "name": "Create Customer Subscription",
+          "request": {
+            "name": "Create Customer Subscription",
+            "description": {
+              "content": "Subscribe a customer to a price plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "active_subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price_plan_name\": \"<string>\",\n  \"price_plan_uuid\": \"<string>\",\n  \"price_plan_tag\": \"<string>\",\n  \"effective_at\": \"<dateTime>\",\n  \"align_to_calendar\": \"<boolean>\",\n  \"coupon_override_name\": \"<string>\",\n  \"discount_override\": {\n    \"discount_type\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"scope\": \"<string>\",\n    \"billing_cycle_duration\": \"<integer>\",\n    \"billing_cycle_start_offset\": \"<integer>\",\n    \"metered_component_uuid\": \"<string>\",\n    \"add_on_name\": \"<string>\",\n    \"labels\": \"<object>\"\n  },\n  \"discounts\": [\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    },\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    }\n  ],\n  \"features_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_ons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"limits_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"trial_override\": {\n    \"time_length\": \"<integer>\",\n    \"time_unit_name\": \"<string>\",\n    \"credit\": \"<number>\"\n  },\n  \"credit_plan\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f738a544-7def-4fee-9e9b-63094f70b80e",
+              "name": "Active subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "active_subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price_plan_name\": \"<string>\",\n  \"price_plan_uuid\": \"<string>\",\n  \"price_plan_tag\": \"<string>\",\n  \"effective_at\": \"<dateTime>\",\n  \"align_to_calendar\": \"<boolean>\",\n  \"coupon_override_name\": \"<string>\",\n  \"discount_override\": {\n    \"discount_type\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"scope\": \"<string>\",\n    \"billing_cycle_duration\": \"<integer>\",\n    \"billing_cycle_start_offset\": \"<integer>\",\n    \"metered_component_uuid\": \"<string>\",\n    \"add_on_name\": \"<string>\",\n    \"labels\": \"<object>\"\n  },\n  \"discounts\": [\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    },\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    }\n  ],\n  \"features_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_ons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"limits_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"trial_override\": {\n    \"time_length\": \"<integer>\",\n    \"time_unit_name\": \"<string>\",\n    \"credit\": \"<number>\"\n  },\n  \"credit_plan\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"price_plan_name\": \"string\",\n  \"price_plan_uuid\": \"string\",\n  \"price_plan\": {\n    \"name\": \"string\",\n    \"period\": \"quarterly\",\n    \"metered_components\": [\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"TIERED\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 5383.775728587614,\n        \"minimum_charge\": 644.5429585426266,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 124.33259072080594\n      },\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"VOLUME\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 8228.095562284616,\n        \"minimum_charge\": 4592.25995533161,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 971.1995648807604\n      }\n    ],\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"external_uuid\": \"string\",\n    \"base_price\": 823.3687509788168,\n    \"base_price_frequency\": \"string\",\n    \"base_price_description\": \"string\",\n    \"minimum_charge\": 7361.9469393304125,\n    \"minimum_charge_frequency\": \"string\",\n    \"features\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"add_ons\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 4936.378805587253,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": true,\n        \"quantity_enabled\": true,\n        \"prices\": [\n          {\n            \"price\": 1187.5486069642561,\n            \"cap\": 6580.668910261435\n          },\n          {\n            \"price\": 3492.446343203044,\n            \"cap\": 2871.2105958022285\n          }\n        ],\n        \"immediately_charge\": false,\n        \"limit\": 1679.7737182607152,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 9206.31125973315,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": false,\n        \"quantity_enabled\": true,\n        \"prices\": [\n          {\n            \"price\": 800.9136794000615,\n            \"cap\": 7638.589668811023\n          },\n          {\n            \"price\": 2548.0625028935146,\n            \"cap\": 7310.584117582114\n          }\n        ],\n        \"immediately_charge\": true,\n        \"limit\": 5220.60924956683,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      }\n    ],\n    \"limits\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 7128.823782178841\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 4144.24293729745\n      }\n    ],\n    \"trial\": {\n      \"time_length\": 2440,\n      \"time_unit_name\": \"string\",\n      \"credit\": 5191.660683350572\n    },\n    \"created_at\": \"2025-05-12T06:58:09.812Z\"\n  },\n  \"effective_at\": \"1950-07-24T21:13:17.055Z\",\n  \"expired_at\": \"1973-07-16T19:38:26.239Z\",\n  \"align_to_calendar\": true,\n  \"base_price_override\": 7263.831950143598,\n  \"current_billing_cycle\": {\n    \"start\": \"1975-12-19T14:31:28.796Z\",\n    \"end\": \"1950-03-19T04:25:00.377Z\"\n  },\n  \"total_fixed_price\": 1803.734601740521,\n  \"discounted_fixed_price\": 9214.703896491117,\n  \"features_override\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"limits_override\": [\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 9014.40992225351\n    },\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 9644.916037431765\n    }\n  ],\n  \"trial_override\": {\n    \"time_length\": 3305,\n    \"time_unit_name\": \"string\",\n    \"credit\": 5878.964313395547\n  },\n  \"credit_plan\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4e53a986-2a99-475a-9373-3d15c5465673",
+    "name": "Octane REST Admin Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

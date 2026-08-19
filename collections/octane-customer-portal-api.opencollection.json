@@ -1,0 +1,258 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Customer Portal API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Portal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customer Portal Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customer_portal_settings"
+          },
+          "docs": "Get the customer portal configuration."
+        },
+        {
+          "info": {
+            "name": "Create Customer Portal Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customer_portal_settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create customer portal configuration."
+        },
+        {
+          "info": {
+            "name": "Get ECP Active Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/ecp/active_subscription"
+          },
+          "docs": "Get the active subscription from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Update ECP Active Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/ecp/active_subscription",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update subscription from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Add Add-Ons to ECP Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/ecp/active_subscription/add_ons",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add add-ons to the active subscription from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Get ECP Contact Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/ecp/contact_info"
+          },
+          "docs": "Get contact information from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Update ECP Contact Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/ecp/contact_info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update contact information from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Get ECP Credit Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/ecp/credit/available_balance"
+          },
+          "docs": "Get available credit balance from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Get ECP Credit Grants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/ecp/credit_grants"
+          },
+          "docs": "Get credit grants from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Get ECP Credit Ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/ecp/credit/ledger"
+          },
+          "docs": "Get credit ledger from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Purchase Credits (ECP)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/ecp/credit/purchase",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Purchase additional credits from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Get ECP Credit Top-Off Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/ecp/credit_top_off_plan"
+          },
+          "docs": "Get credit top-off plan from the end-customer portal."
+        },
+        {
+          "info": {
+            "name": "Get Self-Serve Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/self_serve_settings"
+          },
+          "docs": "Get self-serve enrollment settings for a vendor."
+        },
+        {
+          "info": {
+            "name": "Create Self-Serve Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/self_serve_settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create self-serve enrollment settings."
+        },
+        {
+          "info": {
+            "name": "Update Self-Serve Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/self_serve_settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update self-serve enrollment settings."
+        },
+        {
+          "info": {
+            "name": "Get Self-Serve Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/self_serve_settings/customization"
+          },
+          "docs": "Get customization settings for self-serve portal."
+        },
+        {
+          "info": {
+            "name": "Create Self-Serve Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/self_serve_settings/customization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create customization settings for self-serve portal."
+        },
+        {
+          "info": {
+            "name": "Update Self-Serve Customization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/self_serve_settings/customization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update customization settings for self-serve portal."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

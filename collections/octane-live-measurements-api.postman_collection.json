@@ -1,0 +1,119 @@
+{
+  "item": [
+    {
+      "id": "16e6f546-68c2-4f16-9061-bd40bc68d157",
+      "name": "Live Measurements",
+      "description": {
+        "content": "Real-time usage measurement retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc4f4db9-7a39-4179-b807-71daa23ea842",
+          "name": "Get Live Measurements",
+          "request": {
+            "name": "Get Live Measurements",
+            "description": {
+              "content": "Retrieve real-time usage measurements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "live_measurements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9ec0f7e-1910-4edc-9526-b2839be54d13",
+              "name": "Live measurement data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "live_measurements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a68b570-b069-4701-be7b-18174b1b39e2",
+    "name": "Octane REST Admin Live Measurements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

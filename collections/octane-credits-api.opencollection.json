@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Credits API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customer Credit Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/credit_balance",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the current credit balance for a customer."
+        },
+        {
+          "info": {
+            "name": "Get Customer Credit Top-Off Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/credit_top_off_plan",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the credit top-off plan for a customer."
+        },
+        {
+          "info": {
+            "name": "Create Customer Credit Top-Off Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customers/:customer_name/credit_top_off_plan",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a credit top-off plan for a customer."
+        },
+        {
+          "info": {
+            "name": "Update Customer Credit Top-Off Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/customers/:customer_name/credit_top_off_plan",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the credit top-off plan for a customer."
+        },
+        {
+          "info": {
+            "name": "Delete Customer Credit Top-Off Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/customers/:customer_name/credit_top_off_plan",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete the credit top-off plan for a customer."
+        },
+        {
+          "info": {
+            "name": "List Credit Grants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/credits/grant"
+          },
+          "docs": "Get all credit grants for a vendor."
+        },
+        {
+          "info": {
+            "name": "Create Credit Grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/credits/grant",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new credit grant."
+        },
+        {
+          "info": {
+            "name": "Issue Credit Grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/credits/grant/:grant_uuid/grant",
+            "params": [
+              {
+                "name": "grant_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Issue a credit grant to a customer."
+        },
+        {
+          "info": {
+            "name": "Void Credit Grant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/credits/grant/:grant_uuid/void",
+            "params": [
+              {
+                "name": "grant_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Void a credit grant."
+        },
+        {
+          "info": {
+            "name": "Get Customer Credit Ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/credits/ledger/:customer_name",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the credit ledger for a customer."
+        },
+        {
+          "info": {
+            "name": "Get Customer Credit Ledger As Of Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/credits/ledger/:customer_name/:as_of_str",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "as_of_str",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the credit ledger for a customer as of a specific date."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

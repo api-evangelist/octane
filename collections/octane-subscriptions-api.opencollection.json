@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Subscriptions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customer Active Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/active_subscription",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the active subscription for a customer."
+        },
+        {
+          "info": {
+            "name": "Create Customer Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customers/:customer_name/active_subscription",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe a customer to a price plan."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

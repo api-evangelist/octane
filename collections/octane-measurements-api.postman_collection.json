@@ -1,0 +1,241 @@
+{
+  "item": [
+    {
+      "id": "c8047952-127c-4125-9fa9-9114ad29bdc7",
+      "name": "Measurements",
+      "description": {
+        "content": "Submit usage measurements for customers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d03c093-ae14-4afb-ac2a-aa88427f3b52",
+          "name": "Send Measurement",
+          "request": {
+            "name": "Send Measurement",
+            "description": {
+              "content": "Submit a single usage measurement for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "measurements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<number>\",\n  \"id\": \"<string>\",\n  \"meter_name\": \"<string>\",\n  \"customer_name\": \"<string>\",\n  \"event_name\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reset_total\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35a75bc5-b2a5-48f0-9f2b-f0e4cba2f850",
+              "name": "Created measurement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measurements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<number>\",\n  \"id\": \"<string>\",\n  \"meter_name\": \"<string>\",\n  \"customer_name\": \"<string>\",\n  \"event_name\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reset_total\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<number>\",\n  \"id\": \"<string>\",\n  \"meter_name\": \"<string>\",\n  \"customer_name\": \"<string>\",\n  \"event_name\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reset_total\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6578e21-b7e4-4490-a24e-140822c22bf9",
+          "name": "Send Batched Measurements",
+          "request": {
+            "name": "Send Batched Measurements",
+            "description": {
+              "content": "Submit multiple usage measurements in a single request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "measurements",
+                "multi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"value\": \"<number>\",\n    \"id\": \"<string>\",\n    \"meter_name\": \"<string>\",\n    \"customer_name\": \"<string>\",\n    \"event_name\": \"<string>\",\n    \"time\": \"<dateTime>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"reset_total\": \"<boolean>\"\n  },\n  {\n    \"value\": \"<number>\",\n    \"id\": \"<string>\",\n    \"meter_name\": \"<string>\",\n    \"customer_name\": \"<string>\",\n    \"event_name\": \"<string>\",\n    \"time\": \"<dateTime>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    },\n    \"reset_total\": \"<boolean>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9af338a0-607f-42ab-a8c0-5455dc236101",
+              "name": "Created measurements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measurements",
+                    "multi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"value\": \"<number>\",\n    \"id\": \"<string>\",\n    \"meter_name\": \"<string>\",\n    \"customer_name\": \"<string>\",\n    \"event_name\": \"<string>\",\n    \"time\": \"<dateTime>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"reset_total\": \"<boolean>\"\n  },\n  {\n    \"value\": \"<number>\",\n    \"id\": \"<string>\",\n    \"meter_name\": \"<string>\",\n    \"customer_name\": \"<string>\",\n    \"event_name\": \"<string>\",\n    \"time\": \"<dateTime>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"reset_total\": \"<boolean>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"<number>\",\n    \"id\": \"<string>\",\n    \"meter_name\": \"<string>\",\n    \"customer_name\": \"<string>\",\n    \"event_name\": \"<string>\",\n    \"time\": \"<dateTime>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"reset_total\": \"<boolean>\"\n  },\n  {\n    \"value\": \"<number>\",\n    \"id\": \"<string>\",\n    \"meter_name\": \"<string>\",\n    \"customer_name\": \"<string>\",\n    \"event_name\": \"<string>\",\n    \"time\": \"<dateTime>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"reset_total\": \"<boolean>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c2b56dc1-8e7a-4389-a661-1b3ef793f2c3",
+    "name": "Octane REST Admin Measurements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

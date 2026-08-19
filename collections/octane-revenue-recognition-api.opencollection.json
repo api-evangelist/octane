@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Revenue Recognition API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Revenue Recognition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customer Accrued Revenue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/accrued_revenue",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get accrued revenue for a customer."
+        },
+        {
+          "info": {
+            "name": "Generate Revenue Recognition Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/recognized_revenue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a revenue recognition report for a given period."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

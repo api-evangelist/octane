@@ -1,0 +1,758 @@
+{
+  "item": [
+    {
+      "id": "d1667a6a-00e1-4c83-9b7e-095868710735",
+      "name": "Invoices",
+      "description": {
+        "content": "Access and manage customer invoices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8407acc-4475-4c41-b14a-759dd2261b71",
+          "name": "List Customer Invoices",
+          "request": {
+            "name": "List Customer Invoices",
+            "description": {
+              "content": "Get all invoices for a customer with optional filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_column",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "forward_sort_offset",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "forward_secondary_sort_offset",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c52d2230-6fe6-4a21-8c79-59bacc4c8b55",
+              "name": "List of invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort_column",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "forward_sort_offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "forward_secondary_sort_offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"customer_name\": \"string\",\n    \"status\": \"string\",\n    \"issue_date\": \"1998-12-30T06:16:48.293Z\",\n    \"due_date\": \"1949-01-30T07:02:08.257Z\",\n    \"sub_total\": 2417.0294198204033,\n    \"tax_amount\": 3656.719051653533,\n    \"discount_credit\": 5233.005534634842,\n    \"is_approved\": false,\n    \"pdf_url\": \"http://psSjR.zbaPGmY\",\n    \"external_invoice_id\": \"string\",\n    \"external_payment_id\": \"string\",\n    \"payment_error\": \"string\",\n    \"payment_retry_attempt\": 5603,\n    \"invoice_retry_attempt\": 8487,\n    \"latest_payment_attempt_at\": \"1977-02-01T17:37:59.174Z\",\n    \"min_item_start_time\": \"1975-12-20T11:49:56.969Z\",\n    \"status_error\": \"string\",\n    \"invoicing_error\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"customer_name\": \"string\",\n    \"status\": \"string\",\n    \"issue_date\": \"2014-11-28T09:57:57.790Z\",\n    \"due_date\": \"2002-06-26T11:10:25.299Z\",\n    \"sub_total\": 6706.3948688004675,\n    \"tax_amount\": 7909.91467281612,\n    \"discount_credit\": 7881.149613681339,\n    \"is_approved\": false,\n    \"pdf_url\": \"https://bnvNnQEembhAKtrHVM.rgmoAr8q8CaGIeeddCbmRDTVFiK.k9\",\n    \"external_invoice_id\": \"string\",\n    \"external_payment_id\": \"string\",\n    \"payment_error\": \"string\",\n    \"payment_retry_attempt\": 885,\n    \"invoice_retry_attempt\": 387,\n    \"latest_payment_attempt_at\": \"1954-07-03T16:20:55.122Z\",\n    \"min_item_start_time\": \"2015-09-20T10:04:39.343Z\",\n    \"status_error\": \"string\",\n    \"invoicing_error\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd35aead-8799-4afb-952f-0b776d3290be",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "Get all invoices for a vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ccb566f-811c-4286-ac14-759bd43499bc",
+              "name": "List of invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"customer_name\": \"string\",\n    \"status\": \"string\",\n    \"issue_date\": \"1982-01-29T03:17:58.298Z\",\n    \"due_date\": \"1994-05-01T18:12:01.992Z\",\n    \"sub_total\": 3065.5507355326763,\n    \"tax_amount\": 2149.0062391485944,\n    \"discount_credit\": 766.8365569680668,\n    \"is_approved\": true,\n    \"pdf_url\": \"http://QuSHXaWpEfFK.fbz04VT\",\n    \"external_invoice_id\": \"string\",\n    \"external_payment_id\": \"string\",\n    \"payment_error\": \"string\",\n    \"payment_retry_attempt\": 4532,\n    \"invoice_retry_attempt\": 3866,\n    \"latest_payment_attempt_at\": \"2024-08-17T06:45:58.538Z\",\n    \"min_item_start_time\": \"1966-11-04T09:31:28.864Z\",\n    \"status_error\": \"string\",\n    \"invoicing_error\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"customer_name\": \"string\",\n    \"status\": \"string\",\n    \"issue_date\": \"1994-08-27T06:48:22.481Z\",\n    \"due_date\": \"1979-12-04T20:50:14.599Z\",\n    \"sub_total\": 2508.974355124798,\n    \"tax_amount\": 9221.907473921172,\n    \"discount_credit\": 4324.724426682113,\n    \"is_approved\": false,\n    \"pdf_url\": \"https://u.tkjMC+OOI\",\n    \"external_invoice_id\": \"string\",\n    \"external_payment_id\": \"string\",\n    \"payment_error\": \"string\",\n    \"payment_retry_attempt\": 2322,\n    \"invoice_retry_attempt\": 7056,\n    \"latest_payment_attempt_at\": \"2025-03-09T15:18:24.305Z\",\n    \"min_item_start_time\": \"1972-05-04T08:19:57.845Z\",\n    \"status_error\": \"string\",\n    \"invoicing_error\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "189b0611-15ba-4c42-98a7-f2e179a0ed15",
+          "name": "Get Invoice",
+          "request": {
+            "name": "Get Invoice",
+            "description": {
+              "content": "Get an invoice by its UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoice_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoice_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48631284-9486-4eb3-b917-630714d9afc9",
+              "name": "Invoice details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoice_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoice_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"status\": \"string\",\n  \"issue_date\": \"1989-07-16T16:01:34.679Z\",\n  \"due_date\": \"1983-11-01T18:31:40.408Z\",\n  \"sub_total\": 3353.1541702401178,\n  \"tax_amount\": 586.137920054296,\n  \"discount_credit\": 9257.245451621444,\n  \"is_approved\": false,\n  \"pdf_url\": \"https://Wuttfd.gzxQpWO3-cJS9\",\n  \"external_invoice_id\": \"string\",\n  \"external_payment_id\": \"string\",\n  \"payment_error\": \"string\",\n  \"payment_retry_attempt\": 4384,\n  \"invoice_retry_attempt\": 9928,\n  \"latest_payment_attempt_at\": \"1961-10-03T17:32:02.883Z\",\n  \"min_item_start_time\": \"1968-03-23T12:43:38.949Z\",\n  \"status_error\": \"string\",\n  \"invoicing_error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85c0fe11-e624-4131-94a2-d766b0179961",
+          "name": "Delete Invoice",
+          "request": {
+            "name": "Delete Invoice",
+            "description": {
+              "content": "Delete an invoice by its UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoice_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoice_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbd79a18-5889-452f-ad33-06bee9830eb4",
+              "name": "Invoice deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoice_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoice_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5843edd-6701-451f-81c2-917588b27383",
+          "name": "Retry Invoice Payment",
+          "request": {
+            "name": "Retry Invoice Payment",
+            "description": {
+              "content": "Retry payment collection for a failed invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoice_uuid",
+                "retries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoice_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00101fb5-6286-4511-837c-3579a7c0fc5f",
+              "name": "Retry initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoice_uuid",
+                    "retries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoice_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0de663ea-8ef4-4e92-aa37-122fdc10a1cb",
+          "name": "Update Invoice Status",
+          "request": {
+            "name": "Update Invoice Status",
+            "description": {
+              "content": "Update the status of an invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoice_uuid",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoice_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16ce9e9a-ebf2-416d-91ec-774f671d9191",
+              "name": "Updated invoice",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoice_uuid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoice_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"status\": \"string\",\n  \"issue_date\": \"1989-07-16T16:01:34.679Z\",\n  \"due_date\": \"1983-11-01T18:31:40.408Z\",\n  \"sub_total\": 3353.1541702401178,\n  \"tax_amount\": 586.137920054296,\n  \"discount_credit\": 9257.245451621444,\n  \"is_approved\": false,\n  \"pdf_url\": \"https://Wuttfd.gzxQpWO3-cJS9\",\n  \"external_invoice_id\": \"string\",\n  \"external_payment_id\": \"string\",\n  \"payment_error\": \"string\",\n  \"payment_retry_attempt\": 4384,\n  \"invoice_retry_attempt\": 9928,\n  \"latest_payment_attempt_at\": \"1961-10-03T17:32:02.883Z\",\n  \"min_item_start_time\": \"1968-03-23T12:43:38.949Z\",\n  \"status_error\": \"string\",\n  \"invoicing_error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a39f10b-b744-4588-8eca-abb839ef2330",
+          "name": "Get Invoice PDF",
+          "request": {
+            "name": "Get Invoice PDF",
+            "description": {
+              "content": "Get the PDF version of an invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":invoice_uuid_token",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoice_uuid_token",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7b9f992-a01f-4984-b225-c139e4a08c25",
+              "name": "Invoice PDF",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoice_uuid_token",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoice_uuid_token",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "84f8e651-b51d-4c1a-a047-649c8d56547e",
+    "name": "Octane REST Admin Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

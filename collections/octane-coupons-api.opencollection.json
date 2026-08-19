@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Coupons API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coupons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/coupons"
+          },
+          "docs": "Get all coupons for a vendor."
+        },
+        {
+          "info": {
+            "name": "Create Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/coupons",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new discount coupon."
+        },
+        {
+          "info": {
+            "name": "Get Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/coupons/:coupon_name",
+            "params": [
+              {
+                "name": "coupon_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a coupon by its unique name."
+        },
+        {
+          "info": {
+            "name": "Delete Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/coupons/:coupon_name",
+            "params": [
+              {
+                "name": "coupon_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a coupon by its unique name."
+        },
+        {
+          "info": {
+            "name": "Apply Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/coupons/apply_coupon",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply a coupon to a customer subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,189 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Price Plans API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Price Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Price Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/price_plans"
+          },
+          "docs": "Get all price plans for a vendor."
+        },
+        {
+          "info": {
+            "name": "Create Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/price_plans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new price plan."
+        },
+        {
+          "info": {
+            "name": "List Price Plans Paginated",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/price_plans/paginate"
+          },
+          "docs": "Get price plans with pagination support."
+        },
+        {
+          "info": {
+            "name": "List Self-Serve Price Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/price_plans/self_serve"
+          },
+          "docs": "Get price plans available for self-serve enrollment."
+        },
+        {
+          "info": {
+            "name": "Get Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/price_plans/:price_plan_name",
+            "params": [
+              {
+                "name": "price_plan_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a price plan by its unique name."
+        },
+        {
+          "info": {
+            "name": "Update Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/price_plans/:price_plan_name",
+            "params": [
+              {
+                "name": "price_plan_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a price plan by its unique name."
+        },
+        {
+          "info": {
+            "name": "Delete Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/price_plans/:price_plan_name",
+            "params": [
+              {
+                "name": "price_plan_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a price plan by its unique name."
+        },
+        {
+          "info": {
+            "name": "Archive Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/price_plans/:price_plan_name/archive",
+            "params": [
+              {
+                "name": "price_plan_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive a price plan by its unique name."
+        },
+        {
+          "info": {
+            "name": "Get Price Plan by Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/price_plans/:price_plan_name/:tag",
+            "params": [
+              {
+                "name": "price_plan_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a price plan by name and tag."
+        },
+        {
+          "info": {
+            "name": "Update Metered Component Limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/price_plans/metered_components/:uuid/update_limits",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update usage limits for a metered component on a price plan."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

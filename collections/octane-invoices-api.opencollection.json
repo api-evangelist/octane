@@ -1,0 +1,178 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Invoices API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Customer Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/invoices",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_column",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "forward_sort_offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "forward_secondary_sort_offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all invoices for a customer with optional filtering."
+        },
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/invoices"
+          },
+          "docs": "Get all invoices for a vendor."
+        },
+        {
+          "info": {
+            "name": "Get Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/invoices/:invoice_uuid",
+            "params": [
+              {
+                "name": "invoice_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an invoice by its UUID."
+        },
+        {
+          "info": {
+            "name": "Delete Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/invoices/:invoice_uuid",
+            "params": [
+              {
+                "name": "invoice_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an invoice by its UUID."
+        },
+        {
+          "info": {
+            "name": "Retry Invoice Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/invoices/:invoice_uuid/retries",
+            "params": [
+              {
+                "name": "invoice_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retry payment collection for a failed invoice."
+        },
+        {
+          "info": {
+            "name": "Update Invoice Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/invoices/:invoice_uuid/status",
+            "params": [
+              {
+                "name": "invoice_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the status of an invoice."
+        },
+        {
+          "info": {
+            "name": "Get Invoice PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/invoices/:invoice_uuid_token/pdf",
+            "params": [
+              {
+                "name": "invoice_uuid_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the PDF version of an invoice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

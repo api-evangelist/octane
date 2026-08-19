@@ -1,0 +1,1683 @@
+{
+  "item": [
+    {
+      "id": "b7af4a78-dbea-4991-bffc-dab1d7044dc2",
+      "name": "Customers",
+      "description": {
+        "content": "Manage customers and their subscriptions, billing, and settings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb1af3d9-5243-4f4b-88fe-d6505d5eb7aa",
+          "name": "List Customers",
+          "request": {
+            "name": "List Customers",
+            "description": {
+              "content": "Get all customers for a given vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a36b2939-a56a-4816-bf10-a86cc2b6ffc3",
+              "name": "List of customers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"display_name\": \"string\",\n    \"contact_info\": {\n      \"address_line_1\": \"string\",\n      \"address_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"url\": \"http://ApbYvWoIfhBrgWUdlDAV.ijsvpTtTUl2yHq9SA5t8aE0q\",\n      \"logo_url\": \"http://kuglWgMKzsjoiahH.aocvcEsi-G9uMv-bcHYqXOCWWEQZ4YDRxqV5Ey\",\n      \"email\": \"KPkD@uKOLcsolCnGingzvKRcxBbDwHU.si\",\n      \"secondary_emails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"phone\": \"string\",\n      \"legal_name\": \"string\",\n      \"vat_id\": \"string\"\n    },\n    \"created_at\": \"1957-04-18T02:44:32.007Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"display_name\": \"string\",\n    \"contact_info\": {\n      \"address_line_1\": \"string\",\n      \"address_line_2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"url\": \"https://spHljJnyKGJRCsChKpUXeNmVgWGBaI.fioMxAcXG4zvjG1M1fhj\",\n      \"logo_url\": \"https://TlVFkGwIBTXOYh.wdbR1+V2O1.qQfloKpJM.DPmfcIgTiiU5zZJOI,a13u8Gw+hEt6BVMT8ad-n+Qo\",\n      \"email\": \"GqTz4Qc@qpZJvcTutviRwBKVHBph.cq\",\n      \"secondary_emails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"phone\": \"string\",\n      \"legal_name\": \"string\",\n      \"vat_id\": \"string\"\n    },\n    \"created_at\": \"1968-10-19T22:50:45.382Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d83abf37-24c8-4807-aa82-98cb53cfcc38",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {
+              "content": "Create a new customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"vendor_id\": \"<string>\",\n  \"contact_info\": {\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"logo_url\": \"<uri>\",\n    \"email\": \"<email>\",\n    \"secondary_emails\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"phone\": \"<string>\",\n    \"legal_name\": \"<string>\",\n    \"vat_id\": \"<string>\"\n  },\n  \"price_plan_name\": \"<string>\",\n  \"price_plan_tag\": \"<string>\",\n  \"measurement_mappings\": [\n    {\n      \"label\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"customer_metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"autogenerate_payment_gateway_customer\": \"<boolean>\",\n  \"autogenerate_accounting_customer\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea74160f-dd79-4c39-a4da-433d94e4e524",
+              "name": "Created customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"vendor_id\": \"<string>\",\n  \"contact_info\": {\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"logo_url\": \"<uri>\",\n    \"email\": \"<email>\",\n    \"secondary_emails\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"phone\": \"<string>\",\n    \"legal_name\": \"<string>\",\n    \"vat_id\": \"<string>\"\n  },\n  \"price_plan_name\": \"<string>\",\n  \"price_plan_tag\": \"<string>\",\n  \"measurement_mappings\": [\n    {\n      \"label\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"customer_metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"autogenerate_payment_gateway_customer\": \"<boolean>\",\n  \"autogenerate_accounting_customer\": \"<boolean>\",\n  \"created_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"display_name\": \"string\",\n  \"contact_info\": {\n    \"address_line_1\": \"string\",\n    \"address_line_2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"url\": \"https://PLEMClLaZHsjResyhXwUGgKQFY.lnOkPseC3X,DEm41jP2-RjLxycuSm7oI6sfe\",\n    \"logo_url\": \"http://SWFGmPMCtwPVKLLtzHxDFyWDKcdj.uqypmpGeg8zE73UdA68nvzO7Vdn41zn33wgmoTBQTFdWkJlAVOw9qomtQrv7gF4T1PzlRVjjLnx+Gb\",\n    \"email\": \"pl-4hC6yhF3@rn.jlt\",\n    \"secondary_emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"phone\": \"string\",\n    \"legal_name\": \"string\",\n    \"vat_id\": \"string\"\n  },\n  \"created_at\": \"1958-07-19T07:14:33.576Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92be7418-6da6-46fa-83ef-7ce37bb4f377",
+          "name": "Get Customer",
+          "request": {
+            "name": "Get Customer",
+            "description": {
+              "content": "Get a customer by their unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d9129b4-fa57-4778-986c-83ae47e63c1e",
+              "name": "Customer details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"display_name\": \"string\",\n  \"contact_info\": {\n    \"address_line_1\": \"string\",\n    \"address_line_2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"url\": \"https://PLEMClLaZHsjResyhXwUGgKQFY.lnOkPseC3X,DEm41jP2-RjLxycuSm7oI6sfe\",\n    \"logo_url\": \"http://SWFGmPMCtwPVKLLtzHxDFyWDKcdj.uqypmpGeg8zE73UdA68nvzO7Vdn41zn33wgmoTBQTFdWkJlAVOw9qomtQrv7gF4T1PzlRVjjLnx+Gb\",\n    \"email\": \"pl-4hC6yhF3@rn.jlt\",\n    \"secondary_emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"phone\": \"string\",\n    \"legal_name\": \"string\",\n    \"vat_id\": \"string\"\n  },\n  \"created_at\": \"1958-07-19T07:14:33.576Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3be103f8-a625-46c6-bca2-20a9e9128426",
+          "name": "Delete Customer",
+          "request": {
+            "name": "Delete Customer",
+            "description": {
+              "content": "Delete a customer by their unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e23fb562-84de-4e98-904c-9e203386688f",
+              "name": "Customer deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "365c99c3-afd3-48d3-b0bd-74cd304680f1",
+          "name": "Get Customer Billing Settings",
+          "request": {
+            "name": "Get Customer Billing Settings",
+            "description": {
+              "content": "Get billing settings for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ddb677b-333a-420c-8047-94fc3e5cce3c",
+              "name": "Billing settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_gateway_type\": \"string\",\n  \"invoice_grace_period_days\": 8185,\n  \"auto_charge\": true,\n  \"billing_period_anchor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "571590de-ca9e-4cf4-8b26-a739a68d42d8",
+          "name": "Create Customer Billing Settings",
+          "request": {
+            "name": "Create Customer Billing Settings",
+            "description": {
+              "content": "Create billing settings for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87c636b2-b99a-402c-8d88-87e8597e0054",
+              "name": "Billing settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_gateway_type\": \"string\",\n  \"invoice_grace_period_days\": 8185,\n  \"auto_charge\": true,\n  \"billing_period_anchor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1c23249-ecfb-4dcd-8d51-26523f4d25a4",
+          "name": "Update Customer Billing Settings",
+          "request": {
+            "name": "Update Customer Billing Settings",
+            "description": {
+              "content": "Update billing settings for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3adabee3-5ffa-4d43-a3f0-6973ab64719d",
+              "name": "Updated billing settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_gateway_type\": \"string\",\n  \"invoice_grace_period_days\": 8185,\n  \"auto_charge\": true,\n  \"billing_period_anchor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bcb228f-f28f-40c3-8865-f3b41a7e15ef",
+          "name": "Delete Customer Billing Settings",
+          "request": {
+            "name": "Delete Customer Billing Settings",
+            "description": {
+              "content": "Delete billing settings for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f3b0def-fc44-42fd-a9c4-3b156a3cf533",
+              "name": "Billing settings deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97c4e99b-cc0a-48ee-b2a9-1610668d20ee",
+          "name": "List Customer Adhoc Charges",
+          "request": {
+            "name": "List Customer Adhoc Charges",
+            "description": {
+              "content": "Get all adhoc charges for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "adhoc_charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c23c3b68-4334-48ed-b3b8-cae77d2db1c0",
+              "name": "List of adhoc charges",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "adhoc_charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"customer_name\": \"string\",\n    \"amount\": 3866.9885992195673,\n    \"description\": \"string\",\n    \"created_at\": \"2001-08-09T10:04:58.092Z\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"customer_name\": \"string\",\n    \"amount\": 2181.779728204494,\n    \"description\": \"string\",\n    \"created_at\": \"2001-04-11T14:05:31.546Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f67d261-f0a4-4b79-ba7a-390f7cc6f812",
+          "name": "Create Customer Adhoc Charge",
+          "request": {
+            "name": "Create Customer Adhoc Charge",
+            "description": {
+              "content": "Create an adhoc charge for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "adhoc_charges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1527d9f5-2a08-4cfc-b796-559dc211c3f5",
+              "name": "Created adhoc charge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "adhoc_charges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"amount\": 9696.515131381704,\n  \"description\": \"string\",\n  \"created_at\": \"1997-05-13T07:59:25.514Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d69bdae6-a8d9-4938-90c5-0c47a4e08d48",
+          "name": "Get Customer Adhoc Charge",
+          "request": {
+            "name": "Get Customer Adhoc Charge",
+            "description": {
+              "content": "Get a specific adhoc charge for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "adhoc_charges",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48fd27d4-c11b-493b-9b95-76dc374bd52e",
+              "name": "Adhoc charge details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "adhoc_charges",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"amount\": 9696.515131381704,\n  \"description\": \"string\",\n  \"created_at\": \"1997-05-13T07:59:25.514Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e2e5ddd-815e-4ea3-b130-4d42b031ad9d",
+          "name": "Delete Customer Adhoc Charge",
+          "request": {
+            "name": "Delete Customer Adhoc Charge",
+            "description": {
+              "content": "Delete an adhoc charge for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "adhoc_charges",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2a48dbb-a886-4b6d-8f86-4f19b3a68d09",
+              "name": "Adhoc charge deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "adhoc_charges",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5078818-ff0b-4ab1-9b0c-a7dd0a9a393d",
+          "name": "Create Customer Discount",
+          "request": {
+            "name": "Create Customer Discount",
+            "description": {
+              "content": "Apply a discount to a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "discounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"discount_type\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"scope\": \"<string>\",\n  \"billing_cycle_duration\": \"<integer>\",\n  \"billing_cycle_start_offset\": \"<integer>\",\n  \"metered_component_uuid\": \"<string>\",\n  \"add_on_name\": \"<string>\",\n  \"labels\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "193d81ee-985a-499a-8325-85409a7e0bd8",
+              "name": "Discount applied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "discounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"discount_type\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"scope\": \"<string>\",\n  \"billing_cycle_duration\": \"<integer>\",\n  \"billing_cycle_start_offset\": \"<integer>\",\n  \"metered_component_uuid\": \"<string>\",\n  \"add_on_name\": \"<string>\",\n  \"labels\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22b27cdd-efee-4e01-a4fb-512c0d2686c3",
+          "name": "Delete Customer Discounts",
+          "request": {
+            "name": "Delete Customer Discounts",
+            "description": {
+              "content": "Remove discounts from a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "discounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2c821ad-5244-4c34-8c69-ca2dc14c1278",
+              "name": "Discounts removed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "discounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a2b58dd-b76b-4a83-b4f3-f86ce86873a6",
+          "name": "List Customer Measurement Mappings",
+          "request": {
+            "name": "List Customer Measurement Mappings",
+            "description": {
+              "content": "Get measurement mappings for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b71768f8-8ba2-4246-93de-a9204f01dc46",
+              "name": "Measurement mappings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"label\": \"string\",\n    \"value\": \"string\"\n  },\n  {\n    \"label\": \"string\",\n    \"value\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dec9470c-ebc5-4e3c-a55d-ab448949e496",
+          "name": "Create Customer Measurement Mapping",
+          "request": {
+            "name": "Create Customer Measurement Mapping",
+            "description": {
+              "content": "Create a measurement mapping for a customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_name",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "127d6fa3-797a-4a4a-874d-8052ccf4245c",
+              "name": "Created measurement mapping",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_name",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"label\": \"string\",\n  \"value\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "86b7c69d-82c2-4c49-8317-8ea2c00a3d13",
+    "name": "Octane REST Admin Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

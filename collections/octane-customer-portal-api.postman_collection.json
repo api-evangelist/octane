@@ -1,0 +1,1668 @@
+{
+  "item": [
+    {
+      "id": "eda205ff-4025-4716-a501-18a7fcd7c543",
+      "name": "Customer Portal",
+      "description": {
+        "content": "End-customer portal operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15927093-4044-49db-8208-ee69f84ed5d3",
+          "name": "Get Customer Portal Settings",
+          "request": {
+            "name": "Get Customer Portal Settings",
+            "description": {
+              "content": "Get the customer portal configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer_portal_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2df1d124-ec5d-4313-a187-d7717e3b082a",
+              "name": "Customer portal settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer_portal_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72cbef8b-7d9c-4e24-8b56-27d8bf9a9568",
+          "name": "Create Customer Portal Settings",
+          "request": {
+            "name": "Create Customer Portal Settings",
+            "description": {
+              "content": "Create customer portal configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer_portal_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b575de8-5a88-4c8a-a0ed-df13af2619f4",
+              "name": "Customer portal settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer_portal_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53180780-2576-435e-a845-ab2e8fba49d5",
+          "name": "Get ECP Active Subscription",
+          "request": {
+            "name": "Get ECP Active Subscription",
+            "description": {
+              "content": "Get the active subscription from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "active_subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68cf9066-bfdb-4f0f-8c9d-da737bc1c460",
+              "name": "Active subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "active_subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"price_plan_name\": \"string\",\n  \"price_plan_uuid\": \"string\",\n  \"price_plan\": {\n    \"name\": \"string\",\n    \"period\": \"annual\",\n    \"metered_components\": [\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"FLAT\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 9762.221719228777,\n        \"minimum_charge\": 2868.335642266795,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 9255.296495604007\n      },\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"TIERED\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 4198.573351693897,\n        \"minimum_charge\": 3545.273422037597,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 5085.062410282016\n      }\n    ],\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"external_uuid\": \"string\",\n    \"base_price\": 7762.965694943012,\n    \"base_price_frequency\": \"string\",\n    \"base_price_description\": \"string\",\n    \"minimum_charge\": 3769.5523312581104,\n    \"minimum_charge_frequency\": \"string\",\n    \"features\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"add_ons\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 447.67188182097794,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": false,\n        \"quantity_enabled\": false,\n        \"prices\": [\n          {\n            \"price\": 1123.3316724774622,\n            \"cap\": 7151.269098419741\n          },\n          {\n            \"price\": 4877.02533762665,\n            \"cap\": 5072.205808401906\n          }\n        ],\n        \"immediately_charge\": true,\n        \"limit\": 1417.9293387790658,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 3126.7358354608455,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": true,\n        \"quantity_enabled\": true,\n        \"prices\": [\n          {\n            \"price\": 1782.215124776363,\n            \"cap\": 7312.122499877955\n          },\n          {\n            \"price\": 9588.976552168127,\n            \"cap\": 4913.592686222458\n          }\n        ],\n        \"immediately_charge\": false,\n        \"limit\": 9275.922439293829,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      }\n    ],\n    \"limits\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 2312.4465505322123\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 8304.957810468246\n      }\n    ],\n    \"trial\": {\n      \"time_length\": 3981,\n      \"time_unit_name\": \"string\",\n      \"credit\": 461.97486939676514\n    },\n    \"created_at\": \"2010-11-08T08:53:00.978Z\"\n  },\n  \"effective_at\": \"2004-11-16T10:45:41.814Z\",\n  \"expired_at\": \"2016-06-09T22:55:29.136Z\",\n  \"align_to_calendar\": false,\n  \"base_price_override\": 1534.820438757999,\n  \"current_billing_cycle\": {\n    \"start\": \"1961-01-28T13:02:19.572Z\",\n    \"end\": \"2024-08-02T19:45:06.692Z\"\n  },\n  \"total_fixed_price\": 9555.810433355164,\n  \"discounted_fixed_price\": 8587.254503319518,\n  \"features_override\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"limits_override\": [\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 8547.620705990223\n    },\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 6040.974130222381\n    }\n  ],\n  \"trial_override\": {\n    \"time_length\": 3314,\n    \"time_unit_name\": \"string\",\n    \"credit\": 8176.07521585805\n  },\n  \"credit_plan\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "957fba7e-f589-4633-abc1-048a220ad46e",
+          "name": "Update ECP Active Subscription",
+          "request": {
+            "name": "Update ECP Active Subscription",
+            "description": {
+              "content": "Update subscription from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "active_subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price_plan_name\": \"<string>\",\n  \"price_plan_uuid\": \"<string>\",\n  \"price_plan_tag\": \"<string>\",\n  \"effective_at\": \"<dateTime>\",\n  \"align_to_calendar\": \"<boolean>\",\n  \"coupon_override_name\": \"<string>\",\n  \"discount_override\": {\n    \"discount_type\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"scope\": \"<string>\",\n    \"billing_cycle_duration\": \"<integer>\",\n    \"billing_cycle_start_offset\": \"<integer>\",\n    \"metered_component_uuid\": \"<string>\",\n    \"add_on_name\": \"<string>\",\n    \"labels\": \"<object>\"\n  },\n  \"discounts\": [\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    },\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    }\n  ],\n  \"features_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_ons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"limits_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"trial_override\": {\n    \"time_length\": \"<integer>\",\n    \"time_unit_name\": \"<string>\",\n    \"credit\": \"<number>\"\n  },\n  \"credit_plan\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3df9fdf-401f-4bb4-86f7-21d90a19a2ba",
+              "name": "Updated subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "active_subscription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price_plan_name\": \"<string>\",\n  \"price_plan_uuid\": \"<string>\",\n  \"price_plan_tag\": \"<string>\",\n  \"effective_at\": \"<dateTime>\",\n  \"align_to_calendar\": \"<boolean>\",\n  \"coupon_override_name\": \"<string>\",\n  \"discount_override\": {\n    \"discount_type\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"scope\": \"<string>\",\n    \"billing_cycle_duration\": \"<integer>\",\n    \"billing_cycle_start_offset\": \"<integer>\",\n    \"metered_component_uuid\": \"<string>\",\n    \"add_on_name\": \"<string>\",\n    \"labels\": \"<object>\"\n  },\n  \"discounts\": [\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    },\n    {\n      \"discount_type\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"scope\": \"<string>\",\n      \"billing_cycle_duration\": \"<integer>\",\n      \"billing_cycle_start_offset\": \"<integer>\",\n      \"metered_component_uuid\": \"<string>\",\n      \"add_on_name\": \"<string>\",\n      \"labels\": \"<object>\"\n    }\n  ],\n  \"features_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"add_ons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"limits_override\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"trial_override\": {\n    \"time_length\": \"<integer>\",\n    \"time_unit_name\": \"<string>\",\n    \"credit\": \"<number>\"\n  },\n  \"credit_plan\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"customer_name\": \"string\",\n  \"price_plan_name\": \"string\",\n  \"price_plan_uuid\": \"string\",\n  \"price_plan\": {\n    \"name\": \"string\",\n    \"period\": \"annual\",\n    \"metered_components\": [\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"VOLUME\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 2185.7208811410733,\n        \"minimum_charge\": 4306.457220706916,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 6116.453941782689\n      },\n      {\n        \"meter_name\": \"string\",\n        \"meter_display_name\": \"string\",\n        \"price_scheme\": {\n          \"prices\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"scheme_type\": \"FLAT\",\n          \"unit_name\": \"string\",\n          \"time_unit_name\": \"string\"\n        },\n        \"display_name\": \"string\",\n        \"external_uuid\": \"string\",\n        \"limit\": 6614.074771916276,\n        \"minimum_charge\": 2879.0501978296934,\n        \"minimum_charge_frequency\": \"string\",\n        \"watermark\": 5268.131822186409\n      }\n    ],\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"external_uuid\": \"string\",\n    \"base_price\": 5717.088282437979,\n    \"base_price_frequency\": \"string\",\n    \"base_price_description\": \"string\",\n    \"minimum_charge\": 8313.072883341229,\n    \"minimum_charge_frequency\": \"string\",\n    \"features\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      }\n    ],\n    \"add_ons\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 9414.469363880431,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": false,\n        \"quantity_enabled\": true,\n        \"prices\": [\n          {\n            \"price\": 8956.174683652094,\n            \"cap\": 293.88033537303903\n          },\n          {\n            \"price\": 5010.212521826011,\n            \"cap\": 9432.8814145863\n          }\n        ],\n        \"immediately_charge\": true,\n        \"limit\": 6789.927084209558,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 6242.795814684495,\n        \"price_scheme_type\": \"string\",\n        \"single_use\": false,\n        \"quantity_enabled\": true,\n        \"prices\": [\n          {\n            \"price\": 5984.400195925776,\n            \"cap\": 7378.328732828359\n          },\n          {\n            \"price\": 8736.886209357188,\n            \"cap\": 6074.235065847429\n          }\n        ],\n        \"immediately_charge\": false,\n        \"limit\": 7097.306594581071,\n        \"price_frequency\": \"string\",\n        \"charge_frequency\": \"string\"\n      }\n    ],\n    \"limits\": [\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 9094.545415241882\n      },\n      {\n        \"feature\": {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"description\": \"string\"\n        },\n        \"limit\": 6572.344531655508\n      }\n    ],\n    \"trial\": {\n      \"time_length\": 9202,\n      \"time_unit_name\": \"string\",\n      \"credit\": 7877.115596959\n    },\n    \"created_at\": \"1974-08-27T13:27:36.813Z\"\n  },\n  \"effective_at\": \"1993-11-07T00:38:48.757Z\",\n  \"expired_at\": \"1972-12-18T09:21:54.443Z\",\n  \"align_to_calendar\": true,\n  \"base_price_override\": 8797.875925516446,\n  \"current_billing_cycle\": {\n    \"start\": \"2015-04-06T08:08:16.770Z\",\n    \"end\": \"1997-04-14T12:37:09.257Z\"\n  },\n  \"total_fixed_price\": 8065.628968494867,\n  \"discounted_fixed_price\": 6178.310847424408,\n  \"features_override\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"limits_override\": [\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 1402.298047305951\n    },\n    {\n      \"feature\": {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\"\n      },\n      \"limit\": 8647.08185542172\n    }\n  ],\n  \"trial_override\": {\n    \"time_length\": 3056,\n    \"time_unit_name\": \"string\",\n    \"credit\": 3940.748468889883\n  },\n  \"credit_plan\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7eede0c4-df88-4887-be78-ff72ee13d760",
+          "name": "Add Add-Ons to ECP Subscription",
+          "request": {
+            "name": "Add Add-Ons to ECP Subscription",
+            "description": {
+              "content": "Add add-ons to the active subscription from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "active_subscription",
+                "add_ons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64bc417b-6e22-4d16-83b1-c3259ff94dde",
+              "name": "Updated subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "active_subscription",
+                    "add_ons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0aaa856-96b7-48d6-a0ca-852e8bf2f8f9",
+          "name": "Get ECP Contact Info",
+          "request": {
+            "name": "Get ECP Contact Info",
+            "description": {
+              "content": "Get contact information from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "contact_info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2746eb5c-b488-4284-b2cf-0313bd749496",
+              "name": "Contact info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "contact_info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address_line_1\": \"string\",\n  \"address_line_2\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\",\n  \"zipcode\": \"string\",\n  \"url\": \"http://vCrIkHiekAIeDTvhkz.iciLFplXm2Kjd1IzHf0CZOU6+MNi0v+d58AOWnUpzbsCSPNXdpkEi-dvTk6DMm3Wxp\",\n  \"logo_url\": \"https://nBdgMSDJhwIXx.unaeHRy9kCS5Vavti+58OSHHrsCMOvpbCrvMjKl116\",\n  \"email\": \"huo@NlCgqoWKwqHpLKOdpTaz.oo\",\n  \"secondary_emails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"phone\": \"string\",\n  \"legal_name\": \"string\",\n  \"vat_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20506560-4a0a-4c6b-8a85-9139dda7357e",
+          "name": "Update ECP Contact Info",
+          "request": {
+            "name": "Update ECP Contact Info",
+            "description": {
+              "content": "Update contact information from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "contact_info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address_line_1\": \"<string>\",\n  \"address_line_2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\",\n  \"zipcode\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"logo_url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"secondary_emails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone\": \"<string>\",\n  \"legal_name\": \"<string>\",\n  \"vat_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b71ac71c-6d10-429e-bef7-9bcb997b7bed",
+              "name": "Updated contact info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "contact_info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address_line_1\": \"<string>\",\n  \"address_line_2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\",\n  \"zipcode\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"logo_url\": \"<uri>\",\n  \"email\": \"<email>\",\n  \"secondary_emails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone\": \"<string>\",\n  \"legal_name\": \"<string>\",\n  \"vat_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address_line_1\": \"string\",\n  \"address_line_2\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\",\n  \"zipcode\": \"string\",\n  \"url\": \"http://VStQ.cimpTG-uet-BPHb54MDPMFVlTc3tLQa-O,NMXy\",\n  \"logo_url\": \"http://egCqJutgXngikdBNCaXjU.dnMOZBkirH\",\n  \"email\": \"8E9oClp@UYwEGAmJCN.atl\",\n  \"secondary_emails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"phone\": \"string\",\n  \"legal_name\": \"string\",\n  \"vat_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a403ed9-221d-4c0c-a183-16fe91cb3050",
+          "name": "Get ECP Credit Balance",
+          "request": {
+            "name": "Get ECP Credit Balance",
+            "description": {
+              "content": "Get available credit balance from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "credit",
+                "available_balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "797f5047-1b8c-4d27-be71-bc179671ec05",
+              "name": "Available credit balance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "credit",
+                    "available_balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b136e5d-986c-4710-a938-4e76b45d6f4f",
+          "name": "Get ECP Credit Grants",
+          "request": {
+            "name": "Get ECP Credit Grants",
+            "description": {
+              "content": "Get credit grants from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "credit_grants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "becc86d8-a8b0-4a8c-8cce-d41ee883e392",
+              "name": "Credit grants",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "credit_grants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07d1b6da-448e-4d32-90c4-5f21113bf967",
+          "name": "Get ECP Credit Ledger",
+          "request": {
+            "name": "Get ECP Credit Ledger",
+            "description": {
+              "content": "Get credit ledger from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "credit",
+                "ledger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04549e5d-7487-47d7-848f-a1c7c044d54f",
+              "name": "Credit ledger",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "credit",
+                    "ledger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f57b1962-80a9-46b4-b9d3-d4c5d97dcde5",
+          "name": "Purchase Credits (ECP)",
+          "request": {
+            "name": "Purchase Credits (ECP)",
+            "description": {
+              "content": "Purchase additional credits from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "credit",
+                "purchase"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f7eb447-614c-4918-911b-b386eada0f83",
+              "name": "Purchase result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "credit",
+                    "purchase"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f4e93db-820f-4867-9a98-857df6233503",
+          "name": "Get ECP Credit Top-Off Plan",
+          "request": {
+            "name": "Get ECP Credit Top-Off Plan",
+            "description": {
+              "content": "Get credit top-off plan from the end-customer portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ecp",
+                "credit_top_off_plan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a629a0ff-1083-4310-b556-788f112d443b",
+              "name": "Credit top-off plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecp",
+                    "credit_top_off_plan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customer_name\": \"string\",\n  \"threshold\": 1767.6442855578168,\n  \"top_off_amount\": 4279.545089694323,\n  \"enabled\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13b12f5c-2d05-416e-a436-2925b9e64b47",
+          "name": "Get Self-Serve Settings",
+          "request": {
+            "name": "Get Self-Serve Settings",
+            "description": {
+              "content": "Get self-serve enrollment settings for a vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "self_serve_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "077942ce-6b27-433f-a4d3-24b32320c629",
+              "name": "Self-serve settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "self_serve_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28581723-aa02-4049-b68a-058f189b8509",
+          "name": "Create Self-Serve Settings",
+          "request": {
+            "name": "Create Self-Serve Settings",
+            "description": {
+              "content": "Create self-serve enrollment settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "self_serve_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c282dfcb-e86f-45cf-a5ac-e9d8e5fb7004",
+              "name": "Self-serve settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "self_serve_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abd889f1-01ab-437b-8d51-4683209ad802",
+          "name": "Update Self-Serve Settings",
+          "request": {
+            "name": "Update Self-Serve Settings",
+            "description": {
+              "content": "Update self-serve enrollment settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "self_serve_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11ba9614-e094-40c6-8a99-d1fda13b64dd",
+              "name": "Updated self-serve settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "self_serve_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10640f41-888a-4164-aedd-c3243f0fe608",
+          "name": "Get Self-Serve Customization",
+          "request": {
+            "name": "Get Self-Serve Customization",
+            "description": {
+              "content": "Get customization settings for self-serve portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "self_serve_settings",
+                "customization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "107b5e2e-2a4a-494f-81fa-28390a57ac90",
+              "name": "Customization settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "self_serve_settings",
+                    "customization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91d94ae7-58ee-4eb6-bb5e-f6f7ded68043",
+          "name": "Create Self-Serve Customization",
+          "request": {
+            "name": "Create Self-Serve Customization",
+            "description": {
+              "content": "Create customization settings for self-serve portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "self_serve_settings",
+                "customization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "957a3f81-ee2f-418e-9755-a820841991f1",
+              "name": "Customization settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "self_serve_settings",
+                    "customization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7daa5d5-56f4-46df-9991-6c74bc65e864",
+          "name": "Update Self-Serve Customization",
+          "request": {
+            "name": "Update Self-Serve Customization",
+            "description": {
+              "content": "Update customization settings for self-serve portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "self_serve_settings",
+                "customization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab7fb683-a49d-4aee-86e4-683ccb7db97b",
+              "name": "Updated customization settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "self_serve_settings",
+                    "customization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "93f36bc1-ea7a-4328-ba0e-53fe8f4366de",
+    "name": "Octane REST Admin Customer Portal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

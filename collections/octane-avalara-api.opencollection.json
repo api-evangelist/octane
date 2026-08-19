@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Avalara API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Avalara",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Avalara Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/integration/tax/avalara/settings"
+          },
+          "docs": "Get Avalara tax integration settings."
+        },
+        {
+          "info": {
+            "name": "Create Avalara Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/integration/tax/avalara/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Avalara tax integration settings."
+        },
+        {
+          "info": {
+            "name": "Update Avalara Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/integration/tax/avalara/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Avalara tax integration settings."
+        },
+        {
+          "info": {
+            "name": "Validate Avalara Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/integration/tax/avalara/credentials/valid"
+          },
+          "docs": "Validate Avalara API credentials."
+        },
+        {
+          "info": {
+            "name": "Get Avalara Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/integration/tax/avalara/company"
+          },
+          "docs": "Get the Avalara company information."
+        },
+        {
+          "info": {
+            "name": "Get Avalara Tax Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/integration/tax/avalara/tax_code"
+          },
+          "docs": "Get available Avalara tax codes."
+        },
+        {
+          "info": {
+            "name": "Get Avalara Entity Use Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/integration/tax/avalara/entity_use_code"
+          },
+          "docs": "Get available Avalara entity use codes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

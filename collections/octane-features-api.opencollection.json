@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Features API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Features",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customer Feature",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/features/:feature_name",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feature_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific feature entitlement for a customer."
+        },
+        {
+          "info": {
+            "name": "List Features",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/features"
+          },
+          "docs": "Get all product features for a vendor."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

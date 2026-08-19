@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Meters API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Meters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/meters"
+          },
+          "docs": "Get all meters for a given vendor."
+        },
+        {
+          "info": {
+            "name": "Create Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/meters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new usage meter."
+        },
+        {
+          "info": {
+            "name": "Get Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/meters/:meter_name",
+            "params": [
+              {
+                "name": "meter_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a meter by its unique name."
+        },
+        {
+          "info": {
+            "name": "Update Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/meters/:meter_name",
+            "params": [
+              {
+                "name": "meter_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a meter by its unique name."
+        },
+        {
+          "info": {
+            "name": "Delete Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/meters/:meter_name",
+            "params": [
+              {
+                "name": "meter_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a meter by its unique name."
+        },
+        {
+          "info": {
+            "name": "Archive Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/meters/:meter_name/archive",
+            "params": [
+              {
+                "name": "meter_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive a meter by its unique name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

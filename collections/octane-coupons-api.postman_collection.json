@@ -1,0 +1,501 @@
+{
+  "item": [
+    {
+      "id": "809e1f80-2e78-49e7-a095-427261049d1d",
+      "name": "Coupons",
+      "description": {
+        "content": "Manage discount coupons",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5cbb264-5f67-440e-88dd-18a919373712",
+          "name": "List Coupons",
+          "request": {
+            "name": "List Coupons",
+            "description": {
+              "content": "Get all coupons for a vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15a8c1d6-d9d1-4eec-bfb5-3bbac485d968",
+              "name": "List of coupons",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"discount_amount\": 6426.667323346753,\n    \"display_name\": \"string\",\n    \"discount_type\": \"AMOUNT\",\n    \"frequency\": \"string\",\n    \"duration_length\": 7464,\n    \"duration_unit\": \"string\",\n    \"expiration_time\": \"1986-03-17T11:46:30.044Z\",\n    \"max_uses\": 7262,\n    \"code\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"discount_amount\": 722.2000517163096,\n    \"display_name\": \"string\",\n    \"discount_type\": \"PERCENT\",\n    \"frequency\": \"string\",\n    \"duration_length\": 2225,\n    \"duration_unit\": \"string\",\n    \"expiration_time\": \"1973-03-05T21:55:21.582Z\",\n    \"max_uses\": 4349,\n    \"code\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "231623c0-ddb7-44f9-9bdd-c6aca326028c",
+          "name": "Create Coupon",
+          "request": {
+            "name": "Create Coupon",
+            "description": {
+              "content": "Create a new discount coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"discount_type\": \"<string>\",\n  \"discount_amount\": \"<number>\",\n  \"display_name\": \"<string>\",\n  \"vendor_id\": \"<string>\",\n  \"duration_length\": \"<integer>\",\n  \"duration_unit\": \"<string>\",\n  \"expiration_time\": \"<dateTime>\",\n  \"max_uses\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"excluded_customers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"excluded_price_plans\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdf26452-f761-4fc4-8878-c1f11883928f",
+              "name": "Created coupon",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"discount_type\": \"<string>\",\n  \"discount_amount\": \"<number>\",\n  \"display_name\": \"<string>\",\n  \"vendor_id\": \"<string>\",\n  \"duration_length\": \"<integer>\",\n  \"duration_unit\": \"<string>\",\n  \"expiration_time\": \"<dateTime>\",\n  \"max_uses\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"excluded_customers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"excluded_price_plans\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"discount_amount\": 1537.7448999289777,\n  \"display_name\": \"string\",\n  \"discount_type\": \"PERCENT\",\n  \"frequency\": \"string\",\n  \"duration_length\": 3504,\n  \"duration_unit\": \"string\",\n  \"expiration_time\": \"1965-07-21T15:04:18.681Z\",\n  \"max_uses\": 8002,\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b1bbf09-f0a0-4a64-b69f-92d97148679c",
+          "name": "Get Coupon",
+          "request": {
+            "name": "Get Coupon",
+            "description": {
+              "content": "Get a coupon by its unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons",
+                ":coupon_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coupon_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93eac87d-7f71-4a43-8bad-509eee9da693",
+              "name": "Coupon details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":coupon_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"discount_amount\": 1537.7448999289777,\n  \"display_name\": \"string\",\n  \"discount_type\": \"PERCENT\",\n  \"frequency\": \"string\",\n  \"duration_length\": 3504,\n  \"duration_unit\": \"string\",\n  \"expiration_time\": \"1965-07-21T15:04:18.681Z\",\n  \"max_uses\": 8002,\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9599b442-876d-4277-aabf-d21438056ec5",
+          "name": "Delete Coupon",
+          "request": {
+            "name": "Delete Coupon",
+            "description": {
+              "content": "Delete a coupon by its unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons",
+                ":coupon_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coupon_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcca3faf-5a16-4f7e-9077-e5e5529f51cc",
+              "name": "Coupon deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    ":coupon_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc65f287-fd77-40ad-8113-08ab9b580570",
+          "name": "Apply Coupon",
+          "request": {
+            "name": "Apply Coupon",
+            "description": {
+              "content": "Apply a coupon to a customer subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "coupons",
+                "apply_coupon"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"coupon_name\": \"<string>\",\n  \"customer_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbb67ca0-af2e-45fe-8a9d-012004e14c95",
+              "name": "Coupon applied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "coupons",
+                    "apply_coupon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"coupon_name\": \"<string>\",\n  \"customer_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e8a48133-ca06-438f-a397-a28f163da3bd",
+    "name": "Octane REST Admin Coupons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

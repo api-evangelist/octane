@@ -1,0 +1,605 @@
+{
+  "item": [
+    {
+      "id": "f27aec43-2111-4750-be5a-98bd79fcc22b",
+      "name": "Meters",
+      "description": {
+        "content": "Manage usage meters that track events and aggregate data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f496936-9659-4f82-b7e6-64ac95383ab5",
+          "name": "Get Meters",
+          "request": {
+            "name": "Get Meters",
+            "description": {
+              "content": "Get all meters for a given vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2abbf957-8f94-4672-8baf-9f1a4006cdb0",
+              "name": "List of meters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"event_name\": \"string\",\n    \"meter_type\": \"string\",\n    \"data_type\": \"INT\",\n    \"aggregation\": \"MAX\",\n    \"is_incremental\": true,\n    \"reporting_method\": \"total\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"unit_name\": \"string\",\n    \"expected_labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"primary_labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"event_label_filter\": {}\n  },\n  {\n    \"name\": \"string\",\n    \"event_name\": \"string\",\n    \"meter_type\": \"string\",\n    \"data_type\": \"STRING\",\n    \"aggregation\": \"SUM\",\n    \"is_incremental\": true,\n    \"reporting_method\": \"total\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"unit_name\": \"string\",\n    \"expected_labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"primary_labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"event_label_filter\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2dd2f36-1e14-4ccd-af37-8efd052555dd",
+          "name": "Create Meter",
+          "request": {
+            "name": "Create Meter",
+            "description": {
+              "content": "Create a new usage meter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"event_name\": \"<string>\",\n  \"meter_type\": \"<string>\",\n  \"data_type\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"unit_name\": \"<string>\",\n  \"is_incremental\": \"<boolean>\",\n  \"reporting_method\": \"<string>\",\n  \"expected_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"primary_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"event_label_filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24b34aae-394f-416f-9ac8-69ed196eedaa",
+              "name": "Created meter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"event_name\": \"<string>\",\n  \"meter_type\": \"<string>\",\n  \"data_type\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"unit_name\": \"<string>\",\n  \"is_incremental\": \"<boolean>\",\n  \"reporting_method\": \"<string>\",\n  \"expected_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"primary_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"event_label_filter\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"event_name\": \"string\",\n  \"meter_type\": \"string\",\n  \"data_type\": \"STRING\",\n  \"aggregation\": \"MAX\",\n  \"is_incremental\": false,\n  \"reporting_method\": \"periodic\",\n  \"display_name\": \"string\",\n  \"description\": \"string\",\n  \"unit_name\": \"string\",\n  \"expected_labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"primary_labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"event_label_filter\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e6ee8a1-ee48-4656-9003-7c4cdcb7ab86",
+          "name": "Get Meter",
+          "request": {
+            "name": "Get Meter",
+            "description": {
+              "content": "Get a meter by its unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters",
+                ":meter_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meter_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1cafad2-50fb-4c3c-a358-1e82cdc9e2c8",
+              "name": "Meter details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":meter_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meter_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"event_name\": \"string\",\n  \"meter_type\": \"string\",\n  \"data_type\": \"STRING\",\n  \"aggregation\": \"MAX\",\n  \"is_incremental\": false,\n  \"reporting_method\": \"periodic\",\n  \"display_name\": \"string\",\n  \"description\": \"string\",\n  \"unit_name\": \"string\",\n  \"expected_labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"primary_labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"event_label_filter\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6788b39-96fc-4ce9-98c7-8ceb179f8979",
+          "name": "Update Meter",
+          "request": {
+            "name": "Update Meter",
+            "description": {
+              "content": "Update a meter by its unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters",
+                ":meter_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meter_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"display_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc61929f-8bb2-481f-a162-83ffdcf6e2a8",
+              "name": "Updated meter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":meter_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meter_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"display_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"event_name\": \"string\",\n  \"meter_type\": \"string\",\n  \"data_type\": \"STRING\",\n  \"aggregation\": \"MAX\",\n  \"is_incremental\": false,\n  \"reporting_method\": \"periodic\",\n  \"display_name\": \"string\",\n  \"description\": \"string\",\n  \"unit_name\": \"string\",\n  \"expected_labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"primary_labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"event_label_filter\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42bbada1-0b39-41c3-8c38-0e8b67fe9bf4",
+          "name": "Delete Meter",
+          "request": {
+            "name": "Delete Meter",
+            "description": {
+              "content": "Delete a meter by its unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters",
+                ":meter_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meter_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97ecae04-9745-4fb9-807b-55c610dba4d0",
+              "name": "Meter deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":meter_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meter_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11757b57-10cb-474f-9515-dd945d37f1f1",
+          "name": "Archive Meter",
+          "request": {
+            "name": "Archive Meter",
+            "description": {
+              "content": "Archive a meter by its unique name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters",
+                ":meter_name",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "meter_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "274b0465-f1b4-4cc9-8987-fa9bbaf81854",
+              "name": "Meter archived",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":meter_name",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "meter_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b7d346a-d0d2-4a98-bf96-87e2eb81247a",
+    "name": "Octane REST Admin Meters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

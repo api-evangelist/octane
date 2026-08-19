@@ -1,0 +1,562 @@
+{
+  "item": [
+    {
+      "id": "ec7d12b6-d019-46f3-a893-62981fe823b0",
+      "name": "Billing Settings",
+      "description": {
+        "content": "Manage vendor billing settings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9907c1fa-81b6-4b13-97c7-e002db00229f",
+          "name": "Get Billing Settings",
+          "request": {
+            "name": "Get Billing Settings",
+            "description": {
+              "content": "Get billing settings for the vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83ac55ba-f4da-402b-848c-277297b05e97",
+              "name": "Billing settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_gateway_type\": \"string\",\n  \"invoice_grace_period_days\": 6147,\n  \"auto_charge\": false,\n  \"billing_period_anchor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4576819-e378-4411-b341-4ac96ad02be2",
+          "name": "Create Billing Settings",
+          "request": {
+            "name": "Create Billing Settings",
+            "description": {
+              "content": "Create billing settings for the vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\",\n  \"billing_period_anchor\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f1eb4196-ca91-43ba-9c82-d8cffbdb6203",
+              "name": "Billing settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\",\n  \"billing_period_anchor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\",\n  \"billing_period_anchor\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b90d9c5f-24d6-4247-9135-cec8e0a9074f",
+          "name": "Update Billing Settings",
+          "request": {
+            "name": "Update Billing Settings",
+            "description": {
+              "content": "Update billing settings for the vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\",\n  \"billing_period_anchor\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb52f323-f1d8-4483-879f-5b0d191c5982",
+              "name": "Updated billing settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\",\n  \"billing_period_anchor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_gateway_type\": \"<string>\",\n  \"invoice_grace_period_days\": \"<integer>\",\n  \"auto_charge\": \"<boolean>\",\n  \"billing_period_anchor\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c5d2dc4-56b6-401a-8695-dd52b7d9adb2",
+          "name": "Delete Billing Settings",
+          "request": {
+            "name": "Delete Billing Settings",
+            "description": {
+              "content": "Delete billing settings for the vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "347c80d1-2324-4a5a-a47a-f33542696733",
+              "name": "Billing settings deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ecb46fe-1d79-40af-a8a2-d7c5625fc72d",
+          "name": "List Payment Gateway Credentials",
+          "request": {
+            "name": "List Payment Gateway Credentials",
+            "description": {
+              "content": "Get all payment gateway credentials for a vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment_gateway_credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89966c2c-6220-4463-bcd1-90bb1a7a8a34",
+              "name": "Payment gateway credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_gateway_credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb97dadc-f67e-400a-808f-98aa38430189",
+          "name": "Create Payment Gateway Credential",
+          "request": {
+            "name": "Create Payment Gateway Credential",
+            "description": {
+              "content": "Add payment gateway credentials for a vendor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment_gateway_credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a6fce20-c1b2-4b34-a129-6bfa8a356838",
+              "name": "Created credential",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_gateway_credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "674d25c3-0344-49fb-a0b0-9b64a96411e9",
+    "name": "Octane REST Admin Billing Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Octane REST Admin Customers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers"
+          },
+          "docs": "Get all customers for a given vendor."
+        },
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new customer."
+        },
+        {
+          "info": {
+            "name": "Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a customer by their unique name."
+        },
+        {
+          "info": {
+            "name": "Delete Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/customers/:customer_name",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a customer by their unique name."
+        },
+        {
+          "info": {
+            "name": "Get Customer Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/billing_settings",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get billing settings for a customer."
+        },
+        {
+          "info": {
+            "name": "Create Customer Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customers/:customer_name/billing_settings",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create billing settings for a customer."
+        },
+        {
+          "info": {
+            "name": "Update Customer Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getoctane.io/customers/:customer_name/billing_settings",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update billing settings for a customer."
+        },
+        {
+          "info": {
+            "name": "Delete Customer Billing Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/customers/:customer_name/billing_settings",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete billing settings for a customer."
+        },
+        {
+          "info": {
+            "name": "List Customer Adhoc Charges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/adhoc_charges",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all adhoc charges for a customer."
+        },
+        {
+          "info": {
+            "name": "Create Customer Adhoc Charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customers/:customer_name/adhoc_charges",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an adhoc charge for a customer."
+        },
+        {
+          "info": {
+            "name": "Get Customer Adhoc Charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/adhoc_charges/:uuid",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific adhoc charge for a customer."
+        },
+        {
+          "info": {
+            "name": "Delete Customer Adhoc Charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/customers/:customer_name/adhoc_charges/:uuid",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an adhoc charge for a customer."
+        },
+        {
+          "info": {
+            "name": "Create Customer Discount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customers/:customer_name/discounts",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply a discount to a customer."
+        },
+        {
+          "info": {
+            "name": "Delete Customer Discounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getoctane.io/customers/:customer_name/discounts",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove discounts from a customer."
+        },
+        {
+          "info": {
+            "name": "List Customer Measurement Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getoctane.io/customers/:customer_name/mappings",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get measurement mappings for a customer."
+        },
+        {
+          "info": {
+            "name": "Create Customer Measurement Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getoctane.io/customers/:customer_name/mappings",
+            "params": [
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a measurement mapping for a customer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

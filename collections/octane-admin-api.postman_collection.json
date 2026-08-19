@@ -1,0 +1,123 @@
+{
+  "item": [
+    {
+      "id": "9d3588d8-5a19-425d-9a5a-f737dc3f6e93",
+      "name": "Admin",
+      "description": {
+        "content": "Administrative operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df8efcff-c6d1-4fdc-9049-6bc8be84ae19",
+          "name": "Roll API Key",
+          "request": {
+            "name": "Roll API Key",
+            "description": {
+              "content": "Generate a new API key, invalidating the existing one.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "admin",
+                "api_key",
+                "roll"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd0be707-1009-49e8-b8df-0e60d8c1d885",
+              "name": "New API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "admin",
+                    "api_key",
+                    "roll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getoctane.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bdf40c0e-5383-4733-957a-e9cdae4ee1ad",
+    "name": "Octane REST Admin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.\n\nContact Support:\n Name: Octane Support",
+      "type": "text/plain"
+    }
+  }
+}
