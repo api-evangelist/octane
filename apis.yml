@@ -27,6 +27,16 @@ tags:
   - Metered Billing
   - Pricing Plans
   - SaaS Monetization
+  - Fintech
+  - Payments
+  - Usage Tracking
+  - Meters
+  - Entitlements
+tags_raw:
+  - Usage-Based Billing
+  - Metered Billing
+  - Pricing Plans
+  - SaaS Monetization
   - FinTech
   - Payments
   - Usage Tracking
@@ -221,6 +231,8 @@ apis:
   humanURL: https://docs.getoctane.io
   baseURL: https://api.getoctane.io
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -233,6 +245,8 @@ apis:
   humanURL: https://docs.getoctane.io
   baseURL: https://api.getoctane.io
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
