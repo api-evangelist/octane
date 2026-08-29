@@ -4,6 +4,18 @@ description: Usage-based pricing and monetization platform with a REST API for m
   products. Octane enables infrastructure and SaaS companies to implement flexible
   pay-as-you-go billing similar to Snowflake and AWS, with support for counters, metered
   components, flat-rate schemes, discounts, trials, and add-ons.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
