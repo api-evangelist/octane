@@ -112,6 +112,8 @@ apis:
   humanURL: https://docs.getoctane.io
   baseURL: https://api.getoctane.io
   tags:
+  - Credit
+  tags_raw:
   - Credits
   properties:
   - type: OpenAPI
