@@ -1,23 +1,7 @@
 {
   "provider": "octane",
   "sources": [
-    "octane-admin-api-openapi.yml",
-    "octane-avalara-api-openapi.yml",
-    "octane-billing-settings-api-openapi.yml",
-    "octane-coupons-api-openapi.yml",
-    "octane-credits-api-openapi.yml",
-    "octane-customer-portal-api-openapi.yml",
-    "octane-customers-api-openapi.yml",
-    "octane-features-api-openapi.yml",
-    "octane-invoices-api-openapi.yml",
-    "octane-live-measurements-api-openapi.yml",
-    "octane-measurements-api-openapi.yml",
-    "octane-meters-api-openapi.yml",
-    "octane-price-plans-api-openapi.yml",
-    "octane-refunds-api-openapi.yml",
-    "octane-revenue-recognition-api-openapi.yml",
-    "octane-subscriptions-api-openapi.yml",
-    "octane-webhooks-api-openapi.yml"
+    "_original/octane-octane-rest-api-openapi.yml"
   ],
   "outputs": [
     "octane-admin-api-openapi.yml",
@@ -41,6 +25,28 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "octane-octane-rest-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "octane-admin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-avalara-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-billing-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-coupons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-credits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-customer-portal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-features-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-live-measurements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-measurements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-meters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-price-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-revenue-recognition-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "octane-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

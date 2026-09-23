@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Octane REST Admin Invoices API
+  title: Octane REST Invoices API
   description: REST API for managing meters, customers, pricing plans, subscriptions, measurements, and real-time usage data for usage-based billing workflows. Octane enables infrastructure and SaaS companies to implement flexible pay-as-you-go billing similar to Snowflake and AWS.
   version: 1.0.0
   contact:
