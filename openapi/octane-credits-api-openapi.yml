@@ -242,6 +242,38 @@ paths:
                 type: object
 components:
   schemas:
+    CustomerCreditBalance:
+      type: object
+      properties:
+        available_balance:
+          type: number
+          description: Current available credit balance.
+        customer_name:
+          type: string
+    CreditTopOffPlan:
+      type: object
+      properties:
+        customer_name:
+          type: string
+        threshold:
+          type: number
+          description: Credit balance threshold that triggers a top-off.
+        top_off_amount:
+          type: number
+          description: Amount of credits to add when threshold is reached.
+        enabled:
+          type: boolean
+    CreateCreditTopOffPlanInputArgs:
+      type: object
+      properties:
+        threshold:
+          type: number
+          description: Credit balance threshold that triggers a top-off.
+        top_off_amount:
+          type: number
+          description: Amount of credits to add when threshold is reached.
+        enabled:
+          type: boolean
     CreateCreditGrantArgs:
       type: object
       properties:
@@ -258,38 +290,6 @@ components:
         description:
           type: string
           description: Description for the credit grant.
-    CustomerCreditBalance:
-      type: object
-      properties:
-        available_balance:
-          type: number
-          description: Current available credit balance.
-        customer_name:
-          type: string
-    CreateCreditTopOffPlanInputArgs:
-      type: object
-      properties:
-        threshold:
-          type: number
-          description: Credit balance threshold that triggers a top-off.
-        top_off_amount:
-          type: number
-          description: Amount of credits to add when threshold is reached.
-        enabled:
-          type: boolean
-    CreditTopOffPlan:
-      type: object
-      properties:
-        customer_name:
-          type: string
-        threshold:
-          type: number
-          description: Credit balance threshold that triggers a top-off.
-        top_off_amount:
-          type: number
-          description: Amount of credits to add when threshold is reached.
-        enabled:
-          type: boolean
   securitySchemes:
     BearerApiKeyAuth:
       type: http
