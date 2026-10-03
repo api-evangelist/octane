@@ -58,20 +58,6 @@ paths:
                   $ref: '#/components/schemas/Feature'
 components:
   schemas:
-    Feature:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Unique name of the feature.
-        display_name:
-          type: string
-          description: Human-readable display name.
-        description:
-          type: string
-          description: Description of the feature.
     CustomerFeature:
       type: object
       properties:
@@ -86,6 +72,20 @@ components:
         current_usage:
           type: number
           description: Current usage count for this feature.
+    Feature:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name of the feature.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the feature.
   securitySchemes:
     BearerApiKeyAuth:
       type: http

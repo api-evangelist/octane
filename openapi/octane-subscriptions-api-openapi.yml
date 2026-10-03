@@ -62,50 +62,65 @@ paths:
                 $ref: '#/components/schemas/ActiveSubscription'
 components:
   schemas:
-    CreateSubscriptionArgs:
+    BillingCycleDate:
       type: object
       properties:
-        price_plan_name:
-          type: string
-          description: Name of the price plan to subscribe to.
-        price_plan_uuid:
-          type: string
-          description: UUID of the price plan to subscribe to.
-        price_plan_tag:
-          type: string
-          description: Tag of the price plan version to use.
-        effective_at:
+        start:
           type: string
           format: date-time
-          description: When the subscription should take effect.
-        align_to_calendar:
-          type: boolean
-          description: Align billing cycle to calendar period.
-        coupon_override_name:
+          description: Start of the current billing cycle.
+        end:
           type: string
-          description: Coupon to apply to the subscription.
-        discount_override:
-          $ref: '#/components/schemas/DiscountInputArgs'
-        discounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/DiscountInputArgs'
-        features_override:
-          type: array
-          items:
-            type: object
-        add_ons:
-          type: array
-          items:
-            type: object
-        limits_override:
-          type: array
-          items:
-            type: object
-        trial_override:
-          $ref: '#/components/schemas/TrialInputArgs'
-        credit_plan:
+          format: date-time
+          description: End of the current billing cycle.
+    Feature:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name of the feature.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the feature.
+    DiscountInputArgs:
+      type: object
+      properties:
+        discount_type:
+          type: string
+          enum:
+          - PERCENT
+          - AMOUNT
+          description: Type of discount.
+        amount:
+          type: number
+          description: Discount amount or percentage.
+        scope:
+          type: string
+          enum:
+          - SUBSCRIPTION
+          - COMPONENT
+          - ADD_ON
+          description: What the discount applies to.
+        billing_cycle_duration:
+          type: integer
+          description: How many billing cycles the discount lasts.
+        billing_cycle_start_offset:
+          type: integer
+          description: Offset from subscription start to begin applying discount.
+        metered_component_uuid:
+          type: string
+          description: UUID of the metered component to discount.
+        add_on_name:
+          type: string
+          description: Name of the add-on to discount.
+        labels:
           type: object
+          description: Label filters for the discount.
     AddOn:
       type: object
       required:
@@ -155,108 +170,25 @@ components:
         cap:
           type: number
           description: Upper bound of usage for this tier (null = unlimited).
-    Feature:
+    PriceScheme:
       type: object
-      required:
-      - name
+      description: Pricing scheme configuration for a metered component.
       properties:
-        name:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
           type: string
-          description: Unique name of the feature.
-        display_name:
+          enum:
+          - FLAT
+          - TIERED
+          - VOLUME
+          - PACKAGE
+        unit_name:
           type: string
-          description: Human-readable display name.
-        description:
-          type: string
-          description: Description of the feature.
-    TrialInputArgs:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
         time_unit_name:
           type: string
-          description: Unit of time for the trial.
-        credit:
-          type: number
-          description: Trial credit amount.
-    Trial:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
-        time_unit_name:
-          type: string
-          description: Unit of time for the trial (e.g., "day", "month").
-        credit:
-          type: number
-          description: Trial credit amount.
-    ActiveSubscription:
-      type: object
-      required:
-      - uuid
-      - customer_name
-      - price_plan_name
-      - price_plan_uuid
-      properties:
-        uuid:
-          type: string
-          description: Unique identifier for the subscription.
-        customer_name:
-          type: string
-          description: Name of the subscribed customer.
-        price_plan_name:
-          type: string
-          description: Name of the price plan.
-        price_plan_uuid:
-          type: string
-          description: UUID of the price plan.
-        price_plan:
-          $ref: '#/components/schemas/PricePlan'
-        effective_at:
-          type: string
-          format: date-time
-          description: When the subscription became effective.
-        expired_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: When the subscription expires.
-        align_to_calendar:
-          type: boolean
-          description: Whether the billing cycle aligns to the calendar.
-        base_price_override:
-          type: number
-          description: Override for the plan's base price.
-        current_billing_cycle:
-          $ref: '#/components/schemas/BillingCycleDate'
-        total_fixed_price:
-          type: number
-        discounted_fixed_price:
-          type: number
-        discounts:
-          type: array
-          items:
-            type: object
-        add_ons:
-          type: array
-          items:
-            type: object
-        features_override:
-          type: array
-          items:
-            $ref: '#/components/schemas/Feature'
-        limits_override:
-          type: array
-          items:
-            $ref: '#/components/schemas/Limit'
-        trial_override:
-          $ref: '#/components/schemas/Trial'
-        credit_plan:
-          type: object
     MeteredComponent:
       type: object
       required:
@@ -365,70 +297,18 @@ components:
         created_at:
           type: string
           format: date-time
-    PriceScheme:
+    TrialInputArgs:
       type: object
-      description: Pricing scheme configuration for a metered component.
       properties:
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceTier'
-        scheme_type:
-          type: string
-          enum:
-          - FLAT
-          - TIERED
-          - VOLUME
-          - PACKAGE
-        unit_name:
-          type: string
+        time_length:
+          type: integer
+          description: Duration of the trial period.
         time_unit_name:
           type: string
-    DiscountInputArgs:
-      type: object
-      properties:
-        discount_type:
-          type: string
-          enum:
-          - PERCENT
-          - AMOUNT
-          description: Type of discount.
-        amount:
+          description: Unit of time for the trial.
+        credit:
           type: number
-          description: Discount amount or percentage.
-        scope:
-          type: string
-          enum:
-          - SUBSCRIPTION
-          - COMPONENT
-          - ADD_ON
-          description: What the discount applies to.
-        billing_cycle_duration:
-          type: integer
-          description: How many billing cycles the discount lasts.
-        billing_cycle_start_offset:
-          type: integer
-          description: Offset from subscription start to begin applying discount.
-        metered_component_uuid:
-          type: string
-          description: UUID of the metered component to discount.
-        add_on_name:
-          type: string
-          description: Name of the add-on to discount.
-        labels:
-          type: object
-          description: Label filters for the discount.
-    BillingCycleDate:
-      type: object
-      properties:
-        start:
-          type: string
-          format: date-time
-          description: Start of the current billing cycle.
-        end:
-          type: string
-          format: date-time
-          description: End of the current billing cycle.
+          description: Trial credit amount.
     Limit:
       type: object
       required:
@@ -440,6 +320,126 @@ components:
         limit:
           type: number
           description: Numeric limit for the feature.
+    Trial:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial (e.g., "day", "month").
+        credit:
+          type: number
+          description: Trial credit amount.
+    CreateSubscriptionArgs:
+      type: object
+      properties:
+        price_plan_name:
+          type: string
+          description: Name of the price plan to subscribe to.
+        price_plan_uuid:
+          type: string
+          description: UUID of the price plan to subscribe to.
+        price_plan_tag:
+          type: string
+          description: Tag of the price plan version to use.
+        effective_at:
+          type: string
+          format: date-time
+          description: When the subscription should take effect.
+        align_to_calendar:
+          type: boolean
+          description: Align billing cycle to calendar period.
+        coupon_override_name:
+          type: string
+          description: Coupon to apply to the subscription.
+        discount_override:
+          $ref: '#/components/schemas/DiscountInputArgs'
+        discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountInputArgs'
+        features_override:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        limits_override:
+          type: array
+          items:
+            type: object
+        trial_override:
+          $ref: '#/components/schemas/TrialInputArgs'
+        credit_plan:
+          type: object
+    ActiveSubscription:
+      type: object
+      required:
+      - uuid
+      - customer_name
+      - price_plan_name
+      - price_plan_uuid
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the subscription.
+        customer_name:
+          type: string
+          description: Name of the subscribed customer.
+        price_plan_name:
+          type: string
+          description: Name of the price plan.
+        price_plan_uuid:
+          type: string
+          description: UUID of the price plan.
+        price_plan:
+          $ref: '#/components/schemas/PricePlan'
+        effective_at:
+          type: string
+          format: date-time
+          description: When the subscription became effective.
+        expired_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the subscription expires.
+        align_to_calendar:
+          type: boolean
+          description: Whether the billing cycle aligns to the calendar.
+        base_price_override:
+          type: number
+          description: Override for the plan's base price.
+        current_billing_cycle:
+          $ref: '#/components/schemas/BillingCycleDate'
+        total_fixed_price:
+          type: number
+        discounted_fixed_price:
+          type: number
+        discounts:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        features_override:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        limits_override:
+          type: array
+          items:
+            $ref: '#/components/schemas/Limit'
+        trial_override:
+          $ref: '#/components/schemas/Trial'
+        credit_plan:
+          type: object
   securitySchemes:
     BearerApiKeyAuth:
       type: http

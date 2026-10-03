@@ -116,6 +116,52 @@ components:
         customer_name:
           type: string
           description: Name of the customer to apply the coupon to.
+    CouponInputArgs:
+      type: object
+      required:
+      - name
+      - frequency
+      - discount_type
+      - discount_amount
+      properties:
+        name:
+          type: string
+        display_name:
+          type: string
+        vendor_id:
+          type: string
+        frequency:
+          type: string
+          enum:
+          - ONCE
+          - RECURRING
+          - FOREVER
+        discount_type:
+          type: string
+          enum:
+          - PERCENT
+          - AMOUNT
+        discount_amount:
+          type: number
+        duration_length:
+          type: integer
+        duration_unit:
+          type: string
+        expiration_time:
+          type: string
+          format: date-time
+        max_uses:
+          type: integer
+        code:
+          type: string
+        excluded_customers:
+          type: array
+          items:
+            type: string
+        excluded_price_plans:
+          type: array
+          items:
+            type: string
     Coupon:
       type: object
       required:
@@ -166,52 +212,6 @@ components:
           type: array
           items:
             type: object
-    CouponInputArgs:
-      type: object
-      required:
-      - name
-      - frequency
-      - discount_type
-      - discount_amount
-      properties:
-        name:
-          type: string
-        display_name:
-          type: string
-        vendor_id:
-          type: string
-        frequency:
-          type: string
-          enum:
-          - ONCE
-          - RECURRING
-          - FOREVER
-        discount_type:
-          type: string
-          enum:
-          - PERCENT
-          - AMOUNT
-        discount_amount:
-          type: number
-        duration_length:
-          type: integer
-        duration_unit:
-          type: string
-        expiration_time:
-          type: string
-          format: date-time
-        max_uses:
-          type: integer
-        code:
-          type: string
-        excluded_customers:
-          type: array
-          items:
-            type: string
-        excluded_price_plans:
-          type: array
-          items:
-            type: string
   securitySchemes:
     BearerApiKeyAuth:
       type: http

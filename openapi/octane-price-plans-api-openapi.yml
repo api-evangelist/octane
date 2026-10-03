@@ -203,6 +203,20 @@ paths:
                 type: object
 components:
   schemas:
+    Feature:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name of the feature.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the feature.
     AddOn:
       type: object
       required:
@@ -242,68 +256,9 @@ components:
         charge_frequency:
           type: string
           description: How often to charge for the add-on.
-    PriceTier:
+    PriceScheme:
       type: object
-      description: A price tier within a tiered pricing scheme.
-      properties:
-        price:
-          type: number
-          description: Price per unit at this tier.
-        cap:
-          type: number
-          description: Upper bound of usage for this tier (null = unlimited).
-    CreatePricePlanArgs:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Unique name for the price plan.
-        display_name:
-          type: string
-        description:
-          type: string
-        vendor_id:
-          type: string
-        period:
-          type: string
-          enum:
-          - monthly
-          - quarterly
-          - annual
-        base_price:
-          type: number
-        base_price_frequency:
-          type: string
-        base_price_description:
-          type: string
-        minimum_charge:
-          type: number
-        minimum_charge_frequency:
-          type: string
-        metered_components:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeteredComponentInputArgs'
-        features:
-          type: array
-          items:
-            type: object
-        add_ons:
-          type: array
-          items:
-            type: object
-        limits:
-          type: array
-          items:
-            type: object
-        trial:
-          $ref: '#/components/schemas/TrialInputArgs'
-        tags:
-          type: array
-          items:
-            type: string
-    PriceSchemeInputArgs:
-      type: object
+      description: Pricing scheme configuration for a metered component.
       properties:
         prices:
           type: array
@@ -320,44 +275,16 @@ components:
           type: string
         time_unit_name:
           type: string
-    Feature:
+    PriceTier:
       type: object
-      required:
-      - name
+      description: A price tier within a tiered pricing scheme.
       properties:
-        name:
-          type: string
-          description: Unique name of the feature.
-        display_name:
-          type: string
-          description: Human-readable display name.
-        description:
-          type: string
-          description: Description of the feature.
-    TrialInputArgs:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
-        time_unit_name:
-          type: string
-          description: Unit of time for the trial.
-        credit:
+        price:
           type: number
-          description: Trial credit amount.
-    Trial:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
-        time_unit_name:
-          type: string
-          description: Unit of time for the trial (e.g., "day", "month").
-        credit:
+          description: Price per unit at this tier.
+        cap:
           type: number
-          description: Trial credit amount.
+          description: Upper bound of usage for this tier (null = unlimited).
     MeteredComponent:
       type: object
       required:
@@ -466,25 +393,29 @@ components:
         created_at:
           type: string
           format: date-time
-    PriceScheme:
+    TrialInputArgs:
       type: object
-      description: Pricing scheme configuration for a metered component.
       properties:
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceTier'
-        scheme_type:
-          type: string
-          enum:
-          - FLAT
-          - TIERED
-          - VOLUME
-          - PACKAGE
-        unit_name:
-          type: string
+        time_length:
+          type: integer
+          description: Duration of the trial period.
         time_unit_name:
           type: string
+          description: Unit of time for the trial.
+        credit:
+          type: number
+          description: Trial credit amount.
+    Limit:
+      type: object
+      required:
+      - feature
+      - limit
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        limit:
+          type: number
+          description: Numeric limit for the feature.
     MeteredComponentInputArgs:
       type: object
       properties:
@@ -510,17 +441,86 @@ components:
           type: string
         watermark:
           type: number
-    Limit:
+    Trial:
       type: object
-      required:
-      - feature
-      - limit
       properties:
-        feature:
-          $ref: '#/components/schemas/Feature'
-        limit:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial (e.g., "day", "month").
+        credit:
           type: number
-          description: Numeric limit for the feature.
+          description: Trial credit amount.
+    PriceSchemeInputArgs:
+      type: object
+      properties:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
+          type: string
+          enum:
+          - FLAT
+          - TIERED
+          - VOLUME
+          - PACKAGE
+        unit_name:
+          type: string
+        time_unit_name:
+          type: string
+    CreatePricePlanArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name for the price plan.
+        display_name:
+          type: string
+        description:
+          type: string
+        vendor_id:
+          type: string
+        period:
+          type: string
+          enum:
+          - monthly
+          - quarterly
+          - annual
+        base_price:
+          type: number
+        base_price_frequency:
+          type: string
+        base_price_description:
+          type: string
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        metered_components:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeteredComponentInputArgs'
+        features:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        limits:
+          type: array
+          items:
+            type: object
+        trial:
+          $ref: '#/components/schemas/TrialInputArgs'
+        tags:
+          type: array
+          items:
+            type: string
   securitySchemes:
     BearerApiKeyAuth:
       type: http

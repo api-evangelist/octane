@@ -137,57 +137,6 @@ components:
         display_name:
           type: string
           description: Updated display name for the meter.
-    CreateMeterArgs:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Unique name for the meter.
-        display_name:
-          type: string
-          description: Human-readable display name.
-        description:
-          type: string
-          description: Description of the meter.
-        event_name:
-          type: string
-          description: Event name this meter tracks.
-        meter_type:
-          type: string
-          description: Type of meter.
-        data_type:
-          type: string
-          enum:
-          - INT
-          - FLOAT
-          - STRING
-        aggregation:
-          type: string
-          enum:
-          - SUM
-          - COUNT
-          - MAX
-          - MIN
-          - UNIQUE_COUNT
-        unit_name:
-          type: string
-        is_incremental:
-          type: boolean
-        reporting_method:
-          type: string
-          enum:
-          - periodic
-          - total
-        expected_labels:
-          type: array
-          items:
-            type: string
-        primary_labels:
-          type: array
-          items:
-            type: string
-        event_label_filter:
-          type: object
     Meter:
       type: object
       required:
@@ -255,6 +204,57 @@ components:
         event_label_filter:
           type: object
           description: Filter expression for event labels.
+    CreateMeterArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name for the meter.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        description:
+          type: string
+          description: Description of the meter.
+        event_name:
+          type: string
+          description: Event name this meter tracks.
+        meter_type:
+          type: string
+          description: Type of meter.
+        data_type:
+          type: string
+          enum:
+          - INT
+          - FLOAT
+          - STRING
+        aggregation:
+          type: string
+          enum:
+          - SUM
+          - COUNT
+          - MAX
+          - MIN
+          - UNIQUE_COUNT
+        unit_name:
+          type: string
+        is_incremental:
+          type: boolean
+        reporting_method:
+          type: string
+          enum:
+          - periodic
+          - total
+        expected_labels:
+          type: array
+          items:
+            type: string
+        primary_labels:
+          type: array
+          items:
+            type: string
+        event_label_filter:
+          type: object
   securitySchemes:
     BearerApiKeyAuth:
       type: http
