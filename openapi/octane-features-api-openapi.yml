@@ -58,20 +58,6 @@ paths:
                   $ref: '#/components/schemas/Feature'
 components:
   schemas:
-    CustomerFeature:
-      type: object
-      properties:
-        feature:
-          $ref: '#/components/schemas/Feature'
-        has_access:
-          type: boolean
-          description: Whether the customer has access to this feature.
-        limit:
-          type: number
-          description: Usage limit for this feature.
-        current_usage:
-          type: number
-          description: Current usage count for this feature.
     Feature:
       type: object
       required:
@@ -86,6 +72,20 @@ components:
         description:
           type: string
           description: Description of the feature.
+    CustomerFeature:
+      type: object
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        has_access:
+          type: boolean
+          description: Whether the customer has access to this feature.
+        limit:
+          type: number
+          description: Usage limit for this feature.
+        current_usage:
+          type: number
+          description: Current usage count for this feature.
   securitySchemes:
     BearerApiKeyAuth:
       type: http

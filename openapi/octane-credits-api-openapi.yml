@@ -242,6 +242,19 @@ paths:
                 type: object
 components:
   schemas:
+    CreditTopOffPlan:
+      type: object
+      properties:
+        customer_name:
+          type: string
+        threshold:
+          type: number
+          description: Credit balance threshold that triggers a top-off.
+        top_off_amount:
+          type: number
+          description: Amount of credits to add when threshold is reached.
+        enabled:
+          type: boolean
     CreateCreditGrantArgs:
       type: object
       properties:
@@ -261,19 +274,6 @@ components:
     CreateCreditTopOffPlanInputArgs:
       type: object
       properties:
-        threshold:
-          type: number
-          description: Credit balance threshold that triggers a top-off.
-        top_off_amount:
-          type: number
-          description: Amount of credits to add when threshold is reached.
-        enabled:
-          type: boolean
-    CreditTopOffPlan:
-      type: object
-      properties:
-        customer_name:
-          type: string
         threshold:
           type: number
           description: Credit balance threshold that triggers a top-off.

@@ -203,6 +203,78 @@ paths:
                 type: object
 components:
   schemas:
+    PriceTier:
+      type: object
+      description: A price tier within a tiered pricing scheme.
+      properties:
+        price:
+          type: number
+          description: Price per unit at this tier.
+        cap:
+          type: number
+          description: Upper bound of usage for this tier (null = unlimited).
+    TrialInputArgs:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial.
+        credit:
+          type: number
+          description: Trial credit amount.
+    CreatePricePlanArgs:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique name for the price plan.
+        display_name:
+          type: string
+        description:
+          type: string
+        vendor_id:
+          type: string
+        period:
+          type: string
+          enum:
+          - monthly
+          - quarterly
+          - annual
+        base_price:
+          type: number
+        base_price_frequency:
+          type: string
+        base_price_description:
+          type: string
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        metered_components:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeteredComponentInputArgs'
+        features:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        limits:
+          type: array
+          items:
+            type: object
+        trial:
+          $ref: '#/components/schemas/TrialInputArgs'
+        tags:
+          type: array
+          items:
+            type: string
     Feature:
       type: object
       required:
@@ -217,6 +289,61 @@ components:
         description:
           type: string
           description: Description of the feature.
+    Trial:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial (e.g., "day", "month").
+        credit:
+          type: number
+          description: Trial credit amount.
+    MeteredComponentInputArgs:
+      type: object
+      properties:
+        meter_name:
+          type: string
+        meter_id:
+          type: string
+        id:
+          type: string
+        display_name:
+          type: string
+        price_scheme:
+          $ref: '#/components/schemas/PriceSchemeInputArgs'
+        limit:
+          type: number
+        label_limits:
+          type: array
+          items:
+            type: object
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        watermark:
+          type: number
+    PriceSchemeInputArgs:
+      type: object
+      properties:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
+          type: string
+          enum:
+          - FLAT
+          - TIERED
+          - VOLUME
+          - PACKAGE
+        unit_name:
+          type: string
+        time_unit_name:
+          type: string
     AddOn:
       type: object
       required:
@@ -275,16 +402,6 @@ components:
           type: string
         time_unit_name:
           type: string
-    PriceTier:
-      type: object
-      description: A price tier within a tiered pricing scheme.
-      properties:
-        price:
-          type: number
-          description: Price per unit at this tier.
-        cap:
-          type: number
-          description: Upper bound of usage for this tier (null = unlimited).
     MeteredComponent:
       type: object
       required:
@@ -322,6 +439,17 @@ components:
         watermark:
           type: number
           description: High-watermark for pricing.
+    Limit:
+      type: object
+      required:
+      - feature
+      - limit
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        limit:
+          type: number
+          description: Numeric limit for the feature.
     PricePlan:
       type: object
       required:
@@ -393,134 +521,6 @@ components:
         created_at:
           type: string
           format: date-time
-    TrialInputArgs:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
-        time_unit_name:
-          type: string
-          description: Unit of time for the trial.
-        credit:
-          type: number
-          description: Trial credit amount.
-    Limit:
-      type: object
-      required:
-      - feature
-      - limit
-      properties:
-        feature:
-          $ref: '#/components/schemas/Feature'
-        limit:
-          type: number
-          description: Numeric limit for the feature.
-    MeteredComponentInputArgs:
-      type: object
-      properties:
-        meter_name:
-          type: string
-        meter_id:
-          type: string
-        id:
-          type: string
-        display_name:
-          type: string
-        price_scheme:
-          $ref: '#/components/schemas/PriceSchemeInputArgs'
-        limit:
-          type: number
-        label_limits:
-          type: array
-          items:
-            type: object
-        minimum_charge:
-          type: number
-        minimum_charge_frequency:
-          type: string
-        watermark:
-          type: number
-    Trial:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
-        time_unit_name:
-          type: string
-          description: Unit of time for the trial (e.g., "day", "month").
-        credit:
-          type: number
-          description: Trial credit amount.
-    PriceSchemeInputArgs:
-      type: object
-      properties:
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceTier'
-        scheme_type:
-          type: string
-          enum:
-          - FLAT
-          - TIERED
-          - VOLUME
-          - PACKAGE
-        unit_name:
-          type: string
-        time_unit_name:
-          type: string
-    CreatePricePlanArgs:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Unique name for the price plan.
-        display_name:
-          type: string
-        description:
-          type: string
-        vendor_id:
-          type: string
-        period:
-          type: string
-          enum:
-          - monthly
-          - quarterly
-          - annual
-        base_price:
-          type: number
-        base_price_frequency:
-          type: string
-        base_price_description:
-          type: string
-        minimum_charge:
-          type: number
-        minimum_charge_frequency:
-          type: string
-        metered_components:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeteredComponentInputArgs'
-        features:
-          type: array
-          items:
-            type: object
-        add_ons:
-          type: array
-          items:
-            type: object
-        limits:
-          type: array
-          items:
-            type: object
-        trial:
-          $ref: '#/components/schemas/TrialInputArgs'
-        tags:
-          type: array
-          items:
-            type: string
   securitySchemes:
     BearerApiKeyAuth:
       type: http

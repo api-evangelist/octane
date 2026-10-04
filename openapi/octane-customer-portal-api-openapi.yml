@@ -318,6 +318,16 @@ paths:
                 type: object
 components:
   schemas:
+    PriceTier:
+      type: object
+      description: A price tier within a tiered pricing scheme.
+      properties:
+        price:
+          type: number
+          description: Price per unit at this tier.
+        cap:
+          type: number
+          description: Upper bound of usage for this tier (null = unlimited).
     BillingCycleDate:
       type: object
       properties:
@@ -329,6 +339,101 @@ components:
           type: string
           format: date-time
           description: End of the current billing cycle.
+    TrialInputArgs:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial.
+        credit:
+          type: number
+          description: Trial credit amount.
+    ActiveSubscription:
+      type: object
+      required:
+      - uuid
+      - customer_name
+      - price_plan_name
+      - price_plan_uuid
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the subscription.
+        customer_name:
+          type: string
+          description: Name of the subscribed customer.
+        price_plan_name:
+          type: string
+          description: Name of the price plan.
+        price_plan_uuid:
+          type: string
+          description: UUID of the price plan.
+        price_plan:
+          $ref: '#/components/schemas/PricePlan'
+        effective_at:
+          type: string
+          format: date-time
+          description: When the subscription became effective.
+        expired_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the subscription expires.
+        align_to_calendar:
+          type: boolean
+          description: Whether the billing cycle aligns to the calendar.
+        base_price_override:
+          type: number
+          description: Override for the plan's base price.
+        current_billing_cycle:
+          $ref: '#/components/schemas/BillingCycleDate'
+        total_fixed_price:
+          type: number
+        discounted_fixed_price:
+          type: number
+        discounts:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        features_override:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        limits_override:
+          type: array
+          items:
+            $ref: '#/components/schemas/Limit'
+        trial_override:
+          $ref: '#/components/schemas/Trial'
+        credit_plan:
+          type: object
+    PriceScheme:
+      type: object
+      description: Pricing scheme configuration for a metered component.
+      properties:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceTier'
+        scheme_type:
+          type: string
+          enum:
+          - FLAT
+          - TIERED
+          - VOLUME
+          - PACKAGE
+        unit_name:
+          type: string
+        time_unit_name:
+          type: string
     Feature:
       type: object
       required:
@@ -343,6 +448,18 @@ components:
         description:
           type: string
           description: Description of the feature.
+    Trial:
+      type: object
+      properties:
+        time_length:
+          type: integer
+          description: Duration of the trial period.
+        time_unit_name:
+          type: string
+          description: Unit of time for the trial (e.g., "day", "month").
+        credit:
+          type: number
+          description: Trial credit amount.
     DiscountInputArgs:
       type: object
       properties:
@@ -377,6 +494,87 @@ components:
         labels:
           type: object
           description: Label filters for the discount.
+    MeteredComponent:
+      type: object
+      required:
+      - meter_name
+      - meter_display_name
+      - price_scheme
+      - label_limits
+      properties:
+        meter_name:
+          type: string
+          description: Name of the meter this component is based on.
+        meter_display_name:
+          type: string
+          description: Display name of the meter.
+        display_name:
+          type: string
+          description: Display name for this component on invoices.
+        external_uuid:
+          type: string
+          description: External UUID reference.
+        price_scheme:
+          $ref: '#/components/schemas/PriceScheme'
+        limit:
+          type: number
+          description: Usage limit for this component.
+        label_limits:
+          type: array
+          items:
+            type: object
+          description: Per-label usage limits.
+        minimum_charge:
+          type: number
+        minimum_charge_frequency:
+          type: string
+        watermark:
+          type: number
+          description: High-watermark for pricing.
+    CreateSubscriptionArgs:
+      type: object
+      properties:
+        price_plan_name:
+          type: string
+          description: Name of the price plan to subscribe to.
+        price_plan_uuid:
+          type: string
+          description: UUID of the price plan to subscribe to.
+        price_plan_tag:
+          type: string
+          description: Tag of the price plan version to use.
+        effective_at:
+          type: string
+          format: date-time
+          description: When the subscription should take effect.
+        align_to_calendar:
+          type: boolean
+          description: Align billing cycle to calendar period.
+        coupon_override_name:
+          type: string
+          description: Coupon to apply to the subscription.
+        discount_override:
+          $ref: '#/components/schemas/DiscountInputArgs'
+        discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountInputArgs'
+        features_override:
+          type: array
+          items:
+            type: object
+        add_ons:
+          type: array
+          items:
+            type: object
+        limits_override:
+          type: array
+          items:
+            type: object
+        trial_override:
+          $ref: '#/components/schemas/TrialInputArgs'
+        credit_plan:
+          type: object
     AddOn:
       type: object
       required:
@@ -416,106 +614,6 @@ components:
         charge_frequency:
           type: string
           description: How often to charge for the add-on.
-    PriceTier:
-      type: object
-      description: A price tier within a tiered pricing scheme.
-      properties:
-        price:
-          type: number
-          description: Price per unit at this tier.
-        cap:
-          type: number
-          description: Upper bound of usage for this tier (null = unlimited).
-    PriceScheme:
-      type: object
-      description: Pricing scheme configuration for a metered component.
-      properties:
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceTier'
-        scheme_type:
-          type: string
-          enum:
-          - FLAT
-          - TIERED
-          - VOLUME
-          - PACKAGE
-        unit_name:
-          type: string
-        time_unit_name:
-          type: string
-    MeteredComponent:
-      type: object
-      required:
-      - meter_name
-      - meter_display_name
-      - price_scheme
-      - label_limits
-      properties:
-        meter_name:
-          type: string
-          description: Name of the meter this component is based on.
-        meter_display_name:
-          type: string
-          description: Display name of the meter.
-        display_name:
-          type: string
-          description: Display name for this component on invoices.
-        external_uuid:
-          type: string
-          description: External UUID reference.
-        price_scheme:
-          $ref: '#/components/schemas/PriceScheme'
-        limit:
-          type: number
-          description: Usage limit for this component.
-        label_limits:
-          type: array
-          items:
-            type: object
-          description: Per-label usage limits.
-        minimum_charge:
-          type: number
-        minimum_charge_frequency:
-          type: string
-        watermark:
-          type: number
-          description: High-watermark for pricing.
-    ContactInfoInputArgs:
-      type: object
-      properties:
-        address_line_1:
-          type: string
-        address_line_2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        zipcode:
-          type: string
-        url:
-          type: string
-          format: uri
-        logo_url:
-          type: string
-          format: uri
-        email:
-          type: string
-          format: email
-        secondary_emails:
-          type: array
-          items:
-            type: string
-        phone:
-          type: string
-        legal_name:
-          type: string
-        vat_id:
-          type: string
     PricePlan:
       type: object
       required:
@@ -587,41 +685,6 @@ components:
         created_at:
           type: string
           format: date-time
-    TrialInputArgs:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
-        time_unit_name:
-          type: string
-          description: Unit of time for the trial.
-        credit:
-          type: number
-          description: Trial credit amount.
-    Limit:
-      type: object
-      required:
-      - feature
-      - limit
-      properties:
-        feature:
-          $ref: '#/components/schemas/Feature'
-        limit:
-          type: number
-          description: Numeric limit for the feature.
-    Trial:
-      type: object
-      properties:
-        time_length:
-          type: integer
-          description: Duration of the trial period.
-        time_unit_name:
-          type: string
-          description: Unit of time for the trial (e.g., "day", "month").
-        credit:
-          type: number
-          description: Trial credit amount.
     CreditTopOffPlan:
       type: object
       properties:
@@ -635,50 +698,51 @@ components:
           description: Amount of credits to add when threshold is reached.
         enabled:
           type: boolean
-    CreateSubscriptionArgs:
+    ContactInfoInputArgs:
       type: object
       properties:
-        price_plan_name:
+        address_line_1:
           type: string
-          description: Name of the price plan to subscribe to.
-        price_plan_uuid:
+        address_line_2:
           type: string
-          description: UUID of the price plan to subscribe to.
-        price_plan_tag:
+        city:
           type: string
-          description: Tag of the price plan version to use.
-        effective_at:
+        state:
           type: string
-          format: date-time
-          description: When the subscription should take effect.
-        align_to_calendar:
-          type: boolean
-          description: Align billing cycle to calendar period.
-        coupon_override_name:
+        country:
           type: string
-          description: Coupon to apply to the subscription.
-        discount_override:
-          $ref: '#/components/schemas/DiscountInputArgs'
-        discounts:
+        zipcode:
+          type: string
+        url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+        secondary_emails:
           type: array
           items:
-            $ref: '#/components/schemas/DiscountInputArgs'
-        features_override:
-          type: array
-          items:
-            type: object
-        add_ons:
-          type: array
-          items:
-            type: object
-        limits_override:
-          type: array
-          items:
-            type: object
-        trial_override:
-          $ref: '#/components/schemas/TrialInputArgs'
-        credit_plan:
-          type: object
+            type: string
+        phone:
+          type: string
+        legal_name:
+          type: string
+        vat_id:
+          type: string
+    Limit:
+      type: object
+      required:
+      - feature
+      - limit
+      properties:
+        feature:
+          $ref: '#/components/schemas/Feature'
+        limit:
+          type: number
+          description: Numeric limit for the feature.
     ContactInfo:
       type: object
       properties:
@@ -713,70 +777,6 @@ components:
           type: string
         vat_id:
           type: string
-    ActiveSubscription:
-      type: object
-      required:
-      - uuid
-      - customer_name
-      - price_plan_name
-      - price_plan_uuid
-      properties:
-        uuid:
-          type: string
-          description: Unique identifier for the subscription.
-        customer_name:
-          type: string
-          description: Name of the subscribed customer.
-        price_plan_name:
-          type: string
-          description: Name of the price plan.
-        price_plan_uuid:
-          type: string
-          description: UUID of the price plan.
-        price_plan:
-          $ref: '#/components/schemas/PricePlan'
-        effective_at:
-          type: string
-          format: date-time
-          description: When the subscription became effective.
-        expired_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: When the subscription expires.
-        align_to_calendar:
-          type: boolean
-          description: Whether the billing cycle aligns to the calendar.
-        base_price_override:
-          type: number
-          description: Override for the plan's base price.
-        current_billing_cycle:
-          $ref: '#/components/schemas/BillingCycleDate'
-        total_fixed_price:
-          type: number
-        discounted_fixed_price:
-          type: number
-        discounts:
-          type: array
-          items:
-            type: object
-        add_ons:
-          type: array
-          items:
-            type: object
-        features_override:
-          type: array
-          items:
-            $ref: '#/components/schemas/Feature'
-        limits_override:
-          type: array
-          items:
-            $ref: '#/components/schemas/Limit'
-        trial_override:
-          $ref: '#/components/schemas/Trial'
-        credit_plan:
-          type: object
   securitySchemes:
     BearerApiKeyAuth:
       type: http
