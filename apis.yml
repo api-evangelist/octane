@@ -269,6 +269,9 @@ apis:
   - type: Documentation
     url: https://docs.getoctane.io
 common:
+  - type: CapabilityMap
+    url: capabilities/octane-capability-edges.yml
+    name: Octane Business Capability Map
   - type: AgenticAccess
     url: agentic-access/octane-agentic-access.yml
   - type: DomainSecurity

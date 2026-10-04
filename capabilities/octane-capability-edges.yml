@@ -1,0 +1,131 @@
+slug: octane
+provider: Octane
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 12
+edges:
+- tag: Revenue Recognition
+  spec_file: octane-revenue-recognition-api-openapi.yml
+  capability_id: BC-4250.50
+  capability_id_l1: BC-4250
+  capability_name: Subscription Revenue Recognition
+  confidence: 0.95
+  evidence: POST /recognized_revenue  Generate Revenue Recognition Report; GET /customers/{customer_name}/accrued_revenue  Get
+    Customer Accrued Revenue
+  reason: Accrued and recognised revenue reporting for subscriptions is precisely subscription revenue
+    recognition; no alternative reading.
+- tag: Invoices
+  spec_file: octane-invoices-api-openapi.yml
+  capability_id: BC-4250.30
+  capability_id_l1: BC-4250
+  capability_name: Invoicing & Statement Management
+  confidence: 0.9
+  evidence: GET /invoices/{invoice_uuid_token}/pdf  Get Invoice PDF; POST /invoices/{invoice_uuid}/status  Update
+    Invoice Status
+  reason: Operations generate, retrieve, deliver (PDF) and adjust subscription invoices, which is squarely
+    invoicing and statement management in a usage-based billing platform.
+- tag: Measurements
+  spec_file: octane-measurements-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.9
+  evidence: POST /measurements  Send Measurement; POST /measurements/multi  Send Batched Measurements
+  reason: Ingestion of usage events (single and batched) that feed downstream rating is exactly usage
+    metering.
+- tag: Meters
+  spec_file: octane-meters-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.85
+  evidence: 'POST /meters  Create Meter; schemas: CreateMeterArgs, Meter'
+  reason: Meter definition lifecycle governs how usage events are ingested and aggregated for billing;
+    sits within usage metering rather than any monitoring capability.
+- tag: Avalara
+  spec_file: octane-avalara-api-openapi.yml
+  capability_id: BC-4250.60
+  capability_id_l1: BC-4250
+  capability_name: Subscription Tax Management
+  confidence: 0.8
+  evidence: '''Get Avalara Tax Codes'', ''Get Avalara Entity Use Codes'', GET /integration/tax/avalara/settings'
+  reason: Tax-engine integration settings, tax codes and entity use codes serving usage-based subscription
+    billing — tax determination and exemption handling for recurring/usage charges.
+- tag: Live Measurements
+  spec_file: octane-live-measurements-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.8
+  evidence: GET /live_measurements  Get Live Measurements; "real-time usage data for usage-based billing
+    workflows"
+  reason: Single read of live usage measurements is the aggregation side of usage metering feeding rating;
+    no other billing sub-capability fits.
+- tag: Price Plans
+  spec_file: octane-price-plans-api-openapi.yml
+  capability_id: BC-4240.10
+  capability_id_l1: BC-4240
+  capability_name: Plan & Entitlement Design
+  confidence: 0.8
+  evidence: 'POST /price_plans  Create Price Plan; schemas: PricePlan, PriceScheme, PriceTier, MeteredComponent,
+    AddOn, Trial, Feature'
+  reason: Defines plans with entitlement features, add-ons, trials and metered components — plan and entitlement
+    design for a SaaS commercial model; some overlap with generic price list management but the SaaS plan
+    framing fits better.
+- tag: Billing Settings
+  spec_file: octane-billing-settings-api-openapi.yml
+  capability_id: BC-4250
+  capability_id_l1: BC-4250
+  capability_name: Subscription Billing & Revenue Management
+  confidence: 0.75
+  evidence: '''Get Billing Settings'', ''List Payment Gateway Credentials'', schema BillingSettings'
+  reason: Configuration of billing behaviour and payment gateway credentials for a usage-based subscription
+    billing platform; clearly within Subscription Billing & Revenue Management but spanning several sub-capabilities.
+- tag: Credits
+  spec_file: octane-credits-api-openapi.yml
+  capability_id: BC-4250
+  capability_id_l1: BC-4250
+  capability_name: Subscription Billing & Revenue Management
+  confidence: 0.72
+  evidence: '''Get Customer Credit Balance'', ''Create Credit Grant'', ''Get Customer Credit Ledger'',
+    schema CreditTopOffPlan'
+  reason: Prepaid credit grants, balances, ledgers and auto top-off plans are mechanics of the usage-based
+    subscription billing model; no single L2 cleanly covers credit ledgering.
+- tag: Refunds
+  spec_file: octane-refunds-api-openapi.yml
+  capability_id: BC-4250
+  capability_id_l1: BC-4250
+  capability_name: Subscription Billing & Revenue Management
+  confidence: 0.7
+  evidence: 'POST /refund  Create Refund; schemas: CreateRefundArgs'
+  reason: A single refund-creation endpoint in a subscription billing platform clearly sits in subscription
+    billing, but the evidence is too thin to choose between payment collection and invoice adjustment,
+    so only the L1 is asserted.
+- tag: Subscriptions
+  spec_file: octane-subscriptions-api-openapi.yml
+  capability_id: BC-4240.30
+  capability_id_l1: BC-4240
+  capability_name: Subscription Provisioning
+  confidence: 0.7
+  evidence: 'POST /customers/{customer_name}/active_subscription  Create Customer Subscription; schemas:
+    CreateSubscriptionArgs, ActiveSubscription, Trial'
+  reason: Creating and reading a customer's active subscription is activation of service for a subscription;
+    only two operations so the precise sub-capability (provisioning vs modification) is somewhat uncertain.
+- tag: Webhooks
+  spec_file: octane-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: 'POST /webhooks  Create Webhook; schemas: Webhook, CreateWebhookArgs'
+  reason: Outbound webhook subscription CRUD is normally plumbing, but this frame has an explicit capability
+    for webhook and event subscription lifecycle, which these operations realise directly.
