@@ -107,15 +107,6 @@ paths:
                 type: object
 components:
   schemas:
-    ApplyCouponInputArgs:
-      type: object
-      properties:
-        coupon_name:
-          type: string
-          description: Name of the coupon to apply.
-        customer_name:
-          type: string
-          description: Name of the customer to apply the coupon to.
     CouponInputArgs:
       type: object
       required:
@@ -162,6 +153,15 @@ components:
           type: array
           items:
             type: string
+    ApplyCouponInputArgs:
+      type: object
+      properties:
+        coupon_name:
+          type: string
+          description: Name of the coupon to apply.
+        customer_name:
+          type: string
+          description: Name of the customer to apply the coupon to.
     Coupon:
       type: object
       required:

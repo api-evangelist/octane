@@ -352,65 +352,49 @@ paths:
                 $ref: '#/components/schemas/CustomerMeasurementMapping'
 components:
   schemas:
-    CustomerBillingSettingsInputArgs:
-      type: object
-      properties:
-        payment_gateway_type:
-          type: string
-        invoice_grace_period_days:
-          type: integer
-        auto_charge:
-          type: boolean
-    CreateAdhocChargeArgs:
-      type: object
-      properties:
-        amount:
-          type: number
-          description: Amount to charge.
-        description:
-          type: string
-          description: Description of the adhoc charge.
-    CustomerMeasurementMappingInputArgs:
+    CustomerMeasurementMapping:
       type: object
       properties:
         label:
           type: string
+          description: Label key to map.
         value:
           type: string
-    DiscountInputArgs:
+          description: Label value to map to.
+    ContactInfo:
       type: object
       properties:
-        discount_type:
+        address_line_1:
           type: string
-          enum:
-          - PERCENT
-          - AMOUNT
-          description: Type of discount.
-        amount:
-          type: number
-          description: Discount amount or percentage.
-        scope:
+        address_line_2:
           type: string
-          enum:
-          - SUBSCRIPTION
-          - COMPONENT
-          - ADD_ON
-          description: What the discount applies to.
-        billing_cycle_duration:
-          type: integer
-          description: How many billing cycles the discount lasts.
-        billing_cycle_start_offset:
-          type: integer
-          description: Offset from subscription start to begin applying discount.
-        metered_component_uuid:
+        city:
           type: string
-          description: UUID of the metered component to discount.
-        add_on_name:
+        state:
           type: string
-          description: Name of the add-on to discount.
-        labels:
-          type: object
-          description: Label filters for the discount.
+        country:
+          type: string
+        zipcode:
+          type: string
+        url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+        secondary_emails:
+          type: array
+          items:
+            type: string
+        phone:
+          type: string
+        legal_name:
+          type: string
+        vat_id:
+          type: string
     CreateCustomerArgs:
       type: object
       properties:
@@ -452,57 +436,6 @@ components:
         created_at:
           type: string
           format: date-time
-    Customer:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Unique name identifier for the customer.
-        display_name:
-          type: string
-          description: Human-readable display name.
-        contact_info:
-          $ref: '#/components/schemas/ContactInfo'
-        created_at:
-          type: string
-          format: date-time
-          description: When the customer was created.
-        measurement_mappings:
-          type: array
-          items:
-            type: object
-          description: Measurement label mappings for the customer.
-        tags:
-          type: array
-          items:
-            type: object
-          description: Tags associated with the customer.
-    CustomerMeasurementMapping:
-      type: object
-      properties:
-        label:
-          type: string
-          description: Label key to map.
-        value:
-          type: string
-          description: Label value to map to.
-    BillingSettings:
-      type: object
-      properties:
-        payment_gateway_type:
-          type: string
-          description: Type of payment gateway (e.g., stripe).
-        invoice_grace_period_days:
-          type: integer
-          description: Number of days grace period before invoice payment is due.
-        auto_charge:
-          type: boolean
-          description: Whether to automatically charge customers on invoice.
-        billing_period_anchor:
-          type: string
-          description: Anchor date for billing periods.
     ContactInfoInputArgs:
       type: object
       properties:
@@ -537,6 +470,92 @@ components:
           type: string
         vat_id:
           type: string
+    CustomerBillingSettingsInputArgs:
+      type: object
+      properties:
+        payment_gateway_type:
+          type: string
+        invoice_grace_period_days:
+          type: integer
+        auto_charge:
+          type: boolean
+    DiscountInputArgs:
+      type: object
+      properties:
+        discount_type:
+          type: string
+          enum:
+          - PERCENT
+          - AMOUNT
+          description: Type of discount.
+        amount:
+          type: number
+          description: Discount amount or percentage.
+        scope:
+          type: string
+          enum:
+          - SUBSCRIPTION
+          - COMPONENT
+          - ADD_ON
+          description: What the discount applies to.
+        billing_cycle_duration:
+          type: integer
+          description: How many billing cycles the discount lasts.
+        billing_cycle_start_offset:
+          type: integer
+          description: Offset from subscription start to begin applying discount.
+        metered_component_uuid:
+          type: string
+          description: UUID of the metered component to discount.
+        add_on_name:
+          type: string
+          description: Name of the add-on to discount.
+        labels:
+          type: object
+          description: Label filters for the discount.
+    Customer:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name identifier for the customer.
+        display_name:
+          type: string
+          description: Human-readable display name.
+        contact_info:
+          $ref: '#/components/schemas/ContactInfo'
+        created_at:
+          type: string
+          format: date-time
+          description: When the customer was created.
+        measurement_mappings:
+          type: array
+          items:
+            type: object
+          description: Measurement label mappings for the customer.
+        tags:
+          type: array
+          items:
+            type: object
+          description: Tags associated with the customer.
+    CreateAdhocChargeArgs:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Amount to charge.
+        description:
+          type: string
+          description: Description of the adhoc charge.
+    CustomerMeasurementMappingInputArgs:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
     AdhocCharge:
       type: object
       properties:
@@ -553,40 +572,21 @@ components:
         created_at:
           type: string
           format: date-time
-    ContactInfo:
+    BillingSettings:
       type: object
       properties:
-        address_line_1:
+        payment_gateway_type:
           type: string
-        address_line_2:
+          description: Type of payment gateway (e.g., stripe).
+        invoice_grace_period_days:
+          type: integer
+          description: Number of days grace period before invoice payment is due.
+        auto_charge:
+          type: boolean
+          description: Whether to automatically charge customers on invoice.
+        billing_period_anchor:
           type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        zipcode:
-          type: string
-        url:
-          type: string
-          format: uri
-        logo_url:
-          type: string
-          format: uri
-        email:
-          type: string
-          format: email
-        secondary_emails:
-          type: array
-          items:
-            type: string
-        phone:
-          type: string
-        legal_name:
-          type: string
-        vat_id:
-          type: string
+          description: Anchor date for billing periods.
   securitySchemes:
     BearerApiKeyAuth:
       type: http
